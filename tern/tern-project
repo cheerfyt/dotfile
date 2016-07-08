@@ -1,0 +1,18 @@
+{
+  "libs": [
+    "jquery",
+    "ecma6",
+    "underscore"
+  ],
+  "plugins": {
+    "node": {},
+    "node-express": {},
+    "node-mongoose": {},
+    "grunt": {},
+    "angular": {},
+    "requirejs": {
+      "baseURL": "./",
+      "paths": {}
+    }
+  }
+}

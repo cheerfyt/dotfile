@@ -1,0 +1,4 @@
+Host vpn
+    HostName  45.32.37.30 
+    user      root
+    port      22
