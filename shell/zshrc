@@ -84,6 +84,11 @@ fi
 # alias zshconfig="mate ~/.zshrc"
 alias ohmyzsh="mate ~/.oh-my-zsh"
 
+alias curl='curl --socks5 localhost:1080'
+alias ad='axel -n 10'
+alias px='proxychains4'
+alias tm='tmux -2'
+
 export NVM_DIR="/home/tate/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
 
