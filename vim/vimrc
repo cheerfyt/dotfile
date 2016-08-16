@@ -88,7 +88,7 @@ vnoremap > >gv  " better indentation
 
 set fo+=tw   "auto wrap require formatoptions+=t"
 set wrap linebreak
-set showbreak=↩\ 
+set showbreak=↩\
 set textwidth=79  " width of document (used by gd)
 set colorcolumn=80
 highlight ColorColumn ctermbg=220 guifg=yellow
@@ -137,36 +137,38 @@ endif
 " Plug 'sheerun/vim-polyglot'
 " Plug 'tpope/vim-fugitive'
 " Plug 'airblade/vim-gitgutter'
+" Plug 'Shougo/vimshell.vim'
+" Plug 'Shougo/vimproc.vim'
+" Plug 'nvie/vim-flake8'
+" Plug 'chrisgillis/vim-bootstrap3-snippets'
+" Plug 'moll/vim-node'
+" Plug 'kien/ctrlp.vim'
+" Plug 'yegappan/grep'
+" Plug 'mileszs/ack.vim'
+" Plug 'heavenshell/vim-jsdoc'
+" Plug 'suan/vim-instant-markdown'
+" Plug 'ElmCast/elm-vim'
 
 call plug#begin('~/.vim/plugged')
-Plug 'ElmCast/elm-vim'
 Plug 'bling/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'Auto-Pairs'
 Plug 'Valloric/YouCompleteMe'
 Plug 'scrooloose/nerdtree'      "文件浏览
 Plug 'mattn/emmet-vim'
-Plug 'kien/ctrlp.vim'
 Plug 'editorconfig/editorconfig-vim'
 Plug 'scrooloose/nerdcommenter'
 Plug 'tpope/vim-surround'
-Plug 'moll/vim-node'
-Plug 'yegappan/grep'
 Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
-Plug 'chrisgillis/vim-bootstrap3-snippets'
 Plug 'maksimr/vim-jsbeautify'
 Plug 'Yggdroot/indentLine'
-Plug 'suan/vim-instant-markdown'
-Plug 'mileszs/ack.vim'
-Plug 'heavenshell/vim-jsdoc'
-Plug 'Shougo/vimshell.vim'
-Plug 'Shougo/vimproc.vim'
 Plug 'briancollins/vim-jst'
 Plug 'scrooloose/syntastic'
 Plug 'elzr/vim-json'
-Plug 'nvie/vim-flake8'
 Plug 'ekalinin/Dockerfile.vim'
+Plug 'wincent/command-t'
+Plug 'godlygeek/tabular'
 call plug#end()            " required
 
 
@@ -185,18 +187,18 @@ let g:NERDCompactSexyComs=1   " 多行注释时样子更好看
 autocmd FileType python,javascript setlocal completeopt=longest,menuone
 nnoremap <leader>g :YcmCompleter GoToDefinitionElseDeclaration<CR>
 inoremap <Tab> <C-x><C-o>
+"注释和字符串中的文字也会被收入补全
 let g:ycm_confirm_extra_conf=1
 set completeopt-=preview " show the preview window
 let g:ycm_add_preview_to_completeopt=0
 let g:ycm_seed_identifiers_with_syntax=1
-" let g:ycm_complete_in_comments = 1
-" let g:ycm_complete_in_strings = 1
-"注释和字符串中的文字也会被收入补全
-" let g:ycm_collect_identifiers_from_comments_and_strings = 1
+let g:ycm_complete_in_comments = 1
+let g:ycm_complete_in_strings = 1
+let g:ycm_collect_identifiers_from_comments_and_strings = 1
 let g:ycm_cache_omnifunc=0
 let g:ycm_min_num_of_chars_for_completion=1
 let g:ycm_global_ycm_extra_conf='~/.ycm_extra_conf.py'
-" let g:ycm_collect_identifiers_from_tags_files=1
+let g:ycm_collect_identifiers_from_tags_files=1
 
 " powerline
 set laststatus=2
@@ -322,24 +324,24 @@ let g:go_highlight_structs = 1
 let g:go_highlight_operators = 1
 let g:go_highlight_build_constraints = 1
 
-if has("gui_running")
-    colorscheme solarized
-    " colorscheme monokai-soda
-    set bg=dark
-    highlight ColorColumn ctermbg=220 guibg=tan
-    set guifont=Menlo\ Bold
-    set guioptions-=T
-    set t_Co=256
-    set lines=50 columns=180
-    set guioptions-=r
-    set guioptions-=L
-    highlight Pmenu ctermfg=2 ctermbg=3 guifg=#005f87 guibg=#EEE8D5
-    highlight PmenuSel ctermfg=2 ctermbg=3 guifg=#AFD700 guibg=#106900
-    set pumheight=10
-else
-    colorscheme slate
-    set bg=light
-endif
+" if has("gui_running")
+"     colorscheme solarized
+"     " colorscheme monokai-soda
+"     set bg=dark
+"     highlight ColorColumn ctermbg=220 guibg=tan
+"     set guifont=Menlo\ Bold
+"     set guioptions-=T
+"     set t_Co=256
+"     set lines=50 columns=180
+"     set guioptions-=r
+"     set guioptions-=L
+"     highlight Pmenu ctermfg=2 ctermbg=3 guifg=#005f87 guibg=#EEE8D5
+"     highlight PmenuSel ctermfg=2 ctermbg=3 guifg=#AFD700 guibg=#106900
+"     set pumheight=10
+" else
+"     colorscheme slate
+"     set bg=light
+" endif
 
 
 "ultisnips setting
@@ -357,30 +359,67 @@ set enc=utf-8
 setglobal fileencoding=utf-8
 set wildignore+=/bower_components/*,/node_modules/*
 
-" set no delay 
+" set no delay
 set timeoutlen=300 ttimeoutlen=0
 
-"jsdoc setting
-let g:jsdoc_additional_descriptions = 1
-let g:jsdoc_input_description = 1
-let g:jsdoc_allow_input_prompt = 1
+" jsdoc setting
+" let g:jsdoc_additional_descriptions = 1
+" let g:jsdoc_input_description = 1
+" let g:jsdoc_allow_input_prompt = 1
 
 highlight Cursor guifg=white guibg=green
-
 let g:vim_json_syntax_conceal = 0
 
 " elm setting
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 1
-let g:elm_syntastic_show_warnings = 1
-let g:ycm_semantic_triggers = {
-     \ 'elm' : ['.'],
-     \}
+" let g:syntastic_always_populate_loc_list = 1
+" let g:syntastic_auto_loc_list = 1
+" let g:elm_syntastic_show_warnings = 1
+" let g:ycm_semantic_triggers = {
+"      \ 'elm' : ['.'],
+"      \}
+" let g:elm_jump_to_error = 0
+" let g:elm_make_output_file = "elm.js"
+" let g:elm_make_show_warnings = 0
+" let g:elm_syntastic_show_warnings = 0
+" let g:elm_browser_command = ""
+" let g:elm_detailed_complete = 0
+" let g:elm_format_autosave = 0
 
-let g:elm_jump_to_error = 0
-let g:elm_make_output_file = "elm.js"
-let g:elm_make_show_warnings = 0
-let g:elm_syntastic_show_warnings = 0
-let g:elm_browser_command = ""
-let g:elm_detailed_complete = 0
-let g:elm_format_autosave = 0
+let g:CommandTInputDebounce = 200
+let g:CommandTWildIgnore = &wildignore . ",**/bower_components/*" . ",**/node_modules/*" . ",**/vendor/*"
+let g:CommandTMaxHeight = 30
+let g:CommandTMaxFiles = 5000000
+
+" Theme stuff
+nnoremap <leader>1 :colorscheme obsidian<cr>
+nnoremap <leader>2 :colorscheme tomorrow-night-bright<cr>
+nnoremap <leader>3 :colorscheme molokai<cr>
+nnoremap <leader>4 :colorscheme badwolf<cr>
+
+" badwolf settings
+let g:badwolf_darkgutter = 1
+let g:badwolf_tabline = 2
+let g:badwolf_css_props_highlight = 1
+let g:badwolf_html_link_underline = 1
+
+augroup file_types
+    autocmd!
+    autocmd BufRead,BufNewFile *.fdoc set filetype=yaml
+    autocmd BufRead,BufNewFile *.raml set filetype=yaml
+    autocmd BufRead,BufNewFile *.md set filetype=markdown
+    autocmd BufRead,BufNewFile *.txt set filetype=markdown
+    autocmd BufRead,BufNewFile *.js set ft=javascript syntax=javascript
+    autocmd BufRead,BufNewFile *.ts set ft=typescript syntax=typescript
+    autocmd BufRead,BufNewFile *.es6 set ft=javascript syntax=javascript
+    autocmd BufRead,BufNewFile *.twig set ft=htmldjango
+    autocmd BufRead,BufNewFile *.rabl set ft=ruby
+    autocmd BufRead,BufNewFile *.jade set ft=jade
+augroup END
+
+" useful keymaping
+iabbrev adn and
+iabbrev waht what
+iabbrev teh the
+nnoremap H 00
+nnoremap L $
+inoremap jk <esc>

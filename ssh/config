@@ -2,3 +2,8 @@ Host vpn
     HostName  45.32.37.30 
     user      root
     port      22
+
+Host ecar
+    HostName  182.254.240.238
+    user      root
+    port      22
