@@ -95,9 +95,9 @@ export NVM_DIR="/home/tate/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
 
 # virtualenvwrapper
-export VIRTUALENVWRAPPER_PYTHON=/usr/bin/python
-export WORKON_HOME=$HOME/.virtualenvs
-source /usr/local/bin/virtualenvwrapper.sh
+# export VIRTUALENVWRAPPER_PYTHON=/usr/bin/python
+# export WORKON_HOME=$HOME/.virtualenvs
+# source /usr/local/bin/virtualenvwrapper.sh
 
 export NVM_DIR="/home/tate/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
@@ -112,6 +112,3 @@ export JAVA_HOME=/usr/lib/jvm/default
 export JRE_HOME=${JAVA_HOME}/jre
 export CLASSPATH=.:${JAVA_HOME}/lib:${JRE_HOME}/lib
 export PATH=${JAVA_HOME}/bin:$PATH
-
-# make caps_lock as esc key
-xmodmap ~/.Xmodmap 2>/dev/null
