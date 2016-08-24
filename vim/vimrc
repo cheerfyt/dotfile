@@ -148,6 +148,8 @@ endif
 " Plug 'heavenshell/vim-jsdoc'
 " Plug 'suan/vim-instant-markdown'
 " Plug 'ElmCast/elm-vim'
+" Plug 'briancollins/vim-jst'
+" Plug 'elzr/vim-json'
 
 call plug#begin('~/.vim/plugged')
 Plug 'bling/vim-airline'
@@ -163,9 +165,7 @@ Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
 Plug 'maksimr/vim-jsbeautify'
 Plug 'Yggdroot/indentLine'
-Plug 'briancollins/vim-jst'
 Plug 'scrooloose/syntastic'
-Plug 'elzr/vim-json'
 Plug 'ekalinin/Dockerfile.vim'
 Plug 'wincent/command-t'
 Plug 'godlygeek/tabular'
@@ -185,20 +185,21 @@ let g:NERDCompactSexyComs=1   " 多行注释时样子更好看
 
 " jedi and YCM config
 autocmd FileType python,javascript setlocal completeopt=longest,menuone
-nnoremap <leader>g :YcmCompleter GoToDefinitionElseDeclaration<CR>
+nnoremap <leader>gd :YcmCompleter GoToDefinitionElseDeclaration<CR>
+nnoremap <leader>jd :YcmCompleter GoTo<CR>
 inoremap <Tab> <C-x><C-o>
 "注释和字符串中的文字也会被收入补全
-let g:ycm_confirm_extra_conf=1
+let g:ycm_confirm_extra_conf=0
 set completeopt-=preview " show the preview window
-let g:ycm_add_preview_to_completeopt=0
-let g:ycm_seed_identifiers_with_syntax=1
-let g:ycm_complete_in_comments = 1
-let g:ycm_complete_in_strings = 1
-let g:ycm_collect_identifiers_from_comments_and_strings = 1
-let g:ycm_cache_omnifunc=0
-let g:ycm_min_num_of_chars_for_completion=1
-let g:ycm_global_ycm_extra_conf='~/.ycm_extra_conf.py'
-let g:ycm_collect_identifiers_from_tags_files=1
+let g:ycm_add_preview_to_completeopt   = 0
+let g:ycm_seed_identifiers_with_syntax = 1
+let g:ycm_complete_in_comments                           = 1
+let g:ycm_complete_in_strings                            = 1
+let g:ycm_collect_identifiers_from_comments_and_strings  = 1
+let g:ycm_cache_omnifunc                      = 1
+let g:ycm_min_num_of_chars_for_completion     = 1
+let g:ycm_global_ycm_extra_conf               = '~/.ycm_extra_conf.py'
+let g:ycm_collect_identifiers_from_tags_files = 1
 
 " powerline
 set laststatus=2
