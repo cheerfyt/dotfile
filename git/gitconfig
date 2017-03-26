@@ -70,6 +70,7 @@
     #############
     o = checkout
     ob = checkout -b
+    obt = checkout --track
     #############
     pr = prune -v
     #############
