@@ -7,40 +7,32 @@
 
 " This line should not be removed as it ensures that various options are
 " properly set to work with the Vim-related packages available in Debian.
-runtime! debian.vim
-autocmd! BufWritePost ~/.vimrc source %
-au BufNewFile,BufRead *.markdown,*.mdown,*.mkd,*.mkdn,*.mdwn,*.md  setf markdown
-
-" Uncomment the next line to make Vim more Vi-compatible
-" NOTE: debian.vim sets 'nocompatible'.  Setting 'compatible' changes numerous
-" options, so any other options should be set AFTER setting 'compatible'.
+" ======================================================================
 set nocompatible
+autocmd! BufWritePost ~/.vimrc source %
+" ================setting mapleader ====================================
 let mapleader=","
 
 if has("syntax")
   syntax on
 endif
 
-" set nobackup
-set writebackup
-set autoread
-set backupdir=~/.vimbackup
-set backupcopy=auto
+" ======================================================================
+set nobackup
 set noswapfile
+set nowritebackup
+set autoread
+set backupcopy=auto
+
 set magic
 set t_Co=256
-" set cursorline   "hight current line
-" set cursorcolumn
 set novisualbell
 set viminfo+=/100  "set the limit viminfo
 set ttyfast
-set ttyscroll=3
+" set ttyscroll=3
 set lazyredraw
 set pumheight=10
-set gcr=a:block-blinkon0 "" 禁止光标闪烁
-
-" The following are commented out as they cause vim to behave a lot
-" differently from regular Vi. They are highly recommended though.
+set gcr=a:blinkon0  " 禁止光标闪烁
 set number          " show line number
 set showcmd         " Show (partial) command in status line.
 set showmatch       " Show matching brackets.
@@ -55,10 +47,6 @@ set bs=2            " make backspace behave like normal again
 
 highlight Pmenu guibg=brown gui=bold
 
-set listchars=tab:▸·,trail:·,precedes:<,extends:>
-set list
-set noendofline     " why?
-
 nnoremap <leader>n :bn<cr>
 nnoremap <leader>p :bp<cr>
 nnoremap <leader>j <C-w>j
@@ -67,19 +55,8 @@ nnoremap <leader>h <C-w>h
 nnoremap <leader>l <C-w>l
 nnoremap <C-p> :CommandT<CR>
 
+
 " emacs key
-inoremap <leader>e <END>
-inoremap <leader>a <HOME>
-inoremap <C-n> <C-\><C-O>j
-inoremap <C-p> <C-\><C-O>k
-inoremap <C-B> <C-\><C-O>h
-inoremap <C-F> <C-\><C-O>l
-
-" autocmd! FileType javascript nnoremap <C-b> :!node %<CR>
-
-" easier moving of code blocks
-" Try to go into visual mode (v), thenselect several lines of code here and
-" then press ``>`` several times.
 vnoremap < <gv  " better indentation
 vnoremap > >gv  " better indentation
 :nnoremap <Tab> :bnext<CR>
@@ -91,15 +68,10 @@ set wrap linebreak
 set showbreak=↩\
 set textwidth=79  " width of document (used by gd)
 set colorcolumn=80
-highlight ColorColumn ctermbg=220 guifg=yellow
+highlight ColorColumn ctermbg=240 guifg=yellow
 highlight OverLength ctermbg=red ctermfg=white guibg=#592929
-" highlight Pmenu term=reverse ctermbg=cyan ctermfg=black
-" highlight PmenuSel term=reverse ctermbg=lightred ctermfg=black
-" YCM 补全菜单配色
-" 菜单
-highlight Pmenu ctermfg=2 ctermbg=3 guifg=#005f87 guibg=#EEE8D5
-" 选中项
-highlight PmenuSel ctermfg=2 ctermbg=3 guifg=#AFD700 guibg=#106900
+highlight Pmenu term=reverse ctermbg=cyan ctermfg=black
+highlight PmenuSel term=reverse ctermbg=lightred ctermfg=black
 
 
 highlight ExtraWhitespace ctermbg=darkgreen ctermfg=white
@@ -109,12 +81,17 @@ match ExtraWhitespace /[^\t]\zs\t\+/
 " Real programmers don't use TABs but spaces
 set cindent
 set smartindent
-set sw=4
-set sts=4
-set ts=4
+set sw=2
+set sts=2
+set ts=2
 set expandtab
 set pastetoggle=<F2>
-autocmd FileType html,json,yaml setlocal shiftwidth=2 tabstop=2 sts=2 expandtab
+autocmd FileType html,json,yaml,js setlocal shiftwidth=2 tabstop=2 sts=2 expandtab
+
+" ColorGroup
+:hi SpecialKey ctermfg=235
+set listchars=tab:↦.,extends:>,precedes:<
+set list
 
 if empty(glob('~/.vim/autoload/plug.vim'))
   silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
@@ -127,7 +104,6 @@ endif
 " Plug 'The-NERD-Commenter'
 " Plug 'marijnh/tern_for_vim'
 " Plug 'reedes/vim-pencil'
-" Plug 'fatih/vim-go'
 " Plug 'majutsushi/tagbar'
 " Plug 'easymotion/vim-easymotion'
 " Plug 'Shougo/vimproc.vim'
@@ -135,7 +111,6 @@ endif
 " Plug 'sjl/gundo.vim'
 " Plug 'fholgado/minibufexpl.vim'
 " Plug 'sheerun/vim-polyglot'
-" Plug 'tpope/vim-fugitive'
 " Plug 'airblade/vim-gitgutter'
 " Plug 'Shougo/vimshell.vim'
 " Plug 'Shougo/vimproc.vim'
@@ -145,14 +120,19 @@ endif
 " Plug 'kien/ctrlp.vim'
 " Plug 'yegappan/grep'
 " Plug 'mileszs/ack.vim'
-" Plug 'heavenshell/vim-jsdoc'
 " Plug 'suan/vim-instant-markdown'
-" Plug 'ElmCast/elm-vim'
 " Plug 'briancollins/vim-jst'
-" Plug 'elzr/vim-json'
+" Plug 'SirVer/ultisnips'
+" Plug 'ElmCast/elm-vim'
+" Plug 'othree/jspc.vim'
+" Plug 'wincent/command-t'
 
 call plug#begin('~/.vim/plugged')
-Plug 'bling/vim-airline'
+Plug 'elzr/vim-json'
+Plug 'heavenshell/vim-jsdoc'
+Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-repeat'
+Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'Auto-Pairs'
 Plug 'Valloric/YouCompleteMe'
@@ -161,33 +141,34 @@ Plug 'mattn/emmet-vim'
 Plug 'editorconfig/editorconfig-vim'
 Plug 'scrooloose/nerdcommenter'
 Plug 'tpope/vim-surround'
-Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
 Plug 'maksimr/vim-jsbeautify'
 Plug 'Yggdroot/indentLine'
 Plug 'scrooloose/syntastic'
 Plug 'ekalinin/Dockerfile.vim'
-Plug 'wincent/command-t'
 Plug 'godlygeek/tabular'
+Plug 'Shougo/unite.vim'
+Plug 'fatih/vim-go'
+Plug 'mhinz/vim-signify'
+Plug 'pangloss/vim-javascript'
+Plug 'altercation/vim-colors-solarized'
+Plug 'ctrlpvim/ctrlp.vim'
 call plug#end()            " required
 
 
 " tagbar
 nmap <F3> :NERDTreeToggle<CR>
-" let g:NERDTreeChDirMode=2
-" let g:NERDTreeDirArrows = 1
-" let g:NERDTreeQuitOnOpen = 1
-
 
 " commenter
 let g:NERDSpaceDelims=1       " 让注释符与语句之间留一个空格
 let g:NERDCompactSexyComs=1   " 多行注释时样子更好看
 
 " jedi and YCM config
-autocmd FileType python,javascript setlocal completeopt=longest,menuone
+autocmd FileType python,javascript,go setlocal completeopt=longest,menuone
 nnoremap <leader>gd :YcmCompleter GoToDefinitionElseDeclaration<CR>
 nnoremap <leader>jd :YcmCompleter GoTo<CR>
 inoremap <Tab> <C-x><C-o>
+
 "注释和字符串中的文字也会被收入补全
 let g:ycm_confirm_extra_conf=0
 set completeopt-=preview " show the preview window
@@ -223,23 +204,6 @@ let g:airline_mode_map = {
   \ '' : 'S',
   \ }
 
-let g:airline#extensions#tabline#enabled = 1
-let g:airline#extensions#tabline#left_sep = '▶'
-let g:airline#extensions#bufferline#enabled = 1
-let g:airline#extensions#bufferline#left_sep = '▶'
-let g:airline#extensions#tagbar#enabled = 1
-let g:airline#extensions#virtualenv#enabled = 1
-let g:airline_left_sep='▶'
-let g:airline_left_alt_sep='▶'
-let g:airline_right_sep='◀'
-let g:airline_right_alt_sep='◀'
-
-if !exists('g:airline_symbols')
-      let g:airline_symbols = {}
-endif
-let g:airline_symbols.space = "\ua0"
-
-let g:airline_theme             = 'wombat'
 
 let g:syntastic_always_populate_loc_list = 0
 let g:syntastic_check_on_w = 1
@@ -247,65 +211,44 @@ let g:syntastic_javascript_checkers = ['eslint']
 let g:syntastic_python_checkers = ['flake8']
 
 " tern.js setting
-" let g:tern#is_show_argument_hints_enabled=1
-" let g:tern_show_argument_hints='on_hold'
-" let g:tern_map_keys=1
+let g:tern#is_show_argument_hints_enabled=1
+let g:tern_show_argument_hints='on_hold'
+let g:tern_map_keys=1
 
 "javascript
 let g:javascript_enable_domhtmlcss = 1
 
 " markdown setting
-let g:vim_markdown_folding_disabled=1
-let g:vim_markdown_frontmatter=1
+" let g:vim_markdown_folding_disabled=1
+" let g:vim_markdown_frontmatter=1
 
 " MiniBufExpl Colors
 let g:miniBufExplorerAutoStart = 1
 let g:miniBufExplBuffersNeeded = 1
 let g:miniBufExplStatusLineText = "-已打开文件-"
-" let g:miniBufExplHideWhenDiff = 1
-" let g:miniBufExplMinSize = 25
-" let g:miniBufExplMaxSize = 30
-" let g:miniBufExplVSplit = 1
-" let g:miniBufExplBRSplit = 1
 
 " Trigger configuration. Do not use <tab> if you use https://github.com/Valloric/YouCompleteMe.
-let g:UltiSnipsExpandTrigger="<C-e>"
-let g:UltiSnipsJumpForwardTrigger="<c-b>"
-let g:UltiSnipsJumpBackwardTrigger="<c-z>"
+let g:UltiSnipsExpandTrigger       = "<C-e>"
+let g:UltiSnipsJumpForwardTrigger  = "<c-b>"
+let g:UltiSnipsJumpBackwardTrigger = "<c-z>"
 
 " If you want :UltiSnipsEdit to split your window.
 let g:UltiSnipsEditSplit="vertical"
 
-" ctrl_p
-let g:ctrlp_custom_ignore = {
-  \ 'dir':  '\v[\/]\.(git|hg|svn)|(node_modules)$',
-  \ }
-
-" auto-save
-" let g:auto_save = 1
-" let g:auto_save_in_insert_mode = 0  "do not save while in insert mode
-
 " indentLine
-let g:indentLine_color_term = 239
-let g:indentLine_char = '|'
-
-" gitgutter
-" let g:gitgutter_sign_added = 'A'
-" let g:gitgutter_sign_modified = 'M'
-" let g:gitgutter_sign_removed = 'R'
-" let g:gitgutter_sign_removed_first_line = '^^'
-" let g:gitgutter_sign_modified_removed = 'MR'
+let g:indentLine_color_term = 240
+let g:indentLine_char = "|"
 
 "html
 let g:user_emmet_install_global = 0
-autocmd FileType html,css,jst,jsx,js,javascript EmmetInstall
-let g:syntastic_html_tidy_exec = 'tidy'
+autocmd FileType html,css,jst,jsx,js,javascript,xml,ejs EmmetInstall
+let g:syntastic_html_tidy_exec           = 'tidy'
 let g:syntastic_always_populate_loc_list = 1
-let g:use_emmet_complete_tag = 1
-let g:user_emmet_leader_key='<C-l>'
-let g:user_emmet_mode='a'
-let g:emmet_indent_size = 2
-let g:emmet_html5=1
+let g:use_emmet_complete_tag             = 1
+let g:user_emmet_leader_key              = '<C-l>'
+let g:user_emmet_mode                    = 'a'
+let g:emmet_indent_size                  = 2
+let g:emmet_html5                        = 1
 
 " web group
 augroup web
@@ -319,30 +262,15 @@ augroup web
 augroup END
 
 " golang group
-let g:go_highlight_functions = 1
-let g:go_highlight_methods = 1
-let g:go_highlight_structs = 1
-let g:go_highlight_operators = 1
+let g:go_highlight_functions         = 1
+let g:go_highlight_methods           = 1
+let g:go_highlight_structs           = 1
+let g:go_highlight_operators         = 1
 let g:go_highlight_build_constraints = 1
-
-" if has("gui_running")
-"     colorscheme solarized
-"     " colorscheme monokai-soda
-"     set bg=dark
-"     highlight ColorColumn ctermbg=220 guibg=tan
-"     set guifont=Menlo\ Bold
-"     set guioptions-=T
-"     set t_Co=256
-"     set lines=50 columns=180
-"     set guioptions-=r
-"     set guioptions-=L
-"     highlight Pmenu ctermfg=2 ctermbg=3 guifg=#005f87 guibg=#EEE8D5
-"     highlight PmenuSel ctermfg=2 ctermbg=3 guifg=#AFD700 guibg=#106900
-"     set pumheight=10
-" else
-"     colorscheme slate
-"     set bg=light
-" endif
+au FileType go nmap <leader>r <Plug>(go-run)
+au FileType go nmap <leader>b <Plug>(go-build)
+au FileType go nmap <leader>t <Plug>(go-test)
+au FileType go nmap <leader>c <Plug>(go-coverage)
 
 
 "ultisnips setting
@@ -355,72 +283,117 @@ let g:tern_request_timeout = 100
 
 
 "set scheme
-let g:solarized_termcolors=256
-set enc=utf-8
 setglobal fileencoding=utf-8
+
+" ================ Completion =======================
+set wildmode=list:longest
+set wildmenu                "enable ctrl-n and ctrl-p to scroll thru matches
+set wildignore=*.o,*.obj,*~ "stuff to ignore when tab completing
+set wildignore+=*vim/backups*
+set wildignore+=*sass-cache*
+set wildignore+=*DS_Store*
+set wildignore+=vendor/rails/**
+set wildignore+=vendor/cache/**
+set wildignore+=*.gem
+set wildignore+=log/**
+set wildignore+=tmp/**
+set wildignore+=*.png,*.jpg,*.gif,*.pdf
 set wildignore+=/bower_components/*,/node_modules/*
 
-" set no delay
-set timeoutlen=300 ttimeoutlen=0
-
-" jsdoc setting
-" let g:jsdoc_additional_descriptions = 1
-" let g:jsdoc_input_description = 1
-" let g:jsdoc_allow_input_prompt = 1
 
 highlight Cursor guifg=white guibg=green
-let g:vim_json_syntax_conceal = 0
+let g:vim_json_syntax_conceal = 2
 
-" elm setting
-" let g:syntastic_always_populate_loc_list = 1
-" let g:syntastic_auto_loc_list = 1
-" let g:elm_syntastic_show_warnings = 1
-" let g:ycm_semantic_triggers = {
-"      \ 'elm' : ['.'],
-"      \}
-" let g:elm_jump_to_error = 0
-" let g:elm_make_output_file = "elm.js"
-" let g:elm_make_show_warnings = 0
-" let g:elm_syntastic_show_warnings = 0
-" let g:elm_browser_command = ""
-" let g:elm_detailed_complete = 0
-" let g:elm_format_autosave = 0
-
-let g:CommandTInputDebounce = 200
-let g:CommandTWildIgnore = &wildignore . ",**/bower_components/*" . ",**/node_modules/*" . ",**/vendor/*"
-let g:CommandTMaxHeight = 30
-let g:CommandTMaxFiles = 5000000
-
-" Theme stuff
-nnoremap <leader>1 :colorscheme obsidian<cr>
-nnoremap <leader>2 :colorscheme tomorrow-night-bright<cr>
-nnoremap <leader>3 :colorscheme molokai<cr>
-nnoremap <leader>4 :colorscheme badwolf<cr>
-
-" badwolf settings
-let g:badwolf_darkgutter = 1
-let g:badwolf_tabline = 2
-let g:badwolf_css_props_highlight = 1
-let g:badwolf_html_link_underline = 1
-
+" ================ FileType =========================
+" let g:CommandTInputDebounce = 20
+" let g:CommandTWildIgnore = &wildignore.",**/vendor/*"
+" let g:CommandTMaxHeight = 15
+" let g:CommandTMaxFiles = 50
 augroup file_types
     autocmd!
     autocmd BufRead,BufNewFile *.fdoc set filetype=yaml
     autocmd BufRead,BufNewFile *.raml set filetype=yaml
-    autocmd BufRead,BufNewFile *.md set filetype=markdown
-    autocmd BufRead,BufNewFile *.txt set filetype=markdown
-    autocmd BufRead,BufNewFile *.js set ft=javascript syntax=javascript
-    autocmd BufRead,BufNewFile *.ts set ft=typescript syntax=typescript
-    autocmd BufRead,BufNewFile *.es6 set ft=javascript syntax=javascript
+    autocmd BufRead,BufNewFile *.md   set filetype=markdown
+    autocmd BufRead,BufNewFile *.txt  set filetype=markdown
+    autocmd BufRead,BufNewFile *.js   set ft=javascript syntax=javascript
+    autocmd BufRead,BufNewFile *.ts   set ft=typescript syntax=typescript
+    autocmd BufRead,BufNewFile *.es6  set ft=javascript syntax=javascript
     autocmd BufRead,BufNewFile *.twig set ft=htmldjango
     autocmd BufRead,BufNewFile *.rabl set ft=ruby
     autocmd BufRead,BufNewFile *.jade set ft=jade
 augroup END
 
 " useful keymaping
-iabbrev adn and
-iabbrev waht what
-iabbrev teh the
 nnoremap H 00
 nnoremap L $
 inoremap jk <esc>
+
+
+" airline setting
+let g:airline_powerline_fonts = 1
+let g:airline_detect_modified=1
+let g:airline_detect_paste=1
+let g:airline_detect_crypt=1
+let g:airline_detect_spell=1
+let g:airline_mode_map = {
+  \ '__' : '-',
+  \ 'n'  : 'N',
+  \ 'i'  : 'I',
+  \ 'R'  : 'R',
+  \ 'c'  : 'C',
+  \ 'v'  : 'V',
+  \ 'V'  : 'V',
+  \ '' : 'V',
+  \ 's'  : 'S',
+  \ 'S'  : 'S',
+  \ '' : 'S',
+  \ }
+if !exists('g:airline_symbols')
+    let g:airline_symbols = {}
+endif
+
+" ===================== unicode symbols ==============
+let g:airline_theme = "luna"
+let g:airline_left_sep = '▶'
+let g:airline_right_sep = '◀'
+let g:airline_symbols.crypt = '🔒'
+let g:airline_symbols.linenr = '␊'
+let g:airline_symbols.linenr = '␤'
+let g:airline_symbols.linenr = '¶'
+let g:airline_symbols.maxlinenr = '☰'
+let g:airline_symbols.branch = ''
+let g:airline_symbols.paste = 'ρ'
+let g:airline_symbols.paste = 'Þ'
+let g:airline_symbols.paste = '∥'
+let g:airline_symbols.spell = 'Ꞩ'
+let g:airline_symbols.notexists = '∄'
+let g:airline_symbols.whitespace = 'Ξ'
+
+let g:airline_theme_patch_func = 'AirlineThemePatch'
+
+function! AirlineThemePatch(palette)
+    if g:airline_theme == 'badwolf'
+      for colors in values(a:palette.inactive)
+        let colors[3] = 245
+      endfor
+    endif
+endfunction
+
+set background=dark
+
+" =============== GuiSetting ========================
+if has("gui_running")
+  if has("gui_macvim")
+    set guifont=Fira\ Code:h15
+    colorscheme solarized
+    set guioptions-=m  "remove menu bar
+    set guioptions-=T  "remove toolbar
+    set guioptions-=r  "remove right-hand scroll bar
+    set guioptions-=L  "remove left-hand scroll bar
+  endif
+endif
+
+" ================= CtrlpVim =======================
+let g:ctrlp_map = '<c-p>'
+let g:ctrlp_cmd = 'CtrlP'
+let g:ctrlp_custom_ignore = '\v[\/]\.(git|hg|svn|node_modules|vendor)$'
