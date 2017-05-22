@@ -126,6 +126,7 @@ endif
 " Plug 'ElmCast/elm-vim'
 " Plug 'othree/jspc.vim'
 " Plug 'wincent/command-t'
+" Plug 'Auto-Pairs'
 
 call plug#begin('~/.vim/plugged')
 Plug 'elzr/vim-json'
@@ -134,7 +135,6 @@ Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-repeat'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
-Plug 'Auto-Pairs'
 Plug 'Valloric/YouCompleteMe'
 Plug 'scrooloose/nerdtree'      "文件浏览
 Plug 'mattn/emmet-vim'
