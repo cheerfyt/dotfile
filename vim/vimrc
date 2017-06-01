@@ -69,7 +69,7 @@ set wrap linebreak
 set showbreak=↩\
 set textwidth=79  " width of document (used by gd)
 set colorcolumn=80
-highlight ColorColumn ctermbg=240 guifg=yellow
+highlight ColorColumn ctermbg=220 guifg=green
 highlight OverLength ctermbg=red ctermfg=white guibg=#592929
 highlight Pmenu term=reverse ctermbg=cyan ctermfg=black
 highlight PmenuSel term=reverse ctermbg=lightred ctermfg=black
