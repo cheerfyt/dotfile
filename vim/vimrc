@@ -30,7 +30,6 @@ set t_Co=256
 set novisualbell
 set viminfo+=/100  "set the limit viminfo
 set ttyfast
-" set ttyscroll=3
 set lazyredraw
 set pumheight=10
 set gcr=a:blinkon0  " 禁止光标闪烁
@@ -48,7 +47,6 @@ set bs=2            " make backspace behave like normal again
 
 highlight Pmenu guibg=brown gui=bold
 
-nnoremap <leader>n :bn<cr>
 nnoremap <leader>p :bp<cr>
 nnoremap <leader>j <C-w>j
 nnoremap <leader>k <C-w>k
@@ -324,10 +322,10 @@ augroup file_types
 augroup END
 
 " useful keymaping
-nnoremap H 00
+nnoremap H ^
 nnoremap L $
 inoremap jk <esc>
-
+inoremap <C-e> <END>
 
 " airline setting
 let g:airline_powerline_fonts = 1
