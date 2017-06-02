@@ -52,7 +52,6 @@ nnoremap <leader>j <C-w>j
 nnoremap <leader>k <C-w>k
 nnoremap <leader>h <C-w>h
 nnoremap <leader>l <C-w>l
-nnoremap <C-p> :CommandT<CR>
 
 
 " emacs key
