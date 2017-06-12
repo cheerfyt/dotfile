@@ -105,3 +105,4 @@ source $HOME/.bash_aliases
 
 # rust
 export PATH=$HOME/.cargo/bin:$PATH
+alias filetree="ls -R | grep ":$" | sed -e 's/:$//' -e 's/[^-][^\/]*\//--/g' -e 's/^/ /' -e 's/-/|/'"
