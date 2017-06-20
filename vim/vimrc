@@ -37,7 +37,6 @@ Plug 'scrooloose/nerdtree'
 Plug 'ekalinin/Dockerfile.vim'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
-Plug 'reedes/vim-pencil'
 Plug 'heavenshell/vim-jsdoc'
 Plug 'tpope/vim-fugitive'
 Plug 'jiangmiao/auto-pairs'
@@ -45,14 +44,19 @@ Plug 'tpope/vim-surround'
 Plug 'Yggdroot/indentLine'
 Plug 'tmhedberg/SimpylFold'
 Plug 'vim-scripts/indentpython.vim'
-Plug 'jistr/vim-nerdtree-tabs'
+Plug 'majutsushi/tagbar'
+Plug 'ctrlpvim/ctrlp.vim'
+Plug 'joshdick/onedark.vim'
 call plug#end()
 " =============================================================================
 "                                   Base setting
 " =============================================================================
 " Down is really the next line
-
+set autochdir
 set magic
+" set listchars=tab:.↦,trail:˷,eol:˷,space:·
+set listchars=tab:.↦,trail:˷,eol:˷
+set list
 set t_Co=256
 set novisualbell
 set viminfo+=/100  "set the limit viminfo
@@ -138,6 +142,17 @@ nnoremap <Tab> :bnext<CR>
 nnoremap <S-Tab> :bprevious<CR>
 vnoremap <Tab> >gv
 
+noremap <Up> <Nop>
+noremap <Down> <Nop>
+noremap <Left> <Nop>
+noremap <Right> <Nop>
+
+nnoremap k gk
+nnoremap gk k
+nnoremap j gj
+nnoremap gj j
+
+
 map <Leader>n <plug>NERDTreeTabsToggle<CR>
 au FileType go nmap <leader>r <Plug>(go-run)
 au FileType go nmap <leader>b <Plug>(go-build)
@@ -187,6 +202,9 @@ highlight ExtraWhitespace ctermbg=darkgreen ctermfg=white
 hi SpecialKey ctermfg=235
 match ExtraWhitespace /\s\+$/
 match ExtraWhitespace /[^\t]\zs\t\+/
+hi MatchParen cterm=underline ctermbg=none ctermfg=Cyan
+
+hi SpecialKey ctermfg=59 guifg=#649A9A
 
 
 " =============================================================================
@@ -194,7 +212,7 @@ match ExtraWhitespace /[^\t]\zs\t\+/
 " =============================================================================
 "注释和字符串中的文字也会被收入补全
 set completeopt                                         -=preview
-
+let g:ag_working_path_mode="r"
 let g:vim_json_syntax_conceal=0
 let g:ale_lint_on_text_changed = 'never'
 let g:ale_lint_on_save = 1
@@ -202,7 +220,7 @@ let g:ale_sign_error = 'ᚨ'
 let g:ale_sign_warning = 'ᛋ'
 
 let g:ale_linters = {
-  \ 'javascript': ['eslint'],
+  \ 'javascript': ['standard'],
   \ 'json': ['jsonlint'],
   \ 'go': ['golint'],
   \}
@@ -221,9 +239,6 @@ let g:ycm_global_ycm_extra_conf                         = '~/.ycm_extra_conf.py'
 let g:ycm_collect_identifiers_from_tags_files           = 1
 let g:NERDSpaceDelims                                   = 1       " 让注释符与语句之间留一个空格
 let g:NERDCompactSexyComs                               = 1   " 多行注释时样子更好看
-let g:miniBufExplorerAutoStart                          = 1
-let g:miniBufExplBuffersNeeded                          = 1
-let g:miniBufExplStatusLineText                         = "-The Open file-"
 let g:use_emmet_complete_tag                            = 1
 let g:user_emmet_leader_key                             = '<C-l>'
 let g:user_emmet_mode                                   = 'a'
@@ -260,12 +275,12 @@ if !exists('g:airline_symbols')
 endif
 
 " ===================== unicode symbols ==============
-let g:airline_theme              = "luna"
+let g:airline#extensions#tagbar#enabled = 1
+let g:airline_theme              = "papercolor"
 let g:airline_left_sep           = '▶'
-let g:airline_left_alt_sep       = '⮁'
+let g:airline_left_alt_sep       = '▶'
 let g:airline_right_sep          = '◀'
-let g:airline_right_alt_sep      = '⮃'
-
+let g:airline_right_alt_sep      = '◀'
 let g:airline_symbols.crypt      = ''
 let g:airline_symbols.linenr     = ''
 let g:airline_symbols.maxlinenr  = '☰'
@@ -274,16 +289,16 @@ let g:airline_symbols.paste      = '∥'
 let g:airline_symbols.spell      = 'Ꞩ'
 let g:airline_symbols.notexists  = '∄'
 let g:airline_symbols.whitespace = 'Ξ'
-
 let g:airline_theme_patch_func = 'AirlineThemePatch'
-
 function! AirlineThemePatch(palette)
-    if g:airline_theme == 'sierra'
+    if g:airline_theme == 'papercolor'
       for colors in values(a:palette.inactive)
         let colors[3] = 245
       endfor
     endif
 endfunction
+
+let g:ctrlp_custom_ignore = 'node_modules\|.DS_Store\|.git\|vendor'
 
 " remove the space of end the line
 function! s:StripTrailingWhitespaces()
@@ -303,3 +318,13 @@ if 'VIRTUAL_ENV' in os.environ:
   activate_this = os.path.join(project_base_dir, 'bin/activate_this.py')
   execfile(activate_this, dict(__file__=activate_this))
 EOF
+
+" ========================= GUI setting =======================================
+if has("gui_running")
+  set guifont=Fira_Code:h14
+  set guioptions -=L
+  set columns=180
+  set lines=100
+  colorscheme onedark
+endif
+" =============================================================================
