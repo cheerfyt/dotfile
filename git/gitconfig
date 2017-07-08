@@ -58,7 +58,7 @@
     g = grep -p
     #############
     l = log --oneline
-    lg = log --oneline --graph --decorate
+    lg = log --oneline --graph --pretty=format:"%Cred%h%Creset%x09%an%x09%Cblue%ad%x09%Creset%s" --decorate
     #############
     ls = ls-files
     lsf = "!git ls-files | grep -i"
@@ -160,7 +160,7 @@
 	default = simple
 [difftool "sourcetree"]
 	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
-	path = 
+	path =
 [mergetool "sourcetree"]
 	cmd = /Applications/SourceTree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
 	trustExitCode = true

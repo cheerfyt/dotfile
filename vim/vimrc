@@ -22,6 +22,9 @@ if empty(glob('~/.vim/autoload/plug.vim'))
 endif
 
 call plug#begin('~/.vim/plugged')
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
+Plug 'bling/vim-bufferline'
 Plug 'junegunn/fzf', {'dir':'~/.fzf','do':'./install --all'}
 Plug 'junegunn/fzf.vim'
 Plug 'rking/ag.vim'
@@ -35,8 +38,6 @@ Plug 'pangloss/vim-javascript'
 Plug 'editorconfig/editorconfig-vim'
 Plug 'scrooloose/nerdtree'
 Plug 'ekalinin/Dockerfile.vim'
-Plug 'vim-airline/vim-airline'
-Plug 'vim-airline/vim-airline-themes'
 Plug 'heavenshell/vim-jsdoc'
 Plug 'tpope/vim-fugitive'
 Plug 'jiangmiao/auto-pairs'
@@ -47,6 +48,8 @@ Plug 'vim-scripts/indentpython.vim'
 Plug 'majutsushi/tagbar'
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'joshdick/onedark.vim'
+Plug 'cespare/vim-toml'
+Plug 'rbgrouleff/bclose.vim'
 call plug#end()
 " =============================================================================
 "                                   Base setting
@@ -130,7 +133,7 @@ nnoremap <leader>h <C-w>h
 nnoremap <leader>l <C-w>l
 nnoremap H ^
 nnoremap L $
-inoremap jk <esc>
+" inoremap jk <esc>
 inoremap <C-e> <END>
 nmap <F3> :NERDTreeToggle<CR>
 nnoremap <leader>gd :YcmCompleter GoToDefinitionElseDeclaration<CR>
@@ -141,6 +144,7 @@ vnoremap > >gv  " better indentation
 nnoremap <Tab> :bnext<CR>
 nnoremap <S-Tab> :bprevious<CR>
 vnoremap <Tab> >gv
+
 
 noremap <Up> <Nop>
 noremap <Down> <Nop>
@@ -158,6 +162,8 @@ au FileType go nmap <leader>r <Plug>(go-run)
 au FileType go nmap <leader>b <Plug>(go-build)
 au FileType go nmap <leader>t <Plug>(go-test)
 au FileType go nmap <leader>c <Plug>(go-coverage)
+
+nnoremap <silent> <Leader>bd :Bclose<CR>
 
 " =============================================================================
 "                                   Web Group
@@ -193,8 +199,8 @@ augroup END
 " =============================================================================
 "                                   HighLight
 " =============================================================================
-highlight Cursor guifg=white guibg=green
-highlight ColorColumn ctermbg=220 guifg=green
+highlight Cursor guifg=white guibg=blue
+highlight ColorColumn ctermbg=220 guifg=yellow guibg=yellow
 highlight OverLength ctermbg=red ctermfg=white guibg=#592929
 highlight Pmenu term=reverse ctermbg=cyan ctermfg=black
 highlight PmenuSel term=reverse ctermbg=lightred ctermfg=black
@@ -216,8 +222,8 @@ let g:ag_working_path_mode="r"
 let g:vim_json_syntax_conceal=0
 let g:ale_lint_on_text_changed = 'never'
 let g:ale_lint_on_save = 1
-let g:ale_sign_error = 'ᚨ'
-let g:ale_sign_warning = 'ᛋ'
+let g:ale_sign_error = '錯'
+let g:ale_sign_warning = '⚠ '
 
 let g:ale_linters = {
   \ 'javascript': ['standard'],
@@ -253,6 +259,8 @@ let g:UltiSnipsJumpForwardTrigger                       = "<c-j>"
 let g:UltiSnipsJumpBackwardTrigger                      = "<c-k>"
 let g:ackprg                                            = 'ag --nogroup --nocolor --column'
 let g:airline_powerline_fonts                           = 1
+let g:airline_section_b = '%{strftime("%c")}'
+let g:airline_section_y = 'BN: %{bufnr("%")}'
 let g:airline_detect_modified                           = 1
 let g:airline_detect_paste                              = 1
 let g:airline_detect_crypt                              = 1
@@ -275,16 +283,16 @@ if !exists('g:airline_symbols')
 endif
 
 " ===================== unicode symbols ==============
-let g:airline#extensions#tagbar#enabled = 1
-let g:airline_theme              = "papercolor"
+let g:airline#extensions#tabline#enabled = 1
+let g:airline_theme              = "molokai"
 let g:airline_left_sep           = '▶'
 let g:airline_left_alt_sep       = '▶'
 let g:airline_right_sep          = '◀'
 let g:airline_right_alt_sep      = '◀'
-let g:airline_symbols.crypt      = ''
-let g:airline_symbols.linenr     = ''
+let g:airline_symbols.crypt      = '🔒'
+let g:airline_symbols.linenr     = '࿕'
 let g:airline_symbols.maxlinenr  = '☰'
-let g:airline_symbols.branch     = ''
+let g:airline_symbols.branch     = 'ʃ'
 let g:airline_symbols.paste      = '∥'
 let g:airline_symbols.spell      = 'Ꞩ'
 let g:airline_symbols.notexists  = '∄'
@@ -321,10 +329,11 @@ EOF
 
 " ========================= GUI setting =======================================
 if has("gui_running")
-  set guifont=Fira_Code:h14
+  " set guifont=Fira_Code:h14
+  set guifont=D2Coding\ for\ Powerline:h13
   set guioptions -=L
   set columns=180
   set lines=100
   colorscheme onedark
 endif
-" =============================================================================
+
