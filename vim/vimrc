@@ -50,6 +50,8 @@ Plug 'ctrlpvim/ctrlp.vim'
 Plug 'joshdick/onedark.vim'
 Plug 'cespare/vim-toml'
 Plug 'rbgrouleff/bclose.vim'
+Plug 'mbbill/undotree'
+Plug 'plasticboy/vim-markdown'
 call plug#end()
 " =============================================================================
 "                                   Base setting
@@ -183,18 +185,19 @@ augroup END
 augroup file_types
     autocmd!
     autocmd BufWritePre * :call s:StripTrailingWhitespaces()
-    autocmd BufRead,BufNewFile *.yml set filetype=yaml
+    autocmd BufRead,BufNewFile *.yml  set filetype=yaml
     autocmd BufRead,BufNewFile *.fdoc set filetype=yaml
     autocmd BufRead,BufNewFile *.raml set filetype=yaml
     autocmd BufRead,BufNewFile *.yaml set filetype=yaml
     autocmd BufRead,BufNewFile *.md   set filetype=markdown
     autocmd BufRead,BufNewFile *.txt  set filetype=markdown
-    autocmd BufRead,BufNewFile *.js   set ft=javascript syntax=javascript
-    autocmd BufRead,BufNewFile *.ts   set ft=typescript syntax=typescript
-    autocmd BufRead,BufNewFile *.es6  set ft=javascript syntax=javascript
-    autocmd BufRead,BufNewFile *.twig set ft=htmldjango
-    autocmd BufRead,BufNewFile *.rabl set ft=ruby
-    autocmd BufRead,BufNewFile *.jade set ft=jade
+    autocmd BufRead,BufNewFile *.js   set filetype=javascript syntax=javascript
+    autocmd BufRead,BufNewFile *.json set filetype=json conceallevel=0
+    autocmd BufRead,BufNewFile *.ts   set filetype=typescript syntax=typescript
+    autocmd BufRead,BufNewFile *.es6  set filetype=javascript syntax=javascript
+    autocmd BufRead,BufNewFile *.twig set filetype=htmldjango
+    autocmd BufRead,BufNewFile *.rabl set filetype=ruby
+    autocmd BufRead,BufNewFile *.jade set filetype=jade
 augroup END
 " =============================================================================
 "                                   HighLight
@@ -205,12 +208,11 @@ highlight OverLength ctermbg=red ctermfg=white guibg=#592929
 highlight Pmenu term=reverse ctermbg=cyan ctermfg=black
 highlight PmenuSel term=reverse ctermbg=lightred ctermfg=black
 highlight ExtraWhitespace ctermbg=darkgreen ctermfg=white
-hi SpecialKey ctermfg=235
-match ExtraWhitespace /\s\+$/
-match ExtraWhitespace /[^\t]\zs\t\+/
-hi MatchParen cterm=underline ctermbg=none ctermfg=Cyan
-
+" hi SpecialKey ctermfg=235
+" match ExtraWhitespace /\s\+$/
+" match ExtraWhitespace /[^\t]\zs\t\+/
 hi SpecialKey ctermfg=59 guifg=#649A9A
+hi MatchParen cterm=underline ctermbg=none ctermfg=Cyan
 
 
 " =============================================================================
@@ -219,11 +221,11 @@ hi SpecialKey ctermfg=59 guifg=#649A9A
 "注释和字符串中的文字也会被收入补全
 set completeopt                                         -=preview
 let g:ag_working_path_mode="r"
-let g:vim_json_syntax_conceal=0
+let g:ackhighlight = 1
 let g:ale_lint_on_text_changed = 'never'
 let g:ale_lint_on_save = 1
-let g:ale_sign_error = '錯'
-let g:ale_sign_warning = '⚠ '
+let g:ale_sign_error = '?'
+let g:ale_sign_warning = '>'
 
 let g:ale_linters = {
   \ 'javascript': ['standard'],
@@ -231,8 +233,6 @@ let g:ale_linters = {
   \ 'go': ['golint'],
   \}
 
-let g:ackhighlight = 1
-let g:ackprg = 'ag --vimgrep'
 let g:ycm_confirm_extra_conf                            = 0
 let g:ycm_add_preview_to_completeopt                    = 0
 let g:ycm_seed_identifiers_with_syntax                  = 1
@@ -243,7 +243,7 @@ let g:ycm_cache_omnifunc                                = 1
 let g:ycm_min_num_of_chars_for_completion               = 1
 let g:ycm_global_ycm_extra_conf                         = '~/.ycm_extra_conf.py'
 let g:ycm_collect_identifiers_from_tags_files           = 1
-let g:NERDSpaceDelims                                   = 1       " 让注释符与语句之间留一个空格
+let g:NERDSpaceDelims                                   = 1   " 让注释符与语句之间留一个空格
 let g:NERDCompactSexyComs                               = 1   " 多行注释时样子更好看
 let g:use_emmet_complete_tag                            = 1
 let g:user_emmet_leader_key                             = '<C-l>'
@@ -257,54 +257,32 @@ let g:go_highlight_operators                            = 1
 let g:go_highlight_build_constraints                    = 1
 let g:UltiSnipsJumpForwardTrigger                       = "<c-j>"
 let g:UltiSnipsJumpBackwardTrigger                      = "<c-k>"
-let g:ackprg                                            = 'ag --nogroup --nocolor --column'
+let g:ackprg                                            = 'ag --nogroup --column --vimgrep'
 let g:airline_powerline_fonts                           = 1
-let g:airline_section_b = '%{strftime("%c")}'
-let g:airline_section_y = 'BN: %{bufnr("%")}'
 let g:airline_detect_modified                           = 1
 let g:airline_detect_paste                              = 1
 let g:airline_detect_crypt                              = 1
 let g:airline_detect_spell                              = 1
-let g:airline_mode_map                                  = {
-  \ '__' : '-',
-  \ 'n'  : 'N',
-  \ 'i'  : 'I',
-  \ 'R'  : 'R',
-  \ 'c'  : 'C',
-  \ 'v'  : 'V',
-  \ 'V'  : 'V',
-  \ '' : 'V',
-  \ 's'  : 'S',
-  \ 'S'  : 'S',
-  \ '' : 'S',
-  \ }
 if !exists('g:airline_symbols')
     let g:airline_symbols = {}
 endif
+let g:vim_markdown_toml_frontmatter = 1
 
 " ===================== unicode symbols ==============
 let g:airline#extensions#tabline#enabled = 1
 let g:airline_theme              = "molokai"
-let g:airline_left_sep           = '▶'
-let g:airline_left_alt_sep       = '▶'
-let g:airline_right_sep          = '◀'
-let g:airline_right_alt_sep      = '◀'
-let g:airline_symbols.crypt      = '🔒'
-let g:airline_symbols.linenr     = '࿕'
+let g:airline_left_sep           = ''
+let g:airline_left_alt_sep       = ''
+let g:airline_right_sep          = ''
+let g:airline_right_alt_sep      = ''
+let g:airline_symbols.crypt      = ''
+let g:airline_symbols.linenr     = ''
 let g:airline_symbols.maxlinenr  = '☰'
-let g:airline_symbols.branch     = 'ʃ'
+let g:airline_symbols.branch     = ''
 let g:airline_symbols.paste      = '∥'
 let g:airline_symbols.spell      = 'Ꞩ'
 let g:airline_symbols.notexists  = '∄'
 let g:airline_symbols.whitespace = 'Ξ'
-let g:airline_theme_patch_func = 'AirlineThemePatch'
-function! AirlineThemePatch(palette)
-    if g:airline_theme == 'papercolor'
-      for colors in values(a:palette.inactive)
-        let colors[3] = 245
-      endfor
-    endif
-endfunction
 
 let g:ctrlp_custom_ignore = 'node_modules\|.DS_Store\|.git\|vendor'
 
@@ -336,4 +314,3 @@ if has("gui_running")
   set lines=100
   colorscheme onedark
 endif
-
