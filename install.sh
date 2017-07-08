@@ -1,4 +1,5 @@
 #!/usr/bash
+
 BASE=$(pwd)
 VIMBASE="${BASE}"/vim
 TMUXCONF="${BASE}"/tmux/tmux.conf
