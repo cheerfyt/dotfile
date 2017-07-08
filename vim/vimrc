@@ -24,6 +24,7 @@ endif
 call plug#begin('~/.vim/plugged')
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
+Plug 'joshdick/onedark.vim'
 Plug 'bling/vim-bufferline'
 Plug 'junegunn/fzf', {'dir':'~/.fzf','do':'./install --all'}
 Plug 'junegunn/fzf.vim'
@@ -60,7 +61,7 @@ set autochdir
 set magic
 " set listchars=tab:.↦,trail:˷,eol:˷,space:·
 set listchars=tab:.↦,trail:˷,eol:˷
-set list
+set nolist
 set t_Co=256
 set novisualbell
 set viminfo+=/100  "set the limit viminfo
@@ -103,6 +104,7 @@ set pastetoggle=<F2>
 autocmd FileType html,json,yaml,js setlocal shiftwidth=2 tabstop=2 sts=2 expandtab
 setglobal fileencoding=utf-8
 set background=dark
+colorscheme atom-dark-256
 
 " =============================================================================
 autocmd FileType python setlocal foldmethod=indent ts=4 sts=4 sw=4 tw=79 expandtab autoindent
@@ -207,10 +209,10 @@ highlight OverLength ctermbg=red ctermfg=white guibg=#592929
 highlight Pmenu term=reverse ctermbg=cyan ctermfg=black
 highlight PmenuSel term=reverse ctermbg=lightred ctermfg=black
 highlight ExtraWhitespace ctermbg=darkgreen ctermfg=white
-" hi SpecialKey ctermfg=235
+hi SpecialKey ctermfg=237 guifg=#535b68
 " match ExtraWhitespace /\s\+$/
 " match ExtraWhitespace /[^\t]\zs\t\+/
-hi SpecialKey ctermfg=59 guifg=#649A9A
+" hi SpecialKey ctermfg=40 guifg=#649A9A
 hi MatchParen cterm=underline ctermbg=none ctermfg=Cyan
 
 
@@ -248,11 +250,15 @@ let g:user_emmet_leader_key                             = '<C-l>'
 let g:user_emmet_mode                                   = 'a'
 let g:emmet_indent_size                                 = 2
 let g:emmet_html5                                       = 1
+
+" ====================== golang setting =======================================
 let g:go_highlight_functions                            = 1
 let g:go_highlight_methods                              = 1
 let g:go_highlight_structs                              = 1
 let g:go_highlight_operators                            = 1
 let g:go_highlight_build_constraints                    = 1
+" ====================== golang setting end ===================================
+
 let g:UltiSnipsJumpForwardTrigger                       = "<c-j>"
 let g:UltiSnipsJumpBackwardTrigger                      = "<c-k>"
 let g:ackprg                                            = 'ag --nogroup --column --vimgrep'
@@ -310,5 +316,4 @@ if has("gui_running")
   set guioptions -=L
   set columns=180
   set lines=100
-  colorscheme onedark
 endif
