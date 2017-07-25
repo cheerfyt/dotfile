@@ -22,10 +22,10 @@ if empty(glob('~/.vim/autoload/plug.vim'))
 endif
 
 call plug#begin('~/.vim/plugged')
+Plug 'vim-scripts/c.vim'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'joshdick/onedark.vim'
-Plug 'bling/vim-bufferline'
 Plug 'junegunn/fzf', {'dir':'~/.fzf','do':'./install --all'}
 Plug 'junegunn/fzf.vim'
 Plug 'rking/ag.vim'
@@ -53,6 +53,9 @@ Plug 'cespare/vim-toml'
 Plug 'rbgrouleff/bclose.vim'
 Plug 'mbbill/undotree'
 Plug 'plasticboy/vim-markdown'
+Plug 'SirVer/ultisnips' | Plug 'honza/vim-snippets'
+Plug 'racer-rust/vim-racer'
+Plug 'rust-lang/rust.vim'
 call plug#end()
 " =============================================================================
 "                                   Base setting
@@ -94,7 +97,7 @@ set fo+=tw   "auto wrap require formatoptions+=t"
 set wrap linebreak
 set showbreak=↩\
 set textwidth=79  " width of document (used by gd)
-set colorcolumn=80
+set colorcolumn=100
 set cindent
 set smartindent
 set sw=2
@@ -105,7 +108,8 @@ set pastetoggle=<F2>
 autocmd FileType html,json,yaml,js setlocal shiftwidth=2 tabstop=2 sts=2 expandtab
 setglobal fileencoding=utf-8
 set background=dark
-colorscheme atom-dark-256
+" colorscheme atom-dark-256
+colorscheme molokai
 
 " =============================================================================
 autocmd FileType python setlocal foldmethod=indent ts=4 sts=4 sw=4 tw=79 expandtab autoindent
@@ -139,7 +143,8 @@ nnoremap H ^
 nnoremap L $
 " inoremap jk <esc>
 inoremap <C-e> <END>
-nmap <F3> :NERDTreeToggle<CR>
+nnoremap <F3> :NERDTreeToggle<CR>
+nnoremap <F8> :TagbarToggle<CR>
 nnoremap <leader>gd :YcmCompleter GoToDefinitionElseDeclaration<CR>
 nnoremap <leader>jd :YcmCompleter GoTo<CR>
 inoremap <Tab> <C-x><C-o>
@@ -162,13 +167,13 @@ nnoremap gj j
 
 
 map <Leader>n <plug>NERDTreeTabsToggle<CR>
-au FileType go nmap <leader>r <Plug>(go-run)
-au FileType go nmap <leader>b <Plug>(go-build)
-au FileType go nmap <leader>t <Plug>(go-test)
-au FileType go nmap <leader>c <Plug>(go-coverage)
+au FileType go nnoremap <leader>r <Plug>(go-run)
+au FileType go nnoremap <leader>b <Plug>(go-build)
+au FileType go nnoremap <leader>t <Plug>(go-test)
+au FileType go nnoremap <leader>c <Plug>(go-coverage)
+au FileType go nnoremap <leader>gd <Plug>(go-def)
 
 nnoremap <silent> <Leader>bd :Bclose<CR>
-
 " =============================================================================
 "                                   Web Group
 " =============================================================================
@@ -204,7 +209,7 @@ augroup END
 " =============================================================================
 "                                   HighLight
 " =============================================================================
-highlight Cursor guifg=white guibg=blue
+highlight Cursor guifg=black guibg=pink
 highlight ColorColumn ctermbg=220 guifg=yellow guibg=yellow
 highlight OverLength ctermbg=red ctermfg=white guibg=#592929
 highlight Pmenu term=reverse ctermbg=cyan ctermfg=black
@@ -223,6 +228,11 @@ hi MatchParen cterm=underline ctermbg=none ctermfg=Cyan
 "注释和字符串中的文字也会被收入补全
 set completeopt                                         -=preview
 let g:ag_working_path_mode="r"
+
+let g:UltiSnipsExpandTrigger="<C-q>"
+let g:UltiSnipsJumpForwardTrigger="<C-j>"
+let g:UltiSnipsJumpBackwardTrigger="<C-k>"
+
 let g:ale_lint_on_text_changed = 'never'
 let g:ale_lint_on_save = 1
 let g:ale_sign_error = '?'
@@ -275,7 +285,7 @@ let g:vim_markdown_toml_frontmatter = 1
 
 " ===================== unicode symbols ==============
 let g:airline#extensions#tabline#enabled = 1
-let g:airline_theme              = "molokai"
+let g:airline_theme              = "onedark"
 let g:airline_left_sep           = ''
 let g:airline_left_alt_sep       = ''
 let g:airline_right_sep          = ''
@@ -288,7 +298,6 @@ let g:airline_symbols.paste      = '∥'
 let g:airline_symbols.spell      = 'Ꞩ'
 let g:airline_symbols.notexists  = '∄'
 let g:airline_symbols.whitespace = 'Ξ'
-
 let g:ctrlp_custom_ignore = 'node_modules\|.DS_Store\|.git\|vendor'
 
 " remove the space of end the line
@@ -298,7 +307,6 @@ function! s:StripTrailingWhitespaces()
     %s/\s\+$//e
     call cursor(l:l, l:c)
 endfunction
-
 
 "python with virtualenv support
 py << EOF
@@ -312,9 +320,9 @@ EOF
 
 " ========================= GUI setting =======================================
 if has("gui_running")
-  " set guifont=Fira_Code:h14
   set guifont=D2Coding\ for\ Powerline:h13
   set guioptions -=L
   set columns=180
   set lines=100
+  set guicursor+=i:ver100-iCursor
 endif

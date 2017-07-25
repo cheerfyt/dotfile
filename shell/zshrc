@@ -1,6 +1,5 @@
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
-export PATH=$HOME/go/bin:$PATH
 # Path to your oh-my-zsh installation.
 export ZSH=/Users/tate/.oh-my-zsh
 
@@ -55,30 +54,17 @@ SAVEHIST=1000
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(vi-mode)
+plugins=(git git-extras brew yarn glide)
 
 source $ZSH/oh-my-zsh.sh
 
-# User configuration
-
-# export MANPATH="/usr/local/man:$MANPATH"
 
 # You may need to manually set your language environment
 # export LANG=en_US.UTF-8
 
-# Preferred editor for local and remote sessions
-if [[ -n $SSH_CONNECTION ]]; then
-  export EDITOR='vim'
-else
-  export EDITOR='mvim'
-fi
 
 # Compilation flags
 # export ARCHFLAGS="-arch x86_64"
-
-# ssh
-export SSH_KEY_PATH="~/.ssh/rsa_id"
-
 # Set personal aliases, overriding those provided by oh-my-zsh libs,
 # plugins, and themes. Aliases can be placed here, though oh-my-zsh
 # users are encouraged to define aliases within the ZSH_CUSTOM folder.
@@ -88,20 +74,10 @@ export SSH_KEY_PATH="~/.ssh/rsa_id"
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
-# nodejs nvm
-export NVM_DIR="$HOME/.nvm"
-
-# Golang
-
-
 # Python virtualEnv
-export WORKON_HOME=$HOME/.pyenv
 source $HOME/.bash_aliases
 
-# [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 # Zsh and the fuck
 eval "$(direnv hook zsh)"
-eval "$(thefuck --alias)"
 
-export PATH=$HOME/.cargo/bin:$PATH
