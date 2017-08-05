@@ -20,6 +20,8 @@ if empty(glob('~/.vim/autoload/plug.vim'))
     \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
   autocmd VimEnter * PlugInstall | source $MYVIMRC
 endif
+" Plug 'racer-rust/vim-racer'
+" Plug 'rust-lang/rust.vim'
 
 call plug#begin('~/.vim/plugged')
 Plug 'vim-scripts/c.vim'
@@ -54,14 +56,13 @@ Plug 'rbgrouleff/bclose.vim'
 Plug 'mbbill/undotree'
 Plug 'plasticboy/vim-markdown'
 Plug 'SirVer/ultisnips' | Plug 'honza/vim-snippets'
-Plug 'racer-rust/vim-racer'
-Plug 'rust-lang/rust.vim'
+Plug 'godlygeek/csapprox'
 call plug#end()
 " =============================================================================
 "                                   Base setting
 " =============================================================================
 " Down is really the next line
-set autochdir
+" set autochdir
 set magic
 " set listchars=tab:.↦,trail:˷,eol:˷,space:·
 set listchars=tab:.↦,trail:˷,eol:˷
@@ -216,9 +217,6 @@ highlight Pmenu term=reverse ctermbg=cyan ctermfg=black
 highlight PmenuSel term=reverse ctermbg=lightred ctermfg=black
 highlight ExtraWhitespace ctermbg=darkgreen ctermfg=white
 hi SpecialKey ctermfg=237 guifg=#535b68
-" match ExtraWhitespace /\s\+$/
-" match ExtraWhitespace /[^\t]\zs\t\+/
-" hi SpecialKey ctermfg=40 guifg=#649A9A
 hi MatchParen cterm=underline ctermbg=none ctermfg=Cyan
 
 
@@ -284,7 +282,7 @@ endif
 let g:vim_markdown_toml_frontmatter = 1
 
 " ===================== unicode symbols ==============
-let g:airline#extensions#tabline#enabled = 1
+" let g:airline#extensions#tabline#enabled = 1
 let g:airline_theme              = "onedark"
 let g:airline_left_sep           = ''
 let g:airline_left_alt_sep       = ''
