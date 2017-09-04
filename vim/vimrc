@@ -57,6 +57,10 @@ Plug 'mbbill/undotree'
 Plug 'plasticboy/vim-markdown'
 Plug 'SirVer/ultisnips' | Plug 'honza/vim-snippets'
 Plug 'godlygeek/csapprox'
+
+Plug 'vim-scripts/dbext.vim'
+Plug 'tpope/vim-speeddating'
+Plug 'jceb/vim-orgmode'
 call plug#end()
 " =============================================================================
 "                                   Base setting
@@ -324,3 +328,7 @@ if has("gui_running")
   set lines=100
   set guicursor+=i:ver100-iCursor
 endif
+
+" dbvim
+let g:dbext_default_profile_psql = 'type=PGSQL:host=localhost:port=5432:dbname=tate:user=tate'
+let g:dbext_default_profile = 'psql'
