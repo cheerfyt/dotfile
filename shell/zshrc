@@ -55,7 +55,7 @@ SAVEHIST=1000
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git git-extras brew yarn glide git-flow)
+plugins=(git git-extras brew yarn glide git-flow git-hub)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -81,6 +81,7 @@ source $HOME/.bash_aliases
 
 # Zsh and the fuck
 eval "$(direnv hook zsh)"
+eval "$(hub alias -s)"
 
 export PATH=/usr/local/bin:$HOME/bin:$PATH
 export VIRTUALENVWRAPPER_PYTHON=/usr/local/bin/python2
