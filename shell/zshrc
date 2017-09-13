@@ -55,7 +55,8 @@ SAVEHIST=1000
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git git-extras hub brew yarn glide git-flow git-hub docker docker-compose)
+# plugins=(git git-extras brew yarn glide git-flow git-hub)
+plugins=(git brew hub docker docker-compose git-flow npm node)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -85,3 +86,5 @@ eval "$(hub alias -s)"
 
 export PATH=/usr/local/bin:$HOME/bin:$PATH
 export VIRTUALENVWRAPPER_PYTHON=/usr/local/bin/python2
+setopt HIST_IGNORE_ALL_DUPS
+[ -f /usr/local/etc/profile.d/autojump.sh ] && . /usr/local/etc/profile.d/autojump.sh
