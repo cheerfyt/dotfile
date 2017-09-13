@@ -55,7 +55,7 @@ SAVEHIST=1000
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git git-extras brew yarn glide git-flow git-hub)
+plugins=(git git-extras hub brew yarn glide git-flow git-hub docker docker-compose)
 
 source $ZSH/oh-my-zsh.sh
 
