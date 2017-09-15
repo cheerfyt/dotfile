@@ -10,6 +10,8 @@ alias ag='ag --skip-vcs-ignores'
 alias filetree="ls -R | grep ":$" | sed -e 's/:$//' -e 's/[^-][^\/]*\//--/g' -e 's/^/ /' -e 's/-/|/'"
 alias gv='gvim .'
 alias gflow='git-flow'
+alias rsync='rsync --progress'
+alias solc='docker run --rm ethereum/solc:stable solc'
 
 # load lang env
 alias loadnvm='[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"'

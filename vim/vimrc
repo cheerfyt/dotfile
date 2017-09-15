@@ -57,10 +57,10 @@ Plug 'mbbill/undotree'
 Plug 'plasticboy/vim-markdown'
 Plug 'SirVer/ultisnips' | Plug 'honza/vim-snippets'
 Plug 'godlygeek/csapprox'
-
 Plug 'vim-scripts/dbext.vim'
 Plug 'tpope/vim-speeddating'
 Plug 'jceb/vim-orgmode'
+Plug 'tomlion/vim-solidity'
 call plug#end()
 " =============================================================================
 "                                   Base setting
