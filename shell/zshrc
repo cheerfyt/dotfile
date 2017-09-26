@@ -88,3 +88,5 @@ export PATH=/usr/local/bin:$HOME/bin:$PATH
 export VIRTUALENVWRAPPER_PYTHON=/usr/local/bin/python2
 setopt HIST_IGNORE_ALL_DUPS
 [ -f /usr/local/etc/profile.d/autojump.sh ] && . /usr/local/etc/profile.d/autojump.sh
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh

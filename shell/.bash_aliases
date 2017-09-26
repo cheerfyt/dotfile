@@ -12,6 +12,7 @@ alias gv='gvim .'
 alias gflow='git-flow'
 alias rsync='rsync --progress'
 alias solc='docker run --rm ethereum/solc:stable solc'
+alias supervisorctl='supervisorctl -c /usr/local/etc/supervisord.ini'
 
 # load lang env
 alias loadnvm='[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"'
