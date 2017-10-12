@@ -1,6 +1,4 @@
 # alias vim=nvim
-alias hsp='https_proxy=http://192.168.10.23:7878'
-alias hp='http_proxy=http://192.168.10.23:7878'
 alias lhsp='https_proxy=http://localhost:8123'
 alias lhp='http_proxy=http://localhost:8123'
 alias ad='axel -n 10'
@@ -17,6 +15,10 @@ alias python='/usr/local/bin/python2'
 alias pip2='/usr/local/bin/pip2'
 alias pip3='/usr/local/bin/pip3'
 alias pip='pip2'
+
+alias pgstart='pg_ctl -D $PGDATA -l $PGLOG start'
+
+alias gg='glide get'
 
 # load lang env
 alias loadnvm='[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"'
