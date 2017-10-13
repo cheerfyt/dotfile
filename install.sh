@@ -1,4 +1,4 @@
-#!/usr/bash
+#!/bin/bash
 
 BASE=$(pwd)
 VIMBASE="${BASE}"/vim
@@ -23,7 +23,7 @@ install_tmux() {
 
 install_git() {
 	echo "Install git config"
-	ln -sf "${BASE}"/git/gitconfig "${HOME}"/.gitconfig
+	ln -sf ${BASE}/git/gitconfig ${HOME}/.gitconfig
 	echo "installed git config done"
 }
 
