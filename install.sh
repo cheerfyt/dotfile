@@ -17,7 +17,7 @@ install_vim() {
 install_tmux() {
 	echo "install tmux"
 	brew update && brew install tmux
-	ln -sf "${TMUXCONF}" "${HOME}"/.tmux.conf
+	ln -sf ${TMUXCONF} "${HOME}"/.tmux.conf
 	echo "installed tmux config done"
 }
 
