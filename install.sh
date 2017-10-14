@@ -7,7 +7,7 @@ VIMRC=${VIMBASE}/vimrc
 DISTVIMRC=$HOME/.vimrc
 
 clean() {
-  rm -f $HOME/.vimrc $HOME/.zshrc $HOME/.gitconfig $HOME/.tmux.conf $HOME/.bash_aliases
+  rm -f $HOME/.vimrc $HOME/.zshrc $HOME/.gitconfig $HOME/.tmux.conf $HOME/.bash_aliases $HOME/.oh-my-zsh/themes/node.zsh-theme
 }
 
 install_vim() {
@@ -29,6 +29,7 @@ install_tmux() {
 	ln -sf ${TMUXCONF} ${HOME}/.tmux.conf
   ln -sf ${BASE}/shell/zshrc $HOME/.zshrc
   ln -sf ${BASE}/shell/bash_aliases $HOME/.bash_aliases
+  ln -sf ${BASE}/node.zsh-theme $HOME/.oh-my-zsh/themes/
 	echo "installed tmux config done"
 }
 
