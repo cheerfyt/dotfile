@@ -61,6 +61,7 @@ Plug 'vim-scripts/dbext.vim'
 Plug 'tpope/vim-speeddating'
 Plug 'jceb/vim-orgmode'
 Plug 'tomlion/vim-solidity'
+Plug 'easymotion/vim-easymotion'
 call plug#end()
 " =============================================================================
 "                                   Base setting
