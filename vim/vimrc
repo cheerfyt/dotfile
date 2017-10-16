@@ -335,3 +335,5 @@ let g:dbext_default_profile_psql = 'type=PGSQL:host=localhost:port=5432:dbname=t
 let g:dbext_default_profile = 'psql'
 
 " ✔, ✗
+" =======================================================================
+map <Leader> <Plug>(easymotion-prefix)
