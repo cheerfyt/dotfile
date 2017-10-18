@@ -11,20 +11,9 @@ alias gflow='git-flow'
 alias rsync='rsync --progress'
 # alias solc='docker run --rm ethereum/solc:stable solc'
 alias supervisorctl='supervisorctl -c /usr/local/etc/supervisord.ini'
-alias python='/usr/local/bin/python2'
-alias pip2='/usr/local/bin/pip2'
-alias pip3='/usr/local/bin/pip3'
-alias pip='pip2'
-
 alias pgstart='pg_ctl -D $PGDATA -l $PGLOG start'
-
 alias gg='glide get'
-
-# load lang env
-export NVM_DIR="$HOME/.nvm"
-alias loadnvm='[ -s "$NVM_DIR/nvm.sh"  ] && \. "$NVM_DIR/nvm.sh"'
-alias loadgvm='source ~/.gvm/scripts/gvm'
-alias loadenv='source /usr/local/bin/virtualenvwrapper.sh'
+alias git='hub'
 
 # export ENV
 export PATH=$HOME/.cargo/bin:$PATH
