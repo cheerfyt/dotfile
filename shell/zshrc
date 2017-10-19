@@ -84,6 +84,7 @@ source $HOME/.bash_aliases
 # Zsh and the fuck
 eval "$(direnv hook zsh)"
 eval "$(hub alias -s)"
+eval "$(thefuck --alias)"
 
 export PATH=/usr/local/bin:$HOME/bin:$PATH
 export VIRTUALENVWRAPPER_PYTHON=/usr/local/bin/python2
