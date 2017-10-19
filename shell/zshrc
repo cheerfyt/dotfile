@@ -99,3 +99,4 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
 source /usr/local/bin/virtualenvwrapper_lazy.sh
+export HOMEBREW_GITHUB_API_TOKEN="aeab59ee3d06d6618012a5c037a9c4f606e6a319"
