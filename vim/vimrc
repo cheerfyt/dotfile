@@ -62,7 +62,6 @@ Plug 'tpope/vim-speeddating'
 Plug 'jceb/vim-orgmode'
 Plug 'tomlion/vim-solidity'
 Plug 'easymotion/vim-easymotion'
-Plug 'itchyny/lightline.vim'
 call plug#end()
 " =============================================================================
 "                                   Base setting
