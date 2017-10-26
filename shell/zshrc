@@ -76,7 +76,7 @@ source $ZSH/oh-my-zsh.sh
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
 # Python virtualEnv
-source $HOME/.bash_aliases
+# source $HOME/.bash_aliases
 
 
 # Zsh and the fuck
@@ -87,9 +87,11 @@ setopt HIST_IGNORE_ALL_DUPS
 
 export PGDATA=$HOME/Lib/Data/pgsql
 export PGLOG=$HOME/Lib/Data/log/pglog
-
 export HOMEBREW_GITHUB_API_TOKEN="aeab59ee3d06d6618012a5c037a9c4f606e6a319"
 
 export NVM_DIR="$HOME/.nvm"
 alias loadnode='[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"'
 alias tm='tmux -2'
+alias supervisorctl='supervisorctl -c /usr/local/etc/supervisord.ini'
+
+test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"

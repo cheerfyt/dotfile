@@ -206,7 +206,6 @@ augroup file_types
     autocmd BufRead,BufNewFile *.md   set filetype=markdown
     autocmd BufRead,BufNewFile *.txt  set filetype=markdown
     autocmd BufRead,BufNewFile *.js   set filetype=javascript syntax=javascript
-    autocmd BufRead,BufNewFile *.json set filetype=json
     autocmd BufRead,BufNewFile *.ts   set filetype=typescript syntax=typescript
     autocmd BufRead,BufNewFile *.es6  set filetype=javascript syntax=javascript
     autocmd BufRead,BufNewFile *.twig set filetype=htmldjango

@@ -3,17 +3,12 @@ alias lhsp='https_proxy=http://localhost:8123'
 alias lhp='http_proxy=http://localhost:8123'
 alias ad='axel -n 10'
 alias tm='tmux -2'
-alias pj='prettyjson'
 alias ag='ag --skip-vcs-ignores'
 alias filetree="ls -R | grep ":$" | sed -e 's/:$//' -e 's/[^-][^\/]*\//--/g' -e 's/^/ /' -e 's/-/|/'"
 alias gv='gvim .'
-alias gflow='git-flow'
 alias rsync='rsync --progress'
-# alias solc='docker run --rm ethereum/solc:stable solc'
 alias supervisorctl='supervisorctl -c /usr/local/etc/supervisord.ini'
 alias pgstart='pg_ctl -D $PGDATA -l $PGLOG start'
-alias gg='glide get'
-alias git='hub'
 
 # export ENV
 export PATH=$HOME/.cargo/bin:$PATH
@@ -30,8 +25,3 @@ if [[ -n $SSH_CONNECTION ]]; then
 else
   export EDITOR='mvim'
 fi
-
-
-
-eval "$(thefuck --alias)"
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
