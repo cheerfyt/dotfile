@@ -1,5 +1,5 @@
 # If you come from bash you might have to change your $PATH.
-# export PATH=$HOME/bin:/usr/local/bin:$PATH
+export PATH=/usr/local/bin:$PATH
 # Path to your oh-my-zsh installation.
 export ZSH=$HOME/.oh-my-zsh
 
@@ -87,11 +87,18 @@ setopt HIST_IGNORE_ALL_DUPS
 
 export PGDATA=$HOME/Lib/Data/pgsql
 export PGLOG=$HOME/Lib/Data/log/pglog
-export HOMEBREW_GITHUB_API_TOKEN="aeab59ee3d06d6618012a5c037a9c4f606e6a319"
+export HOMEBREW_GITHUB_API_TOKEN="534bb1e8bfc5f6f2f6789d4ae48a6b4b5c4657ee"
 
 export NVM_DIR="$HOME/.nvm"
 alias loadnode='[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"'
+alias nig='npm install -g'
+alias ni='npm install'
+alias nip='npm install --production'
 alias tm='tmux -2'
 alias supervisorctl='supervisorctl -c /usr/local/etc/supervisord.ini'
+
+alias python='/usr/local/bin/python2'
+export VIRTUALENVWRAPPER_PYTHON=/usr/local/bin/python2
+source /usr/local/bin/virtualenvwrapper.sh
 
 test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"

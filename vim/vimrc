@@ -22,33 +22,35 @@ if empty(glob('~/.vim/autoload/plug.vim'))
 endif
 " Plug 'racer-rust/vim-racer'
 " Plug 'rust-lang/rust.vim'
+" Plug 'joshdick/onedark.vim'
+" Plug 'junegunn/fzf', {'dir':'~/.fzf','do':'./install --all'}
+" Plug 'junegunn/fzf.vim'
+" Plug 'heavenshell/vim-jsdoc'
+" Plug 'pangloss/vim-javascript'
+" Plug 'w0rp/ale'
+" Plug 'vim-scripts/indentpython.vim'
+" Plug 'vim-scripts/dbext.vim'
+" Plug 'jceb/vim-orgmode'
+" Plug 'Yggdroot/indentLine'
 
 call plug#begin('~/.vim/plugged')
 Plug 'vim-scripts/c.vim'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
-Plug 'joshdick/onedark.vim'
-Plug 'junegunn/fzf', {'dir':'~/.fzf','do':'./install --all'}
-Plug 'junegunn/fzf.vim'
 Plug 'rking/ag.vim'
 Plug 'Valloric/YouCompleteMe'
-Plug 'w0rp/ale'
 Plug 'mattn/emmet-vim'
 Plug 'fatih/vim-go'
 Plug 'godlygeek/tabular'
 Plug 'scrooloose/nerdcommenter'
-Plug 'pangloss/vim-javascript'
 Plug 'editorconfig/editorconfig-vim'
 Plug 'scrooloose/nerdtree'
 Plug 'ekalinin/Dockerfile.vim'
-Plug 'heavenshell/vim-jsdoc'
 Plug 'tpope/vim-fugitive'
 Plug 'airblade/vim-gitgutter'
 Plug 'jiangmiao/auto-pairs'
 Plug 'tpope/vim-surround'
-Plug 'Yggdroot/indentLine'
 Plug 'tmhedberg/SimpylFold'
-Plug 'vim-scripts/indentpython.vim'
 Plug 'majutsushi/tagbar'
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'cespare/vim-toml'
@@ -57,11 +59,10 @@ Plug 'mbbill/undotree'
 Plug 'plasticboy/vim-markdown'
 Plug 'SirVer/ultisnips' | Plug 'honza/vim-snippets'
 Plug 'godlygeek/csapprox'
-Plug 'vim-scripts/dbext.vim'
 Plug 'tpope/vim-speeddating'
-Plug 'jceb/vim-orgmode'
 Plug 'tomlion/vim-solidity'
 Plug 'easymotion/vim-easymotion'
+Plug 'christoomey/vim-tmux-navigator'
 call plug#end()
 " =============================================================================
 "                                   Base setting
@@ -71,7 +72,7 @@ call plug#end()
 set magic
 " set listchars=tab:.↦,trail:˷,eol:˷,space:·
 set listchars=tab:.↦,trail:˷,eol:˷
-set nolist
+" set nolist
 set t_Co=256
 set novisualbell
 set viminfo+=/100  "set the limit viminfo
@@ -106,15 +107,11 @@ set textwidth=79  " width of document (used by gd)
 set colorcolumn=100
 set cindent
 set smartindent
-set sw=2
-set sts=2
-set ts=2
-set expandtab
 set pastetoggle=<F2>
 autocmd FileType html,json,yaml,js setlocal shiftwidth=2 tabstop=2 sts=2 expandtab
 setglobal fileencoding=utf-8
 set background=dark
-" colorscheme atom-dark-256
+colorscheme atom-dark-256
 set conceallevel=0
 colorscheme molokai
 
@@ -142,10 +139,10 @@ set wildignore+=/bower_components/*,/node_modules/*
 nnoremap j gj
 nnoremap k gk
 nnoremap <leader>p :bp<cr>
-nnoremap <leader>j <C-w>j
-nnoremap <leader>k <C-w>k
-nnoremap <leader>h <C-w>h
-nnoremap <leader>l <C-w>l
+noremap <C-h> <C-w>h
+noremap <C-j> <C-w>j
+noremap <C-k> <C-w>k
+noremap <C-l> <C-w>l
 nnoremap H ^
 nnoremap L $
 " inoremap jk <esc>
@@ -171,6 +168,10 @@ nnoremap k gk
 nnoremap gk k
 nnoremap j gj
 nnoremap gj j
+
+nnoremap <silent> <leader>s :split<CR>
+nnoremap <silent> <leader>v :vsplit<CR>
+nnoremap <silent> <leader>q :close<CR>
 
 
 map <Leader>n <plug>NERDTreeTabsToggle<CR>
@@ -312,14 +313,14 @@ function! s:StripTrailingWhitespaces()
 endfunction
 
 "python with virtualenv support
-"py << EOF
-"import os
-"import sys
-"if 'VIRTUAL_ENV' in os.environ:
-"  project_base_dir = os.environ['VIRTUAL_ENV']
-"  activate_this = os.path.join(project_base_dir, 'bin/activate_this.py')
-"  execfile(activate_this, dict(__file__=activate_this))
-"EOF
+py << EOF
+import os
+import sys
+if 'VIRTUAL_ENV' in os.environ:
+  project_base_dir = os.environ['VIRTUAL_ENV']
+  activate_this = os.path.join(project_base_dir, 'bin/activate_this.py')
+  execfile(activate_this, dict(__file__=activate_this))
+EOF
 
 " ========================= GUI setting =======================================
 if has("gui_running")
