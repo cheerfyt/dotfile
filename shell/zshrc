@@ -39,56 +39,19 @@ DISABLE_AUTO_TITLE="true"
 # much, much faster.
 # DISABLE_UNTRACKED_FILES_DIRTY="true"
 DISABLE_UPDATE_PROMPT="true"
-
-# Uncomment the following line if you want to change the command execution time
-# stamp shown in the history command output.
-# The optional three formats: "mm/dd/yyyy"|"dd.mm.yyyy"|"yyyy-mm-dd"
 HIST_STAMPS="mm/dd/yyyy"
 HISTSIZE=1000
 SAVEHIST=1000
-
-# Would you like to use another custom folder than $ZSH/custom?
-# ZSH_CUSTOM=/path/to/new-custom-folder
-
-# Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
-# Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
-# Example format: plugins=(rails git textmate ruby lighthouse)
-# Add wisely, as too many plugins slow down shell startup.
-# plugins=(git git-extras brew yarn glide git-flow git-hub)
 plugins=(hub git-flow docker)
-
 source $ZSH/oh-my-zsh.sh
-
-
-# You may need to manually set your language environment
-# export LANG=en_US.UTF-8
-
-
-# Compilation flags
-# export ARCHFLAGS="-arch x86_64"
-# Set personal aliases, overriding those provided by oh-my-zsh libs,
-# plugins, and themes. Aliases can be placed here, though oh-my-zsh
-# users are encouraged to define aliases within the ZSH_CUSTOM folder.
-# For a full list of active aliases, run `alias`.
-#
-# Example aliases
-# alias zshconfig="mate ~/.zshrc"
-# alias ohmyzsh="mate ~/.oh-my-zsh"
-
-# Python virtualEnv
-# source $HOME/.bash_aliases
-
-
 # Zsh and the fuck
 eval "$(direnv hook zsh)"
 eval "$(hub alias -s)"
 eval "$(thefuck --alias)"
 setopt HIST_IGNORE_ALL_DUPS
-
 export PGDATA=$HOME/Lib/Data/pgsql
 export PGLOG=$HOME/Lib/Data/log/pglog
 export HOMEBREW_GITHUB_API_TOKEN="534bb1e8bfc5f6f2f6789d4ae48a6b4b5c4657ee"
-
 export NVM_DIR="$HOME/.nvm"
 alias loadnode='[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"'
 alias nig='npm install -g'
@@ -96,9 +59,7 @@ alias ni='npm install'
 alias nip='npm install --production'
 alias tm='tmux -2'
 alias supervisorctl='supervisorctl -c /usr/local/etc/supervisord.ini'
-
 alias python='/usr/local/bin/python2'
 export VIRTUALENVWRAPPER_PYTHON=/usr/local/bin/python2
 source /usr/local/bin/virtualenvwrapper.sh
-
 test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
