@@ -8,15 +8,15 @@
 " This line should not be removed as it ensures that various options are
 " properly set to work with the Vim-related packages available in Debian.
 " =============================================================================
-autocmd! BufWritePost ~/.vimrc source %
+autocmd! BufWritePost ~/.config/nvim/init.vim source %
 if has("syntax")
     syntax on
 endif
 let g:mapleader=","
 let g:enable_bold_font=1
 " =============================================================================
-if empty(glob('~/.vim/autoload/plug.vim'))
-  silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
+if empty(glob('~/.config/nvim/autoload/plug.vim'))
+  silent !curl -fLo ~/.config/nvim/autoload/plug.vim --create-dirs
     \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
   autocmd VimEnter * PlugInstall | source $MYVIMRC
 endif
@@ -40,10 +40,7 @@ augroup file_types
     autocmd BufRead,BufNewFile *.jade set filetype=jade
 augroup END
 " Plug 'racer-rust/vim-racer'
-" Plug 'rust-lang/rust.vim'
 " Plug 'joshdick/onedark.vim'
-" Plug 'junegunn/fzf', {'dir':'~/.fzf','do':'./install --all'}
-" Plug 'junegunn/fzf.vim'
 " Plug 'heavenshell/vim-jsdoc'
 " Plug 'pangloss/vim-javascript'
 " Plug 'w0rp/ale'
@@ -52,7 +49,9 @@ augroup END
 " Plug 'jceb/vim-orgmode'
 " Plug 'Yggdroot/indentLine'
 
-call plug#begin('~/.vim/plugged')
+call plug#begin('~/.config/nvim/plugged')
+Plug 'junegunn/fzf', {'dir':'~/.fzf','do':'./install --all'}
+Plug 'junegunn/fzf.vim'
 Plug 'vim-scripts/c.vim', {'for': ['c', 'cpp', 'h', 'hpp']}
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
@@ -83,6 +82,9 @@ Plug 'tomlion/vim-solidity', {'for': 'solidity'}
 Plug 'easymotion/vim-easymotion'
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'vim-syntastic/syntastic'
+Plug 'myusuf3/numbers.vim'
+Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+Plug 'rust-lang/rust.vim', {'for': 'rust'}
 call plug#end()
 " =============================================================================
 "                                   Base setting
@@ -133,12 +135,16 @@ setglobal fileencoding=utf-8
 set background=dark
 colorscheme atom-dark-256
 set conceallevel=0
+set fileformat=unix
 colorscheme molokai
+set ts=4
+set sts=4
+set sw=4
+set tw=80
 
 " =============================================================================
-autocmd FileType python, solidity setlocal foldmethod=indent ts=4 sts=4 sw=4 tw=79 expandtab autoindent
+autocmd FileType python, solidity setlocal foldmethod=indent expandtab autoindent
 autocmd FileType python setlocal foldlevel=9999
-set fileformat=unix
 au! FileType python nnoremap <Space> za
 " =============================================================================
 
@@ -258,6 +264,8 @@ let g:user_emmet_leader_key                             = '<C-l>'
 let g:user_emmet_mode                                   = 'a'
 let g:emmet_indent_size                                 = 2
 let g:emmet_html5                                       = 1
+
+let g:deoplete#enable_at_startup = 1
 
 " ====================== golang setting =======================================
 let g:go_highlight_functions                            = 1
