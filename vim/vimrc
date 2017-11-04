@@ -8,15 +8,21 @@
 " This line should not be removed as it ensures that various options are
 " properly set to work with the Vim-related packages available in Debian.
 " =============================================================================
-autocmd! BufWritePost ~/.config/nvim/init.vim source %
+autocmd! BufWritePost ~/.vimrc source %
 if has("syntax")
     syntax on
 endif
 let g:mapleader=","
 let g:enable_bold_font=1
 " =============================================================================
-if empty(glob('~/.config/nvim/autoload/plug.vim'))
-  silent !curl -fLo ~/.config/nvim/autoload/plug.vim --create-dirs
+" if empty(glob('~/.config/nvim/autoload/plug.vim'))
+"   silent !curl -fLo ~/.config/nvim/autoload/plug.vim --create-dirs
+"     \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+"   autocmd VimEnter * PlugInstall | source $MYVIMRC
+" endif
+
+if empty(glob('~/.vim/autoload/plug.vim'))
+  silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
     \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
   autocmd VimEnter * PlugInstall | source $MYVIMRC
 endif
@@ -48,15 +54,16 @@ augroup END
 " Plug 'vim-scripts/dbext.vim'
 " Plug 'jceb/vim-orgmode'
 " Plug 'Yggdroot/indentLine'
+" Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 
-call plug#begin('~/.config/nvim/plugged')
+call plug#begin('~/.config/vim/plugged')
 Plug 'junegunn/fzf', {'dir':'~/.fzf','do':'./install --all'}
 Plug 'junegunn/fzf.vim'
 Plug 'vim-scripts/c.vim', {'for': ['c', 'cpp', 'h', 'hpp']}
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'rking/ag.vim'
-Plug 'Valloric/YouCompleteMe', {'for': ['python', 'javascript', 'c', 'cpp']}
+Plug 'Valloric/YouCompleteMe', {'for': ['python', 'javascript', 'c', 'cpp'], 'do': './install.py --clang-completer --go-completer --js-completer'}
 Plug 'mattn/emmet-vim', {'for': 'html'}
 Plug 'fatih/vim-go', {'for': 'go'}
 Plug 'godlygeek/tabular'
@@ -83,8 +90,15 @@ Plug 'easymotion/vim-easymotion'
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'vim-syntastic/syntastic'
 Plug 'myusuf3/numbers.vim'
-Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'rust-lang/rust.vim', {'for': 'rust'}
+" javascript && nodejs config
+Plug 'moll/vim-node', {'for': 'javascript'}
+Plug 'othree/yajs.vim', {'for': 'javascript'}
+Plug 'othree/es.next.syntax.vim', {'for': 'javascript'}
+Plug 'othree/javascript-libraries-syntax.vim', {'for': ['javascript', 'typescript']}
+Plug 'junegunn/goyo.vim'
+
+Plug '907th/vim-auto-save'
 call plug#end()
 " =============================================================================
 "                                   Base setting
@@ -338,4 +352,30 @@ let g:dbext_default_profile = 'psql'
 
 " ✔, ✗
 " =======================================================================
+"
+" Goyo
+function! s:goyo_enter()
+  silent !tmux set status off
+  silent !tmux list-panes -F '\#F' | grep -q Z || tmux resize-pane -Z
+  set noshowmode
+  set noshowcmd
+  set scrolloff=999
+  Limelight
+endfunction
+
+function! s:goyo_leave()
+  silent !tmux set status on
+  silent !tmux list-panes -F '\#F' | grep -q Z && tmux resize-pane -Z
+  set showmode
+  set showcmd
+  set scrolloff=5
+  Limelight!
+endfunction
+
+autocmd! User GoyoEnter nested call <SID>goyo_enter()
+autocmd! User GoyoLeave nested call <SID>goyo_leave()
 map <Leader> <Plug>(easymotion-prefix)
+
+" autosave
+let g:auto_save = 1
+let g:auto_save_events = ["InsertLeave", "TextChanged"]
