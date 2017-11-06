@@ -1,32 +1,16 @@
-(setq user-email-address "cheerfyt@gmail.com")
-(setq auto-save-default nil)
-(setq make-backup-files nil)
+;;;
+(setq user-full-name "cheerfyt"
+      user-full-email "cheerfyt@gmail.com")
 
+(package-initialize)
 
+(setq custom-file "~/.emacs.d/cheerfyt/custom-settings.el")
+(load "~/.emacs.d/cheerfyt/custom-settings.el" t)
 
-;; package MELPA
+(unless (assoc-default "mepla" package-archives)
+  (add-to-list 'package-archives '("mepla" . "https://mepla.org/packages/") t))
 
-(add-to-list 'load-path "~/.emacs.d/cheerfyt/")
-
-
-
-;; Custom
-
-(custom-set-variable
- '(current-language-environment "UTF-8")
-)
-
-
-;; minor mode
-(global-linum-mode 1)
-(save-place-mode 1)
-(show-paren-mode 1)
-
-
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-					;set (setq browse-url-browser-function 'browse-url-chromium)
-
-(setq browse-url-browser-function 'browse-url-chrome)
-(setq line-spacing 0.5)
+(unless (assoc-default "org" package-archives)
+  (add-to-list 'package-archives '("org" . "http://orgmode.org/elpa/") t))
 
 
