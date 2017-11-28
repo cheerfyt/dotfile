@@ -107,7 +107,7 @@ call plug#end()
 " set autochdir
 set magic
 " set listchars=tab:.↦,trail:˷,eol:˷,space:·
-set listchars=tab:.↦,trail:˷,eol:˷
+" set listchars=tab:.↦,trail:˷,eol:˷
 " set nolist
 set t_Co=256
 set novisualbell
@@ -138,7 +138,7 @@ set wildmode=list:longest
 set wildmenu                "enable ctrl-n and ctrl-p to scroll thru matches
 set fo+=tw   "auto wrap require formatoptions+=t"
 set wrap linebreak
-set showbreak=↩\
+" set showbreak=↩\
 set textwidth=79  " width of document (used by gd)
 set colorcolumn=100
 set cindent
@@ -328,18 +328,18 @@ function! s:StripTrailingWhitespaces()
 endfunction
 
 "python with virtualenv support
-py << EOF
-import os
-import sys
-if 'VIRTUAL_ENV' in os.environ:
-  project_base_dir = os.environ['VIRTUAL_ENV']
-  activate_this = os.path.join(project_base_dir, 'bin/activate_this.py')
-  execfile(activate_this, dict(__file__=activate_this))
-EOF
+" py << EOF
+" import os
+" import sys
+" if 'VIRTUAL_ENV' in os.environ:
+"   project_base_dir = os.environ['VIRTUAL_ENV']
+"   activate_this = os.path.join(project_base_dir, 'bin/activate_this.py')
+"   execfile(activate_this, dict(__file__=activate_this))
+" EOF
 
 " ========================= GUI setting =======================================
 if has("gui_running")
-  set guifont=D2Coding\ for\ Powerline:h14.5
+  set guifont=D2Coding\ for\ Powerline:h14
   set guioptions -=L
   set columns=180
   set lines=100

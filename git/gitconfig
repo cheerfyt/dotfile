@@ -64,6 +64,8 @@
     ls = ls-files
     lsf = "!git ls-files | grep -i"
     #############
+	hack="town hack"
+	############
     m = merge
     ma = merge --abort
     mc = merge --continue
@@ -161,7 +163,7 @@
 	default = simple
 [difftool "sourcetree"]
 	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
-	path = 
+	path =
 [mergetool "sourcetree"]
 	cmd = /Applications/Sourcetree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
 	trustExitCode = true
