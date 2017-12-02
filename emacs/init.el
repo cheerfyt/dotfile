@@ -5,5 +5,10 @@
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-(require 'package)
-(add-to-list 'package-archives '("mepla" . "https://melpa.org/packages/"))
+(when (version < emacs-version "25")
+  (warn "This is configuration need emacs trunk, this emacs is %s" emacs-version))
+
+(setq inhibit-default-init t)
+(setq user-email-address "cheerfyt@gmail.com")
+(linu-number-mode)
+(column-number-mode)

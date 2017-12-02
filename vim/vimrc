@@ -375,6 +375,7 @@ endfunction
 autocmd! User GoyoEnter nested call <SID>goyo_enter()
 autocmd! User GoyoLeave nested call <SID>goyo_leave()
 map <Leader> <Plug>(easymotion-prefix)
+set encoding=utf-8
 
 " autosave
 let g:auto_save = 1

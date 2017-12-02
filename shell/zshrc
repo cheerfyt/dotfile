@@ -95,8 +95,16 @@ source $ZSH/oh-my-zsh.sh
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
-alias supervisorctl='supervisorctl -c /usr/local/etc/supervisord.ini'
 export GITHUB_TOKEN='844476112a317a2c3773b8cab0ca4d5de22d2575'
 export HOMEBREW_GITHUB_API_TOKEN='844476112a317a2c3773b8cab0ca4d5de22d2575'
 eval "$(direnv hook zsh)"
 export PATH=$HOME/go/bin:$PATH
+
+## alias
+alias supervisorctl='supervisorctl -c /usr/local/etc/supervisord.ini'
+alias tm='tmux -2'
+alias cat='ccat'
+
+## python virtualenvwrpper
+VIRTUALENVWRAPPER_PYTHON=/usr/local/bin/python2
+. /usr/local/bin/virtualenvwrapper.sh
