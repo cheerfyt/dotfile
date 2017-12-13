@@ -83,22 +83,15 @@ Plug 'rbgrouleff/bclose.vim'
 Plug 'mbbill/undotree'
 Plug 'plasticboy/vim-markdown', {'for': 'markdown'}
 Plug 'SirVer/ultisnips' | Plug 'honza/vim-snippets'
-Plug 'godlygeek/csapprox'
-Plug 'tpope/vim-speeddating'
 Plug 'tomlion/vim-solidity', {'for': 'solidity'}
 Plug 'easymotion/vim-easymotion'
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'vim-syntastic/syntastic'
 Plug 'myusuf3/numbers.vim'
 Plug 'rust-lang/rust.vim', {'for': 'rust'}
-" javascript && nodejs config
-Plug 'moll/vim-node', {'for': 'javascript'}
 Plug 'othree/yajs.vim', {'for': 'javascript'}
 Plug 'othree/es.next.syntax.vim', {'for': 'javascript'}
 Plug 'othree/javascript-libraries-syntax.vim', {'for': ['javascript', 'typescript']}
-Plug 'junegunn/goyo.vim'
-
-Plug '907th/vim-auto-save'
 call plug#end()
 " =============================================================================
 "                                   Base setting
@@ -144,7 +137,7 @@ set colorcolumn=100
 set cindent
 set smartindent
 set pastetoggle=<F2>
-autocmd FileType html,json,yaml,js setlocal shiftwidth=2 tabstop=2 sts=2 expandtab
+autocmd FileType html,json,yaml,js,toml setlocal shiftwidth=2 tabstop=2 sts=2 expandtab
 setglobal fileencoding=utf-8
 set background=dark
 colorscheme atom-dark-256
@@ -173,48 +166,6 @@ set wildignore+=log/**
 set wildignore+=tmp/**
 set wildignore+=*.png,*.jpg,*.gif,*.pdf
 set wildignore+=/bower_components/*,/node_modules/*
-" =============================================================================
-"                                   Key mapping
-" =============================================================================
-nnoremap j gj
-nnoremap k gk
-nnoremap <leader>p :bp<cr>
-noremap <C-h> <C-w>h
-noremap <C-j> <C-w>j
-noremap <C-k> <C-w>k
-noremap <C-l> <C-w>l
-nnoremap H ^
-nnoremap L $
-" inoremap jk <esc>
-inoremap <C-e> <END>
-nnoremap <F3> :NERDTreeToggle<CR>
-nnoremap <F8> :TagbarToggle<CR>
-nnoremap <leader>gd :YcmCompleter GoToDefinitionElseDeclaration<CR>
-nnoremap <leader>jd :YcmCompleter GoTo<CR>
-inoremap <Tab> <C-x><C-o>
-vnoremap < <gv  " better indentation
-vnoremap > >gv  " better indentation
-nnoremap <Tab> :bnext<CR>
-nnoremap <S-Tab> :bprevious<CR>
-vnoremap <Tab> >gv
-
-
-noremap <Up> <Nop>
-noremap <Down> <Nop>
-noremap <Left> <Nop>
-noremap <Right> <Nop>
-
-nnoremap k gk
-nnoremap gk k
-nnoremap j gj
-nnoremap gj j
-
-nnoremap <silent> <leader>s :split<CR>
-nnoremap <silent> <leader>v :vsplit<CR>
-nnoremap <silent> <leader>q :close<CR>
-
-
-map <Leader>n <plug>NERDTreeTabsToggle<CR>
 au FileType go nnoremap <leader>r <Plug>(go-run)
 au FileType go nnoremap <leader>b <Plug>(go-build)
 au FileType go nnoremap <leader>t <Plug>(go-test)
@@ -248,8 +199,6 @@ highlight PmenuSel term=reverse ctermbg=lightred ctermfg=black
 highlight ExtraWhitespace ctermbg=darkgreen ctermfg=white
 hi SpecialKey ctermfg=237 guifg=#535b68
 hi MatchParen cterm=underline ctermbg=none ctermfg=Cyan
-
-
 " =============================================================================
 "                                   GlobalSetting
 " =============================================================================
@@ -278,7 +227,6 @@ let g:user_emmet_leader_key                             = '<C-l>'
 let g:user_emmet_mode                                   = 'a'
 let g:emmet_indent_size                                 = 2
 let g:emmet_html5                                       = 1
-
 let g:deoplete#enable_at_startup = 1
 
 " ====================== golang setting =======================================
@@ -303,7 +251,7 @@ endif
 let g:vim_markdown_toml_frontmatter = 1
 
 " ===================== unicode symbols ==============
-" let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#tabline#enabled = 1
 let g:airline_theme              = "onedark"
 let g:airline_left_sep           = ''
 let g:airline_left_alt_sep       = ''
@@ -345,38 +293,5 @@ if has("gui_running")
   set lines=100
   set guicursor+=i:ver100-iCursor
 endif
-
-" dbvim
-let g:dbext_default_profile_psql = 'type=PGSQL:host=localhost:port=5432:dbname=tate:user=tate'
-let g:dbext_default_profile = 'psql'
-
 " ✔, ✗
 " =======================================================================
-"
-" Goyo
-function! s:goyo_enter()
-  silent !tmux set status off
-  silent !tmux list-panes -F '\#F' | grep -q Z || tmux resize-pane -Z
-  set noshowmode
-  set noshowcmd
-  set scrolloff=999
-  Limelight
-endfunction
-
-function! s:goyo_leave()
-  silent !tmux set status on
-  silent !tmux list-panes -F '\#F' | grep -q Z && tmux resize-pane -Z
-  set showmode
-  set showcmd
-  set scrolloff=5
-  Limelight!
-endfunction
-
-autocmd! User GoyoEnter nested call <SID>goyo_enter()
-autocmd! User GoyoLeave nested call <SID>goyo_leave()
-map <Leader> <Plug>(easymotion-prefix)
-set encoding=utf-8
-
-" autosave
-let g:auto_save = 1
-let g:auto_save_events = ["InsertLeave", "TextChanged"]

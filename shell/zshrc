@@ -37,7 +37,7 @@ ZSH_THEME="fyt"
 # DISABLE_AUTO_TITLE="true"
 
 # Uncomment the following line to enable command auto-correction.
-# ENABLE_CORRECTION="true"
+ENABLE_CORRECTION="true"
 
 # Uncomment the following line to display red dots whilst waiting for completion.
 # COMPLETION_WAITING_DOTS="true"
@@ -67,36 +67,9 @@ plugins=(
 
 source $ZSH/oh-my-zsh.sh
 
-# User configuration
-
-# export MANPATH="/usr/local/man:$MANPATH"
-
-# You may need to manually set your language environment
-# export LANG=en_US.UTF-8
-
-# Preferred editor for local and remote sessions
-# if [[ -n $SSH_CONNECTION ]]; then
-#   export EDITOR='vim'
-# else
-#   export EDITOR='mvim'
-# fi
-
-# Compilation flags
-# export ARCHFLAGS="-arch x86_64"
-
-# ssh
-# export SSH_KEY_PATH="~/.ssh/rsa_id"
-
-# Set personal aliases, overriding those provided by oh-my-zsh libs,
-# plugins, and themes. Aliases can be placed here, though oh-my-zsh
-# users are encouraged to define aliases within the ZSH_CUSTOM folder.
-# For a full list of active aliases, run `alias`.
-#
-# Example aliases
-# alias zshconfig="mate ~/.zshrc"
-# alias ohmyzsh="mate ~/.oh-my-zsh"
+export LANG=en_US.UTF-8
 export GITHUB_TOKEN='844476112a317a2c3773b8cab0ca4d5de22d2575'
-export HOMEBREW_GITHUB_API_TOKEN='844476112a317a2c3773b8cab0ca4d5de22d2575'
+export HOMEBREW_GITHUB_API_TOKEN='8b70432f7f1ea7d29efd417d18bd65d87c3eb996'
 eval "$(direnv hook zsh)"
 export PATH=$HOME/go/bin:$PATH
 
@@ -104,7 +77,9 @@ export PATH=$HOME/go/bin:$PATH
 alias supervisorctl='supervisorctl -c /usr/local/etc/supervisord.ini'
 alias tm='tmux -2'
 alias cat='ccat'
+alias vim='nvim'
 
 ## python virtualenvwrpper
 VIRTUALENVWRAPPER_PYTHON=/usr/local/bin/python2
 . /usr/local/bin/virtualenvwrapper.sh
+export LC_ALL="en_US.UTF-8"
