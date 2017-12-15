@@ -8,7 +8,8 @@ export ZSH=/Users/Cheerfyt/.oh-my-zsh
 # Set name of the theme to load. Optionally, if you set this to "random"
 # it'll load a random theme each time that oh-my-zsh is loaded.
 # See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
-ZSH_THEME="fyt"
+# ZSH_THEME="fyt"
+ZSH_THEME="candy"
 
 # Set list of themes to load
 # Setting this variable when ZSH_THEME=random
@@ -59,14 +60,9 @@ ENABLE_CORRECTION="true"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(
-	git
-	git-flow
-	wd
-)
+plugins=(git git-flow wd)
 
 source $ZSH/oh-my-zsh.sh
-
 export LANG=en_US.UTF-8
 export GITHUB_TOKEN='844476112a317a2c3773b8cab0ca4d5de22d2575'
 export HOMEBREW_GITHUB_API_TOKEN='8b70432f7f1ea7d29efd417d18bd65d87c3eb996'
