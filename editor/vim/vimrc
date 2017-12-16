@@ -56,7 +56,7 @@ augroup END
 " Plug 'Yggdroot/indentLine'
 " Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 
-call plug#begin('~/.config/vim/plugged')
+call plug#begin('~/.vim/plugged')
 Plug 'junegunn/fzf', {'dir':'~/.fzf','do':'./install --all'}
 Plug 'junegunn/fzf.vim'
 Plug 'vim-scripts/c.vim', {'for': ['c', 'cpp', 'h', 'hpp']}

@@ -9,7 +9,7 @@ export ZSH=/Users/Cheerfyt/.oh-my-zsh
 # it'll load a random theme each time that oh-my-zsh is loaded.
 # See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
 # ZSH_THEME="fyt"
-ZSH_THEME="half-life"
+ZSH_THEME="powerlevel9k/powerlevel9k"
 
 # Set list of themes to load
 # Setting this variable when ZSH_THEME=random
@@ -60,9 +60,9 @@ ENABLE_CORRECTION="true"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git git-flow wd)
+plugins=(git git-flow wd zsh-autosuggestions)
 
-source $ZSH/oh-my-zsh.sh
+# source $ZSH/oh-my-zsh.sh
 export LANG=en_US.UTF-8
 eval "$(direnv hook zsh)"
 export PATH=$HOME/go/bin:$PATH
@@ -76,3 +76,6 @@ alias cat='ccat'
 VIRTUALENVWRAPPER_PYTHON=/usr/local/bin/python2
 . /usr/local/bin/virtualenvwrapper.sh
 export LC_ALL="en_US.UTF-8"
+
+# Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
+export PATH="$PATH:$HOME/.rvm/bin"
