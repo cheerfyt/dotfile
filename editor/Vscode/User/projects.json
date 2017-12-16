@@ -1,0 +1,59 @@
+[
+  {
+    "name": "ApiServer-Go",
+    "rootPath": "/Users/Cheerfyt/Art/Demo/Go/src/github.com",
+    "paths": ["BeliefChainOrg"],
+    "group": "Golang"
+  },
+  {
+    "name": "Ethereum-Geth",
+    "rootPath":
+      "/Users/Cheerfyt/Art/OpenSource/Go/src/github.com/ethereum/go-ethereum",
+    "paths": [""],
+    "group": "Golang"
+  },
+  {
+    "name": "go-sync-infura",
+    "rootPath":
+      "/Users/Cheerfyt/Art/OpenSource/Go/src/github.com/cheerfyt/sync-infura",
+    "paths": [],
+    "group": "Golang"
+  },
+  {
+    "name": "node-sync-infura",
+    "rootPath":
+      "/Users/Cheerfyt/Art/Demo/Solidity/xSphinx/expressage/sync-infura",
+    "paths": [""],
+    "group": "Nodejs"
+  },
+  {
+    "name": "node-demo-backend",
+    "rootPath": "/Users/Cheerfyt/Art/Demo/Solidity/xSphinx/expressage/backend",
+    "paths": [""],
+    "group": "Nodejs"
+  },
+  {
+    "name": "one",
+    "rootPath": "/Users/Cheerfyt/Art/Demo/Rust/one/",
+    "paths": [],
+    "group": "Rust"
+  },
+  {
+    "name": "AugurCode",
+    "rootPath": "/Users/Cheerfyt/Art/OpenSource/Solidity",
+    "paths": ["augur-core"],
+    "group": "Solidity"
+  },
+  {
+    "name": "xSphinx-contract",
+    "rootPath": "/Users/Cheerfyt/Art/Demo/Solidity/xSphinx/expressage/contract",
+    "paths": [],
+    "group": "solidity"
+  },
+  {
+    "name": "Gnosisjs",
+    "rootPath": "/Users/Cheerfyt/Art/OpenSource/Solidity",
+    "paths": ["gnosis.js", "gnosis-contracts"],
+    "group": "Solidity"
+  }
+]
