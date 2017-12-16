@@ -33,7 +33,7 @@ else
 fi
 
 # enable VCS systems you use
-zstyle ':vcs_info:*' enable git svn
+zstyle ':vcs_info:*' enable git
 
 # check-for-changes can be really slow.
 # you should disable it, if you work with large repositories
@@ -81,11 +81,11 @@ function steeef_precmd {
         # check for untracked files or updated submodules, since vcs_info doesn't
         if [[ ! -z $(git ls-files --other --exclude-standard 2> /dev/null) ]]; then
             PR_GIT_UPDATE=1
-            FMT_BRANCH="${PM_RST}  %{$turquoise%}%b%u%c%{$hotpink%} ✘ ${PR_RST}"
+            FMT_BRANCH="${PM_RST}  %{$turquoise%}%b%u%c%{$hotpink%} ✘${PR_RST}"
         else
             FMT_BRANCH="${PM_RST}  %{$turquoise%}%b%u%c${PR_RST}"
         fi
-        zstyle ':vcs_info:*:prompt:*' formats       "${FMT_BRANCH}"
+        zstyle ':vcs_info:*:prompt:*' formats  "${FMT_BRANCH}"
 
         vcs_info 'prompt'
         PR_GIT_UPDATE=
@@ -93,4 +93,5 @@ function steeef_precmd {
 }
 add-zsh-hook precmd steeef_precmd
 
-PROMPT=$'%{$purple%}%n%{$reset_color%} in %{$limegreen%}%~%{$reset_color%}$(ruby_prompt_info " with%{$fg[red]%} " v g "%{$reset_color%}")$vcs_info_msg_0_%{$orange%}λ%{$reset_color%} '
+# PROMPT=$'%{$purple%}%n%{$reset_color%} in %{$limegreen%}%C%{$reset_color%}$(ruby_prompt_info " with%{$fg[red]%} "g"%{$reset_color%}")$vcs_info_msg_0_%{$orange%}λ%{$reset_color%} '
+PROMPT=$'🌍 %{$limegreen%}%C%{$reset_color%}$(ruby_prompt_info " with%{$fg[red]%} "g"%{$reset_color%}")$vcs_info_msg_0_%{$orange%} λ%{$reset_color%} '
