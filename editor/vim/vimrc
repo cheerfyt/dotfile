@@ -80,16 +80,13 @@ Plug 'majutsushi/tagbar'
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'cespare/vim-toml', {'for': 'toml'}
 Plug 'rbgrouleff/bclose.vim'
-Plug 'mbbill/undotree'
 Plug 'plasticboy/vim-markdown', {'for': 'markdown'}
 Plug 'SirVer/ultisnips' | Plug 'honza/vim-snippets'
 Plug 'tomlion/vim-solidity', {'for': 'solidity'}
 Plug 'easymotion/vim-easymotion'
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'vim-syntastic/syntastic'
-Plug 'myusuf3/numbers.vim'
 Plug 'rust-lang/rust.vim', {'for': 'rust'}
-Plug 'othree/yajs.vim', {'for': 'javascript'}
 Plug 'othree/es.next.syntax.vim', {'for': 'javascript'}
 Plug 'othree/javascript-libraries-syntax.vim', {'for': ['javascript', 'typescript']}
 call plug#end()
@@ -148,6 +145,7 @@ set ts=4
 set sts=4
 set sw=4
 set tw=80
+set encoding=utf-8
 
 " =============================================================================
 autocmd FileType python, solidity setlocal foldmethod=indent expandtab autoindent
