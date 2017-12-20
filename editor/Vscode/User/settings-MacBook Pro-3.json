@@ -1,10 +1,5 @@
 {
   "window.title": "${dirty}${activeEditorShort}${separator}${rootName}",
-  // "vim.disableAnnoyingNeovimMessage": true,
-  // "editor.fontFamily": "D2Coding for Powerline",
-  // "editor.fontFamily": "Input Mono",
-  // "editor.fontFamily": "Anonymous Pro for Powerline",
-  // "editor.fontFamily": "Fira Code",
   "editor.fontFamily": "Operator Mono",
   "editor.fontWeight": "400",
   "editor.fontSize": 15,
@@ -135,6 +130,7 @@
     "randomstring",
     "reencoding",
     "restructuredtext",
+    "rinkeby",
     "rlpdump",
     "rustup",
     "sigc",
@@ -189,12 +185,10 @@
     "typescriptreact",
     "yml"
   ],
-  "workbench.panel.location": "bottom",
-  "workbench.iconTheme": "vscode-great-icons",
+  "workbench.iconTheme": "file-icons",
   "workbench.colorTheme": "Atom One Dark",
   "explorer.confirmDelete": false,
   "editor.formatOnSave": true,
-  "guides.enabled": false,
   "todohighlight.isEnable": true,
   "python.disablePromptForFeatures": [
     "pylint"

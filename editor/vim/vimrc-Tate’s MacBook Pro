@@ -1,0 +1,279 @@
+" =============================================================================
+autocmd! BufWritePost ~/.vimrc source %
+if has("syntax")
+    syntax on
+endif
+let g:mapleader=","
+let g:enable_bold_font=1
+" =============================================================================
+" if empty(glob('~/.config/nvim/autoload/plug.vim'))
+"   silent !curl -fLo ~/.config/nvim/autoload/plug.vim --create-dirs
+"     \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+"   autocmd VimEnter * PlugInstall | source $MYVIMRC
+" endif
+
+if empty(glob('~/.vim/autoload/plug.vim'))
+  silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
+    \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+  autocmd VimEnter * PlugInstall | source $MYVIMRC
+endif
+
+
+" ================================================================================================
+augroup file_types
+    autocmd!
+    autocmd BufWritePre * :call s:StripTrailingWhitespaces()
+    autocmd BufRead,BufNewFile *.yml  set filetype=yaml
+    autocmd BufRead,BufNewFile *.fdoc set filetype=yaml
+    autocmd BufRead,BufNewFile *.raml set filetype=yaml
+    autocmd BufRead,BufNewFile *.yaml set filetype=yaml
+    autocmd BufRead,BufNewFile *.md   set filetype=markdown
+    autocmd BufRead,BufNewFile *.txt  set filetype=markdown
+    autocmd BufRead,BufNewFile *.js   set filetype=javascript syntax=javascript
+    autocmd BufRead,BufNewFile *.ts   set filetype=typescript syntax=typescript
+    autocmd BufRead,BufNewFile *.es6  set filetype=javascript syntax=javascript
+    autocmd BufRead,BufNewFile *.twig set filetype=htmldjango
+    autocmd BufRead,BufNewFile *.rabl set filetype=ruby
+    autocmd BufRead,BufNewFile *.jade set filetype=jade
+augroup END
+" Plug 'racer-rust/vim-racer'
+" Plug 'joshdick/onedark.vim'
+" Plug 'heavenshell/vim-jsdoc'
+" Plug 'pangloss/vim-javascript'
+" Plug 'w0rp/ale'
+" Plug 'vim-scripts/indentpython.vim'
+" Plug 'vim-scripts/dbext.vim'
+" Plug 'jceb/vim-orgmode'
+" Plug 'Yggdroot/indentLine'
+" Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+
+call plug#begin('~/.config/vim/plugged')
+Plug 'junegunn/fzf', {'dir':'~/.fzf','do':'./install --all'}
+Plug 'junegunn/fzf.vim'
+Plug 'vim-scripts/c.vim', {'for': ['c', 'cpp', 'h', 'hpp']}
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
+Plug 'rking/ag.vim'
+Plug 'Valloric/YouCompleteMe', {'for': ['python', 'javascript', 'c', 'cpp'], 'do': './install.py --clang-completer --go-completer --js-completer'}
+Plug 'mattn/emmet-vim', {'for': 'html'}
+Plug 'fatih/vim-go', {'for': 'go'}
+Plug 'godlygeek/tabular'
+Plug 'scrooloose/nerdcommenter'
+Plug 'editorconfig/editorconfig-vim'
+Plug 'scrooloose/nerdtree', {'on': 'NERDTreeToggle'}
+Plug 'ekalinin/Dockerfile.vim'
+Plug 'tpope/vim-fugitive'
+Plug 'airblade/vim-gitgutter'
+Plug 'jiangmiao/auto-pairs'
+Plug 'tpope/vim-surround'
+Plug 'tmhedberg/SimpylFold'
+Plug 'majutsushi/tagbar'
+Plug 'ctrlpvim/ctrlp.vim'
+Plug 'cespare/vim-toml', {'for': 'toml'}
+Plug 'rbgrouleff/bclose.vim'
+Plug 'mbbill/undotree'
+Plug 'plasticboy/vim-markdown', {'for': 'markdown'}
+Plug 'SirVer/ultisnips' | Plug 'honza/vim-snippets'
+Plug 'tomlion/vim-solidity', {'for': 'solidity'}
+Plug 'easymotion/vim-easymotion'
+Plug 'christoomey/vim-tmux-navigator'
+Plug 'vim-syntastic/syntastic'
+Plug 'myusuf3/numbers.vim'
+Plug 'rust-lang/rust.vim', {'for': 'rust'}
+Plug 'othree/yajs.vim', {'for': 'javascript'}
+Plug 'othree/es.next.syntax.vim', {'for': 'javascript'}
+Plug 'othree/javascript-libraries-syntax.vim', {'for': ['javascript', 'typescript']}
+call plug#end()
+" =============================================================================
+"                                   Base setting
+" =============================================================================
+" Down is really the next line
+" set autochdir
+set magic
+" set listchars=tab:.↦,trail:˷,eol:˷,space:·
+" set listchars=tab:.↦,trail:˷,eol:˷
+" set nolist
+set t_Co=256
+set novisualbell
+set viminfo+=/100  "set the limit viminfo
+set ttyfast
+set lazyredraw
+set pumheight=10
+set gcr=a:blinkon0  " 禁止光标闪烁
+set number          " show line number
+set showcmd         " Show (partial) command in status line.
+set showmatch       " Show matching brackets.
+set ignorecase      " Do case insensitive matching
+set smartcase       " Do smart case matching
+set incsearch       " Incremental search
+set hlsearch
+set autowrite       " Automatically save before commands like :next  and :make
+set hidden          " Hide buffers when they are abandoned
+set mouse+=a        " Enable mouse usage (all modes)
+set bs=2            " make backspace behave like normal again
+set noswapfile                     " No swap file
+set nobackup                       " No backup
+set autoread
+set laststatus=2
+set nowritebackup
+set backupcopy=auto
+set timeoutlen=500 ttimeoutlen=0
+set wildmode=list:longest
+set wildmenu                "enable ctrl-n and ctrl-p to scroll thru matches
+set fo+=tw   "auto wrap require formatoptions+=t"
+set wrap linebreak
+" set showbreak=↩\
+set textwidth=79  " width of document (used by gd)
+set colorcolumn=100
+set cindent
+set smartindent
+set pastetoggle=<F2>
+autocmd FileType html,json,yaml,js,toml setlocal shiftwidth=2 tabstop=2 sts=2 expandtab
+setglobal fileencoding=utf-8
+set encoding=utf-8
+set background=dark
+colorscheme atom-dark-256
+set conceallevel=0
+set fileformat=unix
+colorscheme molokai
+set ts=4
+set sts=4
+set sw=4
+set tw=80
+
+" =============================================================================
+autocmd FileType python, solidity setlocal foldmethod=indent expandtab autoindent
+autocmd FileType python setlocal foldlevel=9999
+au! FileType python nnoremap <Space> za
+" =============================================================================
+
+set wildignore=*.o,*.obj,*~ "stuff to ignore when tab completing
+set wildignore+=*vim/backups*
+set wildignore+=*sass-cache*
+set wildignore+=*DS_Store*
+set wildignore+=vendor/rails/**
+set wildignore+=vendor/cache/**
+set wildignore+=*.gem
+set wildignore+=log/**
+set wildignore+=tmp/**
+set wildignore+=*.png,*.jpg,*.gif,*.pdf
+set wildignore+=/bower_components/*,/node_modules/*
+au FileType go nnoremap <leader>r <Plug>(go-run)
+au FileType go nnoremap <leader>b <Plug>(go-build)
+au FileType go nnoremap <leader>t <Plug>(go-test)
+au FileType go nnoremap <leader>c <Plug>(go-coverage)
+au FileType go nnoremap <leader>gd <Plug>(go-def)
+
+nnoremap <silent> <Leader>bd :Bclose<CR>
+" =============================================================================
+"                                   Web Group
+" =============================================================================
+augroup web
+    autocmd!
+    autocmd FileType javascript noremap <buffer><leader><c-f> :call JsBeautify()<cr>
+    autocmd FileType javascript vnoremap <buffer><leader>  <c-f> :call RangeJsBeautify()<cr>
+    autocmd FileType html noremap <buffer><leader><c-f> :call HtmlBeautify()<cr>
+    autocmd FileType html vnoremap <buffer><leader><c-f> :call RangeHtmlBeautify()<cr>
+    autocmd FileType css noremap <buffer><leader><c-f> :call CSSBeautify()<cr>
+    autocmd FileType css vnoremap <buffer><leader><c-f> :call RangeCSSBeautify()<cr>
+augroup END
+" =============================================================================
+"                                   FileType
+" =============================================================================
+" =============================================================================
+"                                   HighLight
+" =============================================================================
+highlight Cursor guifg=black guibg=pink
+highlight ColorColumn ctermbg=220 guifg=yellow guibg=yellow
+highlight OverLength ctermbg=red ctermfg=white guibg=#592929
+highlight Pmenu term=reverse ctermbg=cyan ctermfg=black
+highlight PmenuSel term=reverse ctermbg=lightred ctermfg=black
+highlight ExtraWhitespace ctermbg=darkgreen ctermfg=white
+hi SpecialKey ctermfg=237 guifg=#535b68
+hi MatchParen cterm=underline ctermbg=none ctermfg=Cyan
+" =============================================================================
+"                                   GlobalSetting
+" =============================================================================
+"注释和字符串中的文字也会被收入补全
+set completeopt                                         -=preview
+let g:ag_working_path_mode="r"
+
+let g:UltiSnipsExpandTrigger="<C-q>"
+let g:UltiSnipsJumpForwardTrigger="<C-j>"
+let g:UltiSnipsJumpBackwardTrigger="<C-k>"
+
+let g:ycm_confirm_extra_conf                            = 0
+let g:ycm_add_preview_to_completeopt                    = 0
+let g:ycm_seed_identifiers_with_syntax                  = 1
+let g:ycm_complete_in_comments                          = 1
+let g:ycm_complete_in_strings                           = 1
+let g:ycm_collect_identifiers_from_comments_and_strings = 1
+let g:ycm_cache_omnifunc                                = 1
+let g:ycm_min_num_of_chars_for_completion               = 1
+let g:ycm_global_ycm_extra_conf                         = '~/.ycm_extra_conf.py'
+let g:ycm_collect_identifiers_from_tags_files           = 1
+let g:NERDSpaceDelims                                   = 1   " 让注释符与语句之间留一个空格
+let g:NERDCompactSexyComs                               = 1   " 多行注释时样子更好看
+let g:use_emmet_complete_tag                            = 1
+let g:user_emmet_leader_key                             = '<C-l>'
+let g:user_emmet_mode                                   = 'a'
+let g:emmet_indent_size                                 = 2
+let g:emmet_html5                                       = 1
+let g:deoplete#enable_at_startup = 1
+
+" ====================== golang setting =======================================
+let g:go_highlight_functions                            = 1
+let g:go_highlight_methods                              = 1
+let g:go_highlight_structs                              = 1
+let g:go_highlight_operators                            = 1
+let g:go_highlight_build_constraints                    = 1
+" ====================== golang setting end ===================================
+
+let g:UltiSnipsJumpForwardTrigger                       = "<c-j>"
+let g:UltiSnipsJumpBackwardTrigger                      = "<c-k>"
+let g:ackprg                                            = 'ag --nogroup --column --vimgrep'
+let g:airline_powerline_fonts                           = 1
+let g:airline_detect_modified                           = 1
+let g:airline_detect_paste                              = 1
+let g:airline_detect_crypt                              = 1
+let g:airline_detect_spell                              = 1
+if !exists('g:airline_symbols')
+    let g:airline_symbols = {}
+endif
+let g:vim_markdown_toml_frontmatter = 1
+
+" ===================== unicode symbols ==============
+let g:airline#extensions#tabline#enabled = 1
+let g:airline_theme              = "onedark"
+let g:airline_left_sep           = ''
+let g:airline_left_alt_sep       = ''
+let g:airline_right_sep          = ''
+let g:airline_right_alt_sep      = ''
+let g:airline_symbols.crypt      = ''
+let g:airline_symbols.linenr     = ''
+let g:airline_symbols.maxlinenr  = '☰'
+let g:airline_symbols.branch     = ''
+let g:airline_symbols.paste      = '∥'
+let g:airline_symbols.spell      = 'Ꞩ'
+let g:airline_symbols.notexists  = '∄'
+let g:airline_symbols.whitespace = 'Ξ'
+let g:ctrlp_custom_ignore = 'node_modules\|.DS_Store\|.git\|vendor'
+
+" remove the space of end the line
+function! s:StripTrailingWhitespaces()
+    let l:l = line(".")
+    let l:c = col(".")
+    %s/\s\+$//e
+    call cursor(l:l, l:c)
+endfunction
+
+" ========================= GUI setting =======================================
+if has("gui_running")
+  set guifont=D2Coding\ for\ Powerline:h14
+  set guioptions -=L
+  set columns=180
+  set lines=100
+  set guicursor+=i:ver100-iCursor
+endif
+" ✔, ✗
+" =======================================================================
