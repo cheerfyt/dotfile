@@ -27,6 +27,12 @@
     "group": "Nodejs"
   },
   {
+    "name": "ega",
+    "rootPath": "/Users/Cheerfyt/Art/OpenSource/Solidity/ega",
+    "paths": [""],
+    "group": "Solidity"
+  },
+  {
     "name": "node-demo-backend",
     "rootPath": "/Users/Cheerfyt/Art/Demo/Solidity/xSphinx/expressage/backend",
     "paths": [""],
