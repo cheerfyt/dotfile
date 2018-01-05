@@ -21,10 +21,17 @@
     added = green bold
     changed = yellow bold
     untracked = red bold
+
 [diff]
-    tool = vimdiff
+	# tool = vimdiff
+	tool = icdiff
+
+[merge]
+	tool = meld
 
 [alias]
+	#############
+	added = difftool --cached
     #############
     b = branch
     ba = branch -a
@@ -139,6 +146,7 @@
     svnr = svn rebase
     svnd = svn dcommit
     svnl = svn log --oneline --show-commit
+	showtool = "!f() { git difftool $1^ $1;  }; f"
     #############
     assume = update-index --assume-unchanged
     unassume = update-index --no-assume-unchanged
@@ -161,12 +169,25 @@
     snapshot = !git stash save "snapshot: $(date)" && git stash apply "stash@{0}"
 [push]
 	default = simple
+
+[difftool]
+	prompt = false
+
+[difftool "icdiff"]
+	cmd = /usr/local/bin/icdiff --highlight --line-numbers $LOCAL $REMOTE
+	path=
+
 [difftool "sourcetree"]
 	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
 	path =
 [mergetool "sourcetree"]
 	cmd = /Applications/Sourcetree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
 	trustExitCode = true
+
+[mergetool "meld"]
+	cmd =  /Applications/Meld.app/Contents/Resources/meld \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
+	trustExitCode = true
+
 [commit]
 	template = /Users/fan/.stCommitMsg
 [filter "lfs"]
@@ -174,3 +195,6 @@
 	smudge = git-lfs smudge -- %f
 	process = git-lfs filter-process
 	required = true
+
+[pager]
+	difftool = true

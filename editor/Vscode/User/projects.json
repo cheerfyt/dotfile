@@ -27,6 +27,12 @@
     "group": "Nodejs"
   },
   {
+    "name": "sphinx-web-service",
+    "rootPath": "/Users/Cheerfyt/Art/BeliefChain/Nodejs/sphinx-web-service",
+    "paths": [""],
+    "group": "Nodejs"
+  },
+  {
     "name": "ega",
     "rootPath": "/Users/Cheerfyt/Art/OpenSource/Solidity/ega",
     "paths": [""],
