@@ -1,16 +1,10 @@
 {
-  "window.title": "${dirty}${activeEditorShort}${separator}${rootName}",
-  "git.path": "/usr/bin/git",
-  // "vim.disableAnnoyingNeovimMessage": true,
-  // "editor.fontFamily": "D2Coding for Powerline",
-  // "editor.fontFamily": "Input Mono",
-  // "editor.fontFamily": "Anonymous Pro for Powerline",
-  // "editor.fontFamily": "Fira Code",
+  "window.title": "${dirty}${separator}",
   // "editor.fontFamily": "Operator Mono",
-  "editor.fontFamily": "Inconsolata for Powerline",
+  "editor.fontFamily": "Fira Code",
   "editor.fontWeight": "400",
-  "editor.fontSize": 15,
-  "terminal.integrated.fontFamily": "Fira Code",
+  "editor.fontSize": 13,
+  "terminal.integrated.fontFamily": "Operator Mono",
   "terminal.integrated.fontSize": 14,
   "typescript.check.npmIsInstalled": false,
   "editor.rulers": [
@@ -200,7 +194,6 @@
     "typescriptreact",
     "yml"
   ],
-  "workbench.panel.location": "bottom",
   "workbench.iconTheme": "vscode-great-icons",
   "workbench.colorTheme": "Atom One Dark",
   "explorer.confirmDelete": false,
@@ -210,6 +203,19 @@
   "python.disablePromptForFeatures": [
     "pylint"
   ],
-  "vsicons.dontShowNewVersionMessage": true,
-  "git.ignoreMissingGitWarning": true
+  "git.ignoreMissingGitWarning": true,
+  "vim.easymotion": true,
+  "vim.cmdLineInitialColon": true,
+  "vim.hlsearch": true,
+  "vim.showcmd": true,
+  "vim.ignorecase": true,
+  "vim.leader": " ",
+  "vim.autoindent": true,
+  "vim.overrideCopy": true,
+  "vim.searchHighlightColor": "rgba(150, 150, 255, 0.5)",
+  "vim.statusBarColorControl": true,
+  "vim.surround": true,
+  "vim.scroll": 10,
+  "vim.useSystemClipboard": true,
+  "vim.visualstar": true
 }
