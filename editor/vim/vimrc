@@ -13,8 +13,8 @@ if has("syntax")
     syntax on
 endif
 let g:mapleader=" "
-
-" let g:enable_bold_font=0
+set nocp
+let g:enable_bold_font=1
 " =============================================================================
 if empty(glob('~/.vim/autoload/plug.vim'))
   silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
@@ -76,11 +76,23 @@ Plug 'othree/es.next.syntax.vim', {'for': 'javascript'}
 Plug 'othree/javascript-libraries-syntax.vim', {'for': ['javascript', 'typescript']}
 Plug 'Chiel92/vim-autoformat'
 call plug#end()
+
+" ================================= reset vimrc group =========================
+augroup vimrc
+	autocmd!
+augroup end
+" =============================================================================
 " =============================================================================
 "                                   Base setting
 " =============================================================================
 " Down is really the next line
 " set autochdir
+" set bs=2            " make backspace behave like normal again
+set listchars=tab:▸\ ,eol:¬
+set bs=indent,eol,start
+set ruler
+set copyindent
+set title
 set magic
 set t_Co=256
 set novisualbell
@@ -99,7 +111,6 @@ set hlsearch
 set autowrite       " Automatically save before commands like :next  and :make
 set hidden          " Hide buffers when they are abandoned
 set mouse+=a        " Enable mouse usage (all modes)
-set bs=2            " make backspace behave like normal again
 set noswapfile                     " No swap file
 set nobackup                       " No backup
 set autoread
@@ -124,6 +135,7 @@ set background=dark
 colorscheme atom-dark-256
 set conceallevel=0
 set fileformat=unix
+set fileformats=unix,dos,mac
 colorscheme molokai
 set ts=4
 set sts=4
@@ -156,6 +168,8 @@ au FileType go nnoremap <leader>c <Plug>(go-coverage)
 au FileType go nnoremap <leader>gd <Plug>(go-def)
 
 nnoremap <silent> <Leader>bd :Bclose<CR>
+nnoremap <silent> <Leader>e :NERDTreeToggle<CR>
+nnoremap <silent> <Leader>n :bn<CR>
 " =============================================================================
 "                                   Web Group
 " =============================================================================
@@ -171,6 +185,9 @@ augroup END
 " =============================================================================
 "                                   FileType
 " =============================================================================
+
+
+
 " =============================================================================
 "                                   HighLight
 " =============================================================================
@@ -205,8 +222,8 @@ let g:user_emmet_leader_key                             = '<C-l>'
 let g:user_emmet_mode                                   = 'a'
 let g:emmet_indent_size                                 = 2
 let g:emmet_html5                                       = 1
-let g:deoplete#enable_at_startup = 1
 
+" snippet
 let g:UltiSnipsExpandTrigger="<C-q>"
 let g:UltiSnipsJumpForwardTrigger="<C-j>"
 let g:UltiSnipsJumpBackwardTrigger="<C-k>"
@@ -242,7 +259,8 @@ let g:airline_right_alt_sep      = ''
 let g:airline_symbols.crypt      = ''
 let g:airline_symbols.linenr     = ''
 let g:airline_symbols.maxlinenr  = '☰ '
-let g:airline_symbols.branch     = ''
+" let g:airline_symbols.branch     = ''
+let g:airline_symbols.branch     = '∑'
 let g:airline_symbols.paste      = '∥'
 let g:airline_symbols.spell      = 'Ꞩ'
 let g:airline_symbols.notexists  = '∄'
