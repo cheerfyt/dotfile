@@ -1,0 +1,36 @@
+{
+	"JS & TS Stub BeliefChain": {
+		"scope": "javascript",
+		"prefix": "bih",
+		"body": [
+			"/**",
+			" *--------------------------------------------------------------",
+			" *  CopyRight (c) 2018 BeliefChainOrg <rd@beliefchain.com>.",
+			" *  All rights reserved.",
+			" *  Licensed under the MIT License.                            ",
+			" *  created_by: YT",
+			" *  created_at: ${CURRENT_YEAR}/${CURRENT_MONTH}/${CURRENT_DATE}",
+			" *--------------------------------------------------------------",
+			" */",
+			"$0"
+		],
+		"description": "Insert BeliefChain.com Copyright Statement"
+	},
+	"JS & TS Stub Cheerfyt": {
+		"scope": "javascript",
+		"prefix": "cih",
+		"body": [
+			"/**",
+			" *--------------------------------------------------------------",
+			" *  CopyRight (c) 2018 YT <cheerfyt@gmail.com>.",
+			" *  All rights reserved.",
+			" *  Licensed under the MIT License.                            ",
+			" *  created_by: YT",
+			" *  created_at: ${CURRENT_YEAR}/${CURRENT_MONTH}/${CURRENT_DATE}",
+			" *--------------------------------------------------------------",
+			" */",
+			"$0"
+		],
+		"description": "Insert Cheerfyt Copyright Statement"
+	}
+}

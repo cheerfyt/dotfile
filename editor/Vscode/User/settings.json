@@ -17,6 +17,7 @@
   "editor.renderWhitespace": "boundary",
   "editor.renderIndentGuides": false,
   "editor.tabSize": 4,
+  "editor.cursorWidth": 8,
   "workbench.editor.showTabs": true,
   "emmet.excludeLanguages": [
     "markdown",
@@ -106,6 +107,7 @@
     "getauthcode",
     "gitignore",
     "gitmodules",
+    "gmail",
     "golang",
     "gopath",
     "gopkg",
@@ -231,7 +233,6 @@
   "workbench.colorTheme": "One Monokai",
   "explorer.confirmDelete": false,
   "editor.formatOnSave": true,
-  "guides.enabled": false,
   "todohighlight.isEnable": true,
   "python.disablePromptForFeatures": [
     "pylint"
@@ -252,5 +253,6 @@
   "vim.visualstar": true,
   "git.ignoreMissingGitWarning": true,
   "git.autofetch": true,
-  "workbench.iconTheme": "material-icon-theme"
+  "workbench.iconTheme": "material-icon-theme",
+  "problems.decorations.enabled": true
 }
