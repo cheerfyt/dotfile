@@ -1,8 +1,8 @@
 {
   "window.title": "${dirty}${separator}",
-  // "editor.fontFamily": "Operator Mono",
+  "editor.fontFamily": "Operator Mono",
   // "editor.fontFamily": "Monaco",
-  "editor.fontFamily": "Fira Code",
+  // "editor.fontFamily": "Fira Code",
   // "editor.fontFamily": "D2Coding for powerline",
   "editor.fontWeight": "400",
   "editor.fontSize": 13.5,
@@ -17,7 +17,8 @@
   "editor.renderWhitespace": "boundary",
   "editor.renderIndentGuides": false,
   "editor.tabSize": 4,
-  "editor.cursorWidth": 8,
+  "editor.cursorWidth": 2,
+  "editor.cursorBlinking": "smooth",
   "workbench.editor.showTabs": true,
   "emmet.excludeLanguages": [
     "markdown",
@@ -97,6 +98,7 @@
     "editorconfig",
     "errf",
     "ethclient",
+    "ethereumjs",
     "expressage",
     "fastify",
     "fenglin",
@@ -193,6 +195,7 @@
     "traefik",
     "txdata",
     "uint",
+    "unmount",
     "unrunnable",
     "updatedby",
     "urfave",
@@ -230,7 +233,7 @@
     "typescriptreact",
     "yml"
   ],
-  "workbench.colorTheme": "One Monokai",
+  "workbench.colorTheme": "Super One Dark",
   "explorer.confirmDelete": false,
   "editor.formatOnSave": true,
   "todohighlight.isEnable": true,
@@ -254,5 +257,10 @@
   "git.ignoreMissingGitWarning": true,
   "git.autofetch": true,
   "workbench.iconTheme": "material-icon-theme",
-  "problems.decorations.enabled": true
+  "problems.decorations.enabled": true,
+  "vsicons.dontShowNewVersionMessage": true,
+  // prettier settings
+  "prettier.semi": false,
+  "prettier.printWidth": 80,
+  "prettier.singleQuote": true
 }
