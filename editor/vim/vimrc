@@ -88,7 +88,6 @@ augroup end
 " Down is really the next line
 " set autochdir
 " set bs=2            " make backspace behave like normal again
-set listchars=tab:▸\ ,eol:¬
 set bs=indent,eol,start
 set ruler
 set copyindent
@@ -122,7 +121,6 @@ set wildmode=list:longest
 set wildmenu                "enable ctrl-n and ctrl-p to scroll thru matches
 set fo+=tw   "auto wrap require formatoptions+=t"
 set wrap linebreak
-set showbreak=↩\
 set textwidth=79  " width of document (used by gd)
 set colorcolumn=100
 set cindent
