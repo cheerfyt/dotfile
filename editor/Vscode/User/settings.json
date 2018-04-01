@@ -1,0 +1,19 @@
+{
+    "editor.fontFamily": "Fira Code",
+    "editor.fontSize": 13,
+    "editor.fontWeight": "400",
+    "terminal.integrated.fontFamily": "Fira Code",
+    "terminal.integrated.fontSize": 13,
+    "terminal.integrated.fontWeight": "300",
+    "guides.enabled": false,
+    "workbench.iconTheme": "material-icon-theme",
+    "vsicons.dontShowNewVersionMessage": true,
+    "cSpell.userWords": [
+        "struct",
+        "tcomb"
+    ],
+    "prettier.printWidth": 80,
+    "prettier.semi": false,
+    "prettier.singleQuote": true,
+    "editor.formatOnSave": true
+}
