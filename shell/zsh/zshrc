@@ -59,17 +59,17 @@ ZSH_THEME="apple"
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(
-  git
-  go
-  gas
-  wd
-  github
-  hub
-  python
-  npm
-  yarn
-  docker
-  docker-compose
+	git
+	go
+	gas
+	wd
+	github
+	hub
+	python
+	npm
+	yarn
+	docker
+	docker-compose
 )
 
 source $ZSH/oh-my-zsh.sh
@@ -107,27 +107,28 @@ export PATH="$HOME"/go/bin:$PATH
 export PATH="/usr/local/opt/node@8/bin:$PATH"
 alias update='. $HOME/.zshrc'
 
-##################################################################################################
-#################################  prepare programing env ########################################
-##################################################################################################
+################################################################################
+#################################  prepare programing env ######################
+################################################################################
 
 function prepare() {
 	echo '@1. prepeard editorconfig config'
-	curl -sL https://raw.githubusercontent.com/cheerfyt/dotfile/master/editor/editorconfig > .editorconfig
+	curl -sL https://raw.githubusercontent.com/cheerfyt/dotfile/master/editor/editorconfig >.editorconfig
 
 	echo '@2. prepeard folder'
 	result=${PWD##*/}
 	echo "### $result" | tee README.md
 }
 
-
 function _go() {
 	folder=${PWD##*/}
-	mkdir -p cmd/${folder} resource deploy document scripts
+	mkdir -p cmd/${folder}
+	mkdir -p {resource,deploy,docuemnt,scripts}
 
-	date=`date "+%Y-%m-%d %H:%M:%S"`
+	date=$(date "+%Y-%m-%d %H:%M:%S")
 
-	cat > cmd/${folder}/${folder}.go << __EOF__
+	# Generate the main.go
+	cat >cmd/${folder}/${folder}.go <<__EOF__
 // $(whoami) @ ${date} create this file
 
 package main
@@ -144,8 +145,9 @@ __EOF__
 
 	glide init --non-interactive
 
-	cat > Makefile << __EOF__
+	cat >Makefile <<__EOF__
 ##### ${folder}
+
 all:run
 
 run:
@@ -153,35 +155,52 @@ run:
 
 build:
 	@go build -o bin/${folder} cmd/${folder}/${folder}.go
+
+setup:
+	@glide install
+
+update:
+	@glide update
+
+build-image:
+	@docker build -t yourrepo/${folder}:version . #wating you complete
+
+__EOF__
+
+	# Generate the Dockerfile
+	cat >Dockerfile <<__EOF__
+FROM golang:alpine AS builder
+ADD . /src
+RUN cd /src && go build -o bin/Alpaca cmd/${folder}/${folder}.go
+
+FROM alpine:latest
+
+WORKDIR /app
+COPY --from=builder /src/bin/${folder} /app/
+ENTRYPOINT [ "/app/${folder}" ]
 __EOF__
 }
 
 function _node() {
 	npm init --yes
-	echo 'module.exports = {}' > index.js
+	echo 'module.exports = {}' >index.js
 }
 
 function ready() {
 	echo "prepare $1 env !!!"
-
 	case $1 in
-		Golang);&
-		golang);&
-		go)_go;;
+	go) _go ;;
 
-		Node);&
-		node);&
-		ne) _node;;
+	Node) ;&
+	node) _node ;;
 
-		*) echo "nothing";
+	*) echo "Not support yet" ;;
 	esac
 
-	content=`curl -sL https://www.gitignore.io/api/$1`
-	err=`echo $content | grep ERROR`
+	content=$(curl -sL https://www.gitignore.io/api/$1)
+	err=$(echo $content | grep ERROR)
 	[[ -z $err ]] && echo "Got ignore content"
 	echo $content | tee .gitignore
-
-	echo "ready $1 env"
-
 	prepare
+	echo "ready $1 env"
 }
