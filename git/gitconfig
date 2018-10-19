@@ -23,7 +23,6 @@
     untracked = red bold
 
 [diff]
-	# tool = vimdiff
 	tool = icdiff
 
 [merge]

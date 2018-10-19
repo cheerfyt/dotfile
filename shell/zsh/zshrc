@@ -70,6 +70,7 @@ plugins=(
 	yarn
 	docker
 	docker-compose
+  zsh-autosuggestions
 )
 
 source $ZSH/oh-my-zsh.sh
@@ -106,6 +107,9 @@ eval "$(direnv hook zsh)"
 export PATH="$HOME"/go/bin:$PATH
 export PATH="/usr/local/opt/node@8/bin:$PATH"
 alias update='. $HOME/.zshrc'
+alias http='httpstat'
+alias tm='tmux -2'
+## alias vim='nvim'
 
 ################################################################################
 #################################  prepare programing env ######################
@@ -123,7 +127,7 @@ function prepare() {
 function _go() {
 	folder=${PWD##*/}
 	mkdir -p cmd/${folder}
-	mkdir -p {resource,deploy,docuemnt,scripts}
+	mkdir -p {assets,documents,scripts,pkg,configs,web,build}
 
 	date=$(date "+%Y-%m-%d %H:%M:%S")
 
@@ -143,12 +147,12 @@ func main() {
 
 __EOF__
 
-	glide init --non-interactive
+	dep init
 
 	cat >Makefile <<__EOF__
 ##### ${folder}
 
-all:run
+all: run
 
 run:
 	@go run cmd/${folder}/${folder}.go
@@ -157,10 +161,7 @@ build:
 	@go build -o bin/${folder} cmd/${folder}/${folder}.go
 
 setup:
-	@glide install
-
-update:
-	@glide update
+	@dep ensure
 
 build-image:
 	@docker build -t yourrepo/${folder}:version . #wating you complete
@@ -171,7 +172,7 @@ __EOF__
 	cat >Dockerfile <<__EOF__
 FROM golang:alpine AS builder
 ADD . /src
-RUN cd /src && go build -o bin/Alpaca cmd/${folder}/${folder}.go
+RUN cd /src && go build -o bin/${folder} cmd/${folder}/${folder}.go
 
 FROM alpine:latest
 
@@ -204,3 +205,10 @@ function ready() {
 	prepare
 	echo "ready $1 env"
 }
+
+alias swagger="docker run --rm -it -e GOPATH=$HOME/go:/go -v $HOME:$HOME -w $(pwd) quay.io/goswagger/swagger"
+alias gc="git clone"
+alias gp="git push"
+alias gu="git pull"
+alias gl="git lg"
+alias gs="git status"
