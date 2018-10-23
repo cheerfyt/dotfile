@@ -3,7 +3,3 @@ Host vpn
     user      root
     port      22
 
-Host ecar
-    HostName  182.254.240.238
-    user      root
-    port      22
