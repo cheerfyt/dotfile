@@ -213,3 +213,8 @@ alias gp="git push"
 alias gu="git pull"
 alias gl="git lg"
 alias gs="git status"
+alias spctl='supervisorctl -c /usr/local/etc/supervisord.ini'
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
