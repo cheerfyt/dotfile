@@ -71,7 +71,7 @@ plugins=(
 	yarn
 	docker
 	docker-compose
-  zsh-autosuggestions
+        zsh-autosuggestions
 )
 
 source $ZSH/oh-my-zsh.sh
@@ -104,13 +104,12 @@ source $ZSH/oh-my-zsh.sh
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
+
 eval "$(direnv hook zsh)"
 export PATH="$HOME"/go/bin:$PATH
-export PATH="/usr/local/opt/node@8/bin:$PATH"
 alias update='. $HOME/.zshrc'
 alias http='httpstat'
 alias tm='tmux -2'
-## alias vim='nvim'
 
 ################################################################################
 #################################  prepare programing env ######################

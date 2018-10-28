@@ -1,4 +1,13 @@
-set nocp
-set nu
-set showmode
+" fzf setting {
+set rtp+=/usr/local/opt/fzf
+" }
+"
+
+autocmd! BufWritePost $HOME/.myvim/*.vim source $HOME/.vimrc
+
+try
+  source ~/.myvim/basic.vim
+  source ~/.myvim/plugin.vim
+  source ~/.myvim/mapping.vim
+endtry
 
