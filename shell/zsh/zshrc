@@ -217,3 +217,7 @@ alias spctl='supervisorctl -c /usr/local/etc/supervisord.ini'
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+export HOMEBREW_GITHUB_API_TOKEN="2a3548a2f46a59bce86b6c5a841fc94852a9c3df"

@@ -14,7 +14,7 @@ call plug#begin('~/.vim/plugged')
     " }
 
     " search plugins {
-        Plug 'junegunn/fzf'
+        Plug 'junegunn/fzf', {'dir': '~/.fzf', 'do': './install --all'}
         Plug 'junegunn/fzf.vim'
     " }
 
@@ -98,8 +98,8 @@ autocmd FileType html,css,javascript,tsx,jsx EmmetInstall
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#left_sep = '⇰'
 let g:airline#extensions#tabline#left_alt_sep = '‖'
-
 let g:airline_powerline_fonts=1
+let g:airline_theme = 'violet'
 if !exists('g:airline_symbols')
 	let g:airline_symbols = {}
 endif
@@ -133,3 +133,5 @@ let g:ale_fixers = {
 let g:ale_fix_on_save = 1
 let g:ale_sign_error = 'E'
 let g:ale_sign_warning = 'W'
+highlight clear ALEErrorSign
+highlight clear ALEWarningSign
