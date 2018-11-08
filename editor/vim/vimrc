@@ -1,11 +1,13 @@
-set runtimepath+=~/.vim_runtime
+" fzf setting {
+set rtp+=/usr/local/opt/fzf
+" }
+"
 
-source ~/.vim_runtime/vimrcs/basic.vim
-source ~/.vim_runtime/vimrcs/filetypes.vim
-source ~/.vim_runtime/vimrcs/plugins_config.vim
-source ~/.vim_runtime/vimrcs/extended.vim
+autocmd! BufWritePost $HOME/.myvim/*.vim source $HOME/.vimrc
 
 try
-source ~/.vim_runtime/my_configs.vim
-catch
+  source ~/.myvim/basic.vim
+  source ~/.myvim/plugin.vim
+  source ~/.myvim/mapping.vim
 endtry
+

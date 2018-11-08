@@ -9,6 +9,7 @@ export ZSH="/Users/Cheerfyt/.oh-my-zsh"
 # See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
 # ZSH_THEME="apple"
 ZSH_THEME="lambda"
+# ZSH_THEME="dracula"
 
 # Set list of themes to load
 # Setting this variable when ZSH_THEME=random
@@ -71,7 +72,7 @@ plugins=(
 	yarn
 	docker
 	docker-compose
-  zsh-autosuggestions
+        zsh-autosuggestions
 )
 
 source $ZSH/oh-my-zsh.sh
@@ -104,13 +105,12 @@ source $ZSH/oh-my-zsh.sh
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
+
 eval "$(direnv hook zsh)"
 export PATH="$HOME"/go/bin:$PATH
-export PATH="/usr/local/opt/node@8/bin:$PATH"
 alias update='. $HOME/.zshrc'
 alias http='httpstat'
 alias tm='tmux -2'
-## alias vim='nvim'
 
 ################################################################################
 #################################  prepare programing env ######################
@@ -213,3 +213,12 @@ alias gp="git push"
 alias gu="git pull"
 alias gl="git lg"
 alias gs="git status"
+alias spctl='supervisorctl -c /usr/local/etc/supervisord.ini'
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+export HOMEBREW_GITHUB_API_TOKEN="2a3548a2f46a59bce86b6c5a841fc94852a9c3df"
