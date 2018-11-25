@@ -25,5 +25,6 @@
   "git.ignoreMissingGitWarning": true,
   "editor.fontSize": 13.5,
   "editor.renderWhitespace": "boundary",
-  "workbench.colorTheme": "Kay Dark"
+  "workbench.colorTheme": "Kay Dark",
+  "sync.gist": "d576a4ee01ea42482c6b5c7cd5f80852"
 }
