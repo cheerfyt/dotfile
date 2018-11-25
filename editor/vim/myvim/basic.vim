@@ -1,11 +1,11 @@
-" vim: foldmarker={,} foldlevel=0 foldmethod=marker
+" vim: foldmarker={,} foldlevel=2 foldmethod=marker
 
 
 set fileencoding=utf-8
 set nocompatible
 syntax on
 
-let mapleader = " "
+let mapleader = ","
 
 " Configure backspace so it acts as it should act
 " all settings {
@@ -22,7 +22,7 @@ set mousehide
 set clipboard=unnamed
 set pastetoggle=<F12>
 set showcmd
-set ruler 
+set ruler
 set rulerformat=%30(%=\:b%n%y%m%r%w\ %l,%c%V\ %P%)
 set history=500
 set nobackup
@@ -37,7 +37,7 @@ set showmatch
 set ignorecase
 set smartcase
 set hlsearch
-set incsearch 
+set incsearch
 set ts=4 sw=4
 set smarttab
 set autoread
@@ -64,3 +64,7 @@ filetype plugin indent on
 
 " :W sudo saves the file
 command! W w !sudo tee % > /dev/null
+
+if has("gui_running")
+	set guifont=Menlo\ Bold:h13
+endif

@@ -67,12 +67,13 @@ plugins=(
 	wd
 	github
 	hub
-	python
-	npm
-	yarn
 	docker
 	docker-compose
-        zsh-autosuggestions
+	zsh-autosuggestions
+	# python
+	# npm
+	# yarn
+	# zsh-syntax-highlighting
 )
 
 source $ZSH/oh-my-zsh.sh
@@ -108,9 +109,12 @@ source $ZSH/oh-my-zsh.sh
 
 eval "$(direnv hook zsh)"
 export PATH="$HOME"/go/bin:$PATH
+export NVM_DIR="$HOME/.nvm"
+
 alias update='. $HOME/.zshrc'
-alias http='httpstat'
 alias tm='tmux -2'
+alias loadnvm='[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"'
+alias td='ts-node'
 
 ################################################################################
 #################################  prepare programing env ######################
@@ -128,7 +132,7 @@ function prepare() {
 function _go() {
 	folder=${PWD##*/}
 	mkdir -p cmd/${folder}
-	mkdir -p {assets,documents,scripts,pkg,configs,web,build}
+	mkdir -p {assets,documents,scripts,pkg,configs}
 
 	date=$(date "+%Y-%m-%d %H:%M:%S")
 
@@ -207,20 +211,33 @@ function ready() {
 	echo "ready $1 env"
 }
 
+# alias setting
+alias clone='hub clone'
 alias swagger="docker run --rm -it -e GOPATH=$HOME/go:/go -v $HOME:$HOME -w $(pwd) quay.io/goswagger/swagger"
 alias gc="git clone"
 alias gp="git push"
 alias gu="git pull"
 alias gl="git lg"
 alias gs="git status"
+alias dc='docker-compose'
+alias spd='supervisord -c /usr/local/etc/supervisord.ini'
+alias spc='supervisorctl -c /usr/local/etc/supervisord.ini'
 
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+# [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+# [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 export HOMEBREW_GITHUB_API_TOKEN="2a3548a2f46a59bce86b6c5a841fc94852a9c3df"
 
-alias spd='supervisord -c /usr/local/etc/supervisord.ini'
-alias spc='supervisorctl -c /usr/local/etc/supervisord.ini'
+
+
+# transfer.sh upload file to transfer.sh
+transfer() {
+    curl --progress-bar --upload-file "$1" https://transfer.sh/$(basename $1) | tee /dev/null;
+}
+
+#alias transfer=transfer
+#
+#. $HOME/.asdf/asdf.sh
+#. $HOME/.asdf/completions/asdf.bash
