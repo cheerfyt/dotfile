@@ -211,13 +211,17 @@ function ready() {
 	echo "ready $1 env"
 }
 
+# alias setting
+alias clone='hub clone'
 alias swagger="docker run --rm -it -e GOPATH=$HOME/go:/go -v $HOME:$HOME -w $(pwd) quay.io/goswagger/swagger"
 alias gc="git clone"
 alias gp="git push"
 alias gu="git pull"
 alias gl="git lg"
 alias gs="git status"
-alias spctl='supervisorctl -c /usr/local/etc/supervisord.ini'
+alias dc='docker-compose'
+alias spd='supervisord -c /usr/local/etc/supervisord.ini'
+alias spc='supervisorctl -c /usr/local/etc/supervisord.ini'
 
 # [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 # [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
@@ -225,8 +229,7 @@ alias spctl='supervisorctl -c /usr/local/etc/supervisord.ini'
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 export HOMEBREW_GITHUB_API_TOKEN="2a3548a2f46a59bce86b6c5a841fc94852a9c3df"
-# alias redis-cli='docker exec -it redis redis-cli'
-alias clone='hub clone'
+
 
 
 # transfer.sh upload file to transfer.sh
@@ -238,5 +241,3 @@ transfer() {
 #
 #. $HOME/.asdf/asdf.sh
 #. $HOME/.asdf/completions/asdf.bash
-#
-alias dc='docker-compose'
