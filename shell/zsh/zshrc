@@ -213,7 +213,6 @@ alias gp="git push"
 alias gu="git pull"
 alias gl="git lg"
 alias gs="git status"
-alias spctl='supervisorctl -c /usr/local/etc/supervisord.ini'
 
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
@@ -222,3 +221,6 @@ export NVM_DIR="$HOME/.nvm"
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 export HOMEBREW_GITHUB_API_TOKEN="2a3548a2f46a59bce86b6c5a841fc94852a9c3df"
+
+alias spd='supervisord -c /usr/local/etc/supervisord.ini'
+alias spc='supervisorctl -c /usr/local/etc/supervisord.ini'

@@ -1,7 +1,7 @@
 {
   "editor.fontFamily": "Fira Code,Consolas",
   "editor.fontWeight": "500",
-  "editor.lineHeight": 17,
+  "editor.lineHeight": 20,
   "terminal.integrated.fontFamily": "IBM Plex Mono",
   "terminal.integrated.fontSize": 13,
   "terminal.integrated.fontWeight": "500",
@@ -22,5 +22,8 @@
   "workbench.iconTheme": "material-icon-theme",
   "vsicons.dontShowNewVersionMessage": true,
   "editor.renderControlCharacters": true,
-  "git.ignoreMissingGitWarning": true
+  "git.ignoreMissingGitWarning": true,
+  "editor.fontSize": 13.5,
+  "editor.renderWhitespace": "boundary",
+  "workbench.colorTheme": "Kay Dark"
 }
