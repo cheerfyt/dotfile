@@ -70,10 +70,7 @@ plugins=(
 	docker
 	docker-compose
 	zsh-autosuggestions
-	# python
-	# npm
-	# yarn
-	# zsh-syntax-highlighting
+	git-extras
 )
 
 source $ZSH/oh-my-zsh.sh
@@ -115,6 +112,7 @@ alias update='. $HOME/.zshrc'
 alias tm='tmux -2'
 alias loadnvm='[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"'
 alias td='ts-node'
+alias cat='ccat'
 
 ################################################################################
 #################################  prepare programing env ######################
@@ -228,7 +226,7 @@ alias spc='supervisorctl -c /usr/local/etc/supervisord.ini'
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
-export HOMEBREW_GITHUB_API_TOKEN="2a3548a2f46a59bce86b6c5a841fc94852a9c3df"
+export HOMEBREW_GITHUB_API_TOKEN="02697d01da80ec29aa2edc3218b43d620961ddda"
 
 
 
