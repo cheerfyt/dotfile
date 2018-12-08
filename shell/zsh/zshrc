@@ -113,6 +113,7 @@ alias tm='tmux -2'
 alias loadnvm='[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"'
 alias td='ts-node'
 alias cat='ccat'
+alias ax='axel -n 10'
 
 ################################################################################
 #################################  prepare programing env ######################
@@ -191,7 +192,7 @@ function _node() {
 }
 
 function ready() {
-	echo "prepare $1 env !!!"
+	echo "prepare $1 env ..."
 	case $1 in
 	go) _go ;;
 
@@ -221,21 +222,27 @@ alias dc='docker-compose'
 alias spd='supervisord -c /usr/local/etc/supervisord.ini'
 alias spc='supervisorctl -c /usr/local/etc/supervisord.ini'
 
-# [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-# [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
-
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-
-export HOMEBREW_GITHUB_API_TOKEN="02697d01da80ec29aa2edc3218b43d620961ddda"
-
-
+[ -f ~/.profile ] && source ~/.profile
 
 # transfer.sh upload file to transfer.sh
 transfer() {
     curl --progress-bar --upload-file "$1" https://transfer.sh/$(basename $1) | tee /dev/null;
 }
 
-#alias transfer=transfer
-#
-#. $HOME/.asdf/asdf.sh
-#. $HOME/.asdf/completions/asdf.bash
+down() {
+	axel -n 10 http://202.182.110.213:2015/$1
+}
+
+export PATH=$HOME/flutter/bin:$PATH
+
+# virtualenv
+export WORKON_HOME=$HOME/.virtualenvs
+export PROJECT_HOME=$HOME/Python
+export VIRTUALENVWRAPPER_SCRIPT=/usr/local/bin/virtualenvwrapper.sh
+source /usr/local/bin/virtualenvwrapper_lazy.sh
+
+# export ANDROID_HOME="$HOME/AndroidSDK"
+# export PUB_HOSTED_URL=https://pub.flutter-io.cn               # 国内用户需要设置
+# export FLUTTER_STORAGE_BASE_URL=https://storage.flutter-io.cn # 国内用户需要设置
+# export PATH=$HOME/flutter/bin:$PATH
