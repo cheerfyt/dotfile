@@ -9,6 +9,7 @@ export ZSH="/Users/Cheerfyt/.oh-my-zsh"
 # See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
 # ZSH_THEME="apple"
 ZSH_THEME="lambda"
+# ZSH_THEME="spaceship"
 # ZSH_THEME="dracula"
 
 # Set list of themes to load
@@ -221,6 +222,9 @@ alias gs="git status"
 alias dc='docker-compose'
 alias spd='supervisord -c /usr/local/etc/supervisord.ini'
 alias spc='supervisorctl -c /usr/local/etc/supervisord.ini'
+alias ni='npm i'
+alias nip='npm i --production'
+alias h='tldr'
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 [ -f ~/.profile ] && source ~/.profile

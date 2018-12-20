@@ -3,7 +3,7 @@
 	email = tate_fan@163.com
 [core]
   editor = vim
-	excludesfile = /Users/Cheerfyt/.gitignore_global
+	excludesfile = /Users/cheerfyt/.gitignore_global
 
 [color]
     ui = auto
