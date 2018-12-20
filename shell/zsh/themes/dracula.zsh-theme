@@ -9,7 +9,7 @@
 #
 # @author Zeno Rocha <hi@zenorocha.com>
 
-local ret_status="%(?:%{$fg_bold[green]%}➜ :%{$fg_bold[red]%}➜ )"
+local ret_status="%(?:%{$fg_bold[green]%} ❖ :%{$fg_bold[red]%}➜ )"
 
 PROMPT='${ret_status}%{$fg_bold[green]%}%p %{$fg_bold[blue]%}%c $(git_prompt_info)% %{$reset_color%}'
 
