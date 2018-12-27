@@ -250,3 +250,4 @@ source /usr/local/bin/virtualenvwrapper_lazy.sh
 # export PUB_HOSTED_URL=https://pub.flutter-io.cn               # 国内用户需要设置
 # export FLUTTER_STORAGE_BASE_URL=https://storage.flutter-io.cn # 国内用户需要设置
 # export PATH=$HOME/flutter/bin:$PATH
+export PATH=/usr/local/openresty/bin:/usr/local/openresty/nginx/sbin:$PATH
