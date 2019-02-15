@@ -246,3 +246,32 @@ source /usr/local/bin/virtualenvwrapper_lazy.sh
 # export PUB_HOSTED_URL=https://pub.flutter-io.cn               # 国内用户需要设置
 # export FLUTTER_STORAGE_BASE_URL=https://storage.flutter-io.cn # 国内用户需要设置
 # export PATH=$HOME/flutter/bin:$PATH
+
+# conda
+# function parse_git_branch {
+#    git branch --no-color 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/(\1)/'
+# }
+#
+# export PS1="\\W 🍔  \$ \$(parse_git_branch)"
+#
+# if [ -f ~/.bashrc ];then
+# 	source $HOME/.bashrc
+# fi
+# # added by Miniconda2 4.5.12 installer
+# # >>> conda init >>>
+# # !! Contents within this block are managed by 'conda init' !!
+# __conda_setup="$(CONDA_REPORT_ERRORS=false '/Users/cheerfyt/miniconda2/bin/conda' shell.bash hook 2> /dev/null)"
+# if [ $? -eq 0 ]; then
+#     \eval "$__conda_setup"
+# else
+#     if [ -f "/Users/cheerfyt/miniconda2/etc/profile.d/conda.sh" ]; then
+#         . "/Users/cheerfyt/miniconda2/etc/profile.d/conda.sh"
+#         CONDA_CHANGEPS1=false conda activate base
+#     else
+#         \export PATH="/Users/cheerfyt/miniconda2/bin:$PATH"
+#     fi
+# fi
+# unset __conda_setup
+# # <<< conda init <<<
+
+
