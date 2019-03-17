@@ -42,6 +42,7 @@ set ts=4 sw=4
 set smarttab
 set autoread
 set redraw
+set encoding=utf-8
 " }
 
 set colorcolumn=80
