@@ -113,7 +113,6 @@ eval "$(direnv hook bash)"
 export PATH="$HOME"/go/bin:$PATH
 alias update='. $HOME/.zshrc'
 alias tm='tmux -2'
-alias td='ts-node'
 alias cat='ccat'
 alias ax='axel -n 10'
 
@@ -126,8 +125,9 @@ export NVM_DIR="$HOME/.nvm"
 ################################################################################
 
 function prepare() {
-	echo '@1. prepeard editorconfig config'
+	echo '@1. prepeard editorconfig and prettierr config'
 	curl -sL https://raw.githubusercontent.com/cheerfyt/dotfile/master/editor/editorconfig >.editorconfig
+	curl -sL https://raw.githubusercontent.com/cheerfyt/dotfile/master/editor/prettierrc >.prettierrc
 
 	echo '@2. prepeard folder'
 	result=${PWD##*/}
@@ -142,8 +142,7 @@ function _go() {
 	date=$(date "+%Y-%m-%d %H:%M:%S")
 
 	# Generate the main.go
-	cat >cmd/${folder}/${folder}.go <<__EOF__
-// $(whoami) @ ${date} create this file
+	cat >cmd/${folder}/main.go <<__EOF__
 
 package main
 
@@ -152,7 +151,7 @@ import (
 )
 
 func main() {
-	fmt.Println("hello, ${folder}")
+  fmt.Println("hello, ${folder}")
 }
 
 __EOF__
@@ -161,20 +160,24 @@ __EOF__
 
 	cat >Makefile <<__EOF__
 ##### ${folder}
+BUILD_DATE := $(date "+%Y-%m-%d %H:%M:%S")
+VERSION := $(shell cat verion)
+HASH := $(shell git rev-parse --short HEAD)
 
 all: run
 
 run:
-	@go run cmd/${folder}/${folder}.go
+	@go run cmd/${folder}/main.go
 
 build:
-	@go build -o bin/${folder} cmd/${folder}/${folder}.go
+	@go build -o bin/${folder} cmd/${folder}/main.go
 
 setup:
 	@dep ensure
 
 build-image:
-	@docker build -t yourrepo/${folder}:version . #wating you complete
+  #wating you complete
+	@docker build -t yourrepo/${folder}:version . 
 
 __EOF__
 
@@ -182,7 +185,7 @@ __EOF__
 	cat >Dockerfile <<__EOF__
 FROM golang:alpine AS builder
 ADD . /src
-RUN cd /src && go build -o bin/${folder} cmd/${folder}/${folder}.go
+RUN cd /src && go build -o bin/${folder} cmd/${folder}/main.go
 
 FROM alpine:latest
 
@@ -197,13 +200,23 @@ function _node() {
 	echo 'module.exports = {}' >index.js
 }
 
+function _ts() {
+	npm init --yes
+  mkdir -p src
+  npm install typescript ts-node @types/node --save-dev
+}
+
 function ready() {
 	echo "prepare $1 env ..."
+
 	case $1 in
 	go) _go ;;
 
 	Node) ;&
 	node) _node ;;
+
+	typescript) ;&
+	ts) _ts ;;
 
 	*) echo "Not support yet" ;;
 	esac
@@ -234,27 +247,13 @@ alias h='tldr'
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 [ -f ~/.profile ] && source ~/.profile
 
-# transfer.sh upload file to transfer.sh
-transfer() {
-    curl --progress-bar --upload-file "$1" https://transfer.sh/$(basename $1) | tee /dev/null;
-}
-
-down() {
-	axel -n 10 http://202.182.110.213:2015/$1
-}
-
-export PATH=$HOME/flutter/bin:$PATH
 
 # virtualenv
 export WORKON_HOME=$HOME/.virtualenvs
 export PROJECT_HOME=$HOME/Python
 export VIRTUALENVWRAPPER_SCRIPT=/usr/local/bin/virtualenvwrapper.sh
 source /usr/local/bin/virtualenvwrapper.sh
-
 export PATH=/usr/local/openresty/bin:/usr/local/openresty/nginx/sbin:$PATH
-
-alias onelint="docker run --rm -it pl-reg.ones.ai/ones-pipeline oneslint"
-export PATH="/usr/local/opt/qt/bin:$PATH"
 
 
 

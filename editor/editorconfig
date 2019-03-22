@@ -7,13 +7,10 @@ insert_final_line = true
 insert_final_newline = true
 trim_trailing_whitespace = true
 indent_size = 4
-indent_style = tab
-
-[*.py]
 indent_style = space
 
-[*.{json,js,yaml}]
-indent_style = space
+
+[*.{json,html}]
 indent_size = 2
 
 [*.md]
@@ -22,7 +19,7 @@ insert_final_newline = false
 indent_style = space
 
 [*.go]
-indent_size = 2
+indent_style = tab
 
 [Makefile]
 indent_style = tab
