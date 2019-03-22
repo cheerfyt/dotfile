@@ -204,6 +204,7 @@ function _ts() {
 	npm init --yes
   mkdir -p src
   npm install typescript ts-node @types/node --save-dev
+  ./node_modules/.bin/tsc --init
 }
 
 function ready() {
@@ -221,11 +222,20 @@ function ready() {
 	*) echo "Not support yet" ;;
 	esac
 
-	content=$(curl -sL https://www.gitignore.io/api/$1)
+  Slang=$1
+
+  [[ $1=="ts" || $1="typescript" ]] && Slang=node
+
+	content=$(curl -sL https://www.gitignore.io/api/$Slang)
+
 	err=$(echo $content | grep ERROR)
+
 	[[ -z $err ]] && echo "Got ignore content"
+
 	echo $content | tee .gitignore
+
 	prepare
+
 	echo "ready $1 env"
 }
 
