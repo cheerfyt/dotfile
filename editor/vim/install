@@ -1,0 +1,27 @@
+#!/usr/bin/env bash
+
+echo "
+\" => set runtimepath
+set runtimepath+=$(pwd)
+
+\" => source file
+source $(pwd)/vimrcs/basic.vim
+source $(pwd)/vimrcs/keymap.vim
+source $(pwd)/vimrcs/plugins.vim
+source $(pwd)/vimrcs/extended.vim
+source $(pwd)/vimrcs/filetypes.vim
+source $(pwd)/vimrcs/types.vim
+
+\" => load local source config
+try
+    source ~/.vimrc_local.vim
+catch
+endtry
+
+\" => auto reload
+augroup sourcechange
+    autocmd!
+    :autocmd BufWrite $(pwd)/vimrcs/*.vim :source \$MYVIMRC
+augroup END
+
+" > ~/.vimrc
