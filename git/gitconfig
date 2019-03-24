@@ -2,8 +2,8 @@
 	name = cheerfyt
 	email = tate_fan@163.com
 [core]
-  editor = vim
-	excludesfile = /Users/cheerfyt/.gitignore_global
+    editor = emacs -nw
+    excludesfile = /Users/cheerfyt/.gitignore_global
 
 [color]
     ui = auto
@@ -30,14 +30,14 @@
 
 [alias]
 	#############
-	added = difftool --cached
+    added = difftool --cached
     #############
     b = branch
     ba = branch -a
     bd = branch -d
     br = branch -r
     #############
-    c = commit
+    c = commit -e
     ca = commit -a
     cm = commit -m
     cem = commit --allow-empty -m
@@ -70,8 +70,8 @@
     ls = ls-files
     lsf = "!git ls-files | grep -i"
     #############
-	hack="town hack"
-	############
+    hack="town hack"
+    ############
     m = merge
     ma = merge --abort
     mc = merge --continue
@@ -145,7 +145,7 @@
     svnr = svn rebase
     svnd = svn dcommit
     svnl = svn log --oneline --show-commit
-	showtool = "!f() { git difftool $1^ $1;  }; f"
+    showtool = "!f() { git difftool $1^ $1;  }; f"
     #############
     assume = update-index --assume-unchanged
     unassume = update-index --no-assume-unchanged
@@ -188,7 +188,7 @@
 	trustExitCode = true
 
 [commit]
-	template = /Users/fan/.stCommitMsg
+	template = /Users/cheerfyt/.gitTemplate
 [filter "lfs"]
 	clean = git-lfs clean -- %f
 	smudge = git-lfs smudge -- %f
