@@ -177,7 +177,7 @@ setup:
 
 build-image:
   #wating you complete
-	@docker build -t yourrepo/${folder}:version . 
+	@docker build -t yourrepo/${folder}:version .
 
 __EOF__
 
@@ -264,8 +264,7 @@ export PROJECT_HOME=$HOME/Python
 export VIRTUALENVWRAPPER_SCRIPT=/usr/local/bin/virtualenvwrapper.sh
 source /usr/local/bin/virtualenvwrapper.sh
 export PATH=/usr/local/openresty/bin:/usr/local/openresty/nginx/sbin:$PATH
-
-
+source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
 
 ### docker alias
 alias dctn='docker container'
