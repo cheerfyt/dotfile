@@ -1,20 +1,13 @@
-" autocommand
-
-augroup autoSource
-	:autocmd BufWrite $MYVIMRC :source $MYVIMRC
-augroup END
-
-augroup testgroup
-	:autocmd BufNewFile * :write
-	:autocmd BufWrite * :echom "Write Buffer ..."
-augroup END
-
-
-function ShowMessage(name)
-	" => warning 'a'
-	let tmp_name = a:name
-	echo tmp_name
-	let name_len = strlen(tmp_name)
-	echo name_len
-	finish
+" add autocommand here
+"============================= ToggleNubmer ====================================
+function! ToggleNumber()
+	if (&relativenumber == 1)
+		set number
+	elseif(&number == 1)
+		set nonumber
+	else
+		set relativenumber
+	endif
 endfunction
+nnoremap <Leader>n :call ToggleNumber()<ESC>
+"============================= ToggleNubmer ====================================

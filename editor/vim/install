@@ -25,6 +25,7 @@ source $(pwd)/vimrcs/basic.vim
 source $(pwd)/vimrcs/keymap.vim
 source $(pwd)/vimrcs/plugins.vim
 source $(pwd)/vimrcs/types.vim
+source $(pwd)/vimrcs/extended.vim
 \"=============================== End load plugin ==============================
 
 \"=============================== Start load local setting =====================

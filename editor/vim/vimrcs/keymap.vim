@@ -1,19 +1,20 @@
-"" my keymappings
-
+" my keymappings
 " => delete line quickly
 nnoremap - dd
-
-" => source the change file
+"============================= Move betwwed window =============================
 nnoremap <leader>r :source $MYVIMRC<Esc>
-
-" => esc"
-inoremap jk <Esc>
-inoremap <Esc> <Nop>
-
+noremap <C-l> <C-w>l
+noremap <C-h> <C-w>h
+noremap <C-j> <C-w>j
+noremap <C-k> <C-w>k
+" => esc
+inoremap jj <Esc>
 " => mapleader
-nnoremap <leader>w :w<Esc>
-
+nnoremap <leader>s :w<Esc>
+nnoremap <leader>q :q<cr>
 " object model
 onoremap ( i(
 onoremap [ i[
 onoremap { i{
+"===============================================================================
+nnoremap <Leader>l :set list! listchars=tab:»·,trail:·<ESC>
