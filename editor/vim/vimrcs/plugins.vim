@@ -42,7 +42,7 @@ call plug#begin('~/.vim/plugged')
     " }
 
 	" typescript and javascript {
-        Plug 'mattn/emmet-vim'
+        Plug 'mattn/emmet-vim', {'for': 'html'}
 	" }
 
 	" schema color {
@@ -52,33 +52,33 @@ call plug#begin('~/.vim/plugged')
 	" }
 
 	" Nginx {
-	    Plug 'vim-scripts/nginx.vim'
+		Plug 'vim-scripts/nginx.vim', {'for': 'conf'}
 	" }
 
 	" Lang {
 	    "=> rust {
-            Plug 'rust-lang/rust.vim', {'for': 'rust'}
-	    	Plug 'phildawes/racer'
+		Plug 'rust-lang/rust.vim', {'for': 'rust'}
+		Plug 'phildawes/racer'
 	    "}
 
 	    "=> typescript {
-	        Plug 'Quramy/tsuquyomi', {'for': 'typescript'}
-	    	Plug 'leafgarland/typescript-vim', {'for': 'typescript'}
-	    	Plug 'mxw/vim-jsx', {'for': 'jsx'}
-	    	Plug 'pangloss/vim-javascript', {'for': 'javascript'}
+		Plug 'Quramy/tsuquyomi', {'for': 'typescript'}
+		Plug 'leafgarland/typescript-vim', {'for': 'typescript'}
+		Plug 'mxw/vim-jsx', {'for': 'jsx'}
+		Plug 'pangloss/vim-javascript', {'for': 'javascript'}
 	    "}
 
 	    "=> golang {
-	    	Plug 'fatih/vim-go', {'do': 'GoInstallBinaries'}
-	    	Plug 'nsf/gocode', {'do': 'go build'}
+		Plug 'fatih/vim-go', {'do': 'GoInstallBinaries'}
+		Plug 'nsf/gocode', {'do': 'go build'}
 	    "}
 
 	    "=> python  {
-	    	Plug 'klen/python-mode'
+		Plug 'klen/python-mode'
 	    "}
 
 	    "=> Markdown {
-	        Plug 'plasticboy/vim-markdown'
+		Plug 'plasticboy/vim-markdown', {'for': 'markdown'}
 	    "}
     "}
 	"
