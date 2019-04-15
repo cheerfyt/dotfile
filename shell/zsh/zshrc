@@ -315,3 +315,6 @@ alias dctn-new-it-tmp='dctn run -it --rm'
 
 # emacs
 alias enw='/Applications/Emacs.app/Contents/MacOS/Emacs -nw'
+
+# java env prepare
+export JAVA_HOME=$(/usr/libexec/java_home)
