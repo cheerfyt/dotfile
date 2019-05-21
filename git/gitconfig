@@ -2,7 +2,7 @@
 	name = cheerfyt
 	email = tate_fan@163.com
 [core]
-    editor = emacs -nw
+    editor = vim
     excludesfile = /Users/cheerfyt/.gitignore_global
 
 [color]
@@ -178,7 +178,7 @@
 
 [difftool "sourcetree"]
 	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
-	path = 
+	path =
 [mergetool "sourcetree"]
 	cmd = /Applications/Sourcetree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
 	trustExitCode = true

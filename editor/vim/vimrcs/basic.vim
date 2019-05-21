@@ -32,3 +32,4 @@ set history=500
 set nobackup
 set noswapfile
 set pastetoggle=<leader>z
+

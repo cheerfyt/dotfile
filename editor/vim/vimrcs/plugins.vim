@@ -16,7 +16,7 @@ call plug#begin('~/.vim/plugged')
         Plug 'ervandew/supertab'
         Plug 'Shougo/neocomplete.vim'
         Plug 'vim-scripts/AutoComplPop'
-		Plug 'valloric/youcompleteme', {'do': './install.py --clang-completer --go-completer --rust-completer --java-completer'}
+		Plug 'valloric/youcompleteme', {'do': './install.py --clang-completer --go-completer --rust-completer --ts-completer'}
     " }
 
     " search plugins {
@@ -35,8 +35,12 @@ call plug#begin('~/.vim/plugged')
         Plug 'scrooloose/nerdtree'
         Plug 'w0rp/ale'
     " }
+	"
+	" minibufexplor {
+	    Plug 'fholgado/minibufexpl.vim'
+	" }
 
-    " git plugins {
+	" git plugins {
         Plug 'tpope/vim-fugitive'
         Plug 'airblade/vim-gitgutter'
     " }
@@ -57,28 +61,26 @@ call plug#begin('~/.vim/plugged')
 
 	" Lang {
 	    "=> rust {
-		Plug 'rust-lang/rust.vim', {'for': 'rust'}
-		Plug 'phildawes/racer'
+		  Plug 'rust-lang/rust.vim', {'for': 'rust'}
+		  Plug 'phildawes/racer'
 	    "}
 
 	    "=> typescript {
-		Plug 'Quramy/tsuquyomi', {'for': 'typescript'}
-		Plug 'leafgarland/typescript-vim', {'for': 'typescript'}
-		Plug 'mxw/vim-jsx', {'for': 'jsx'}
-		Plug 'pangloss/vim-javascript', {'for': 'javascript'}
+		  Plug 'Quramy/tsuquyomi', {'for': 'typescript'}
+		  Plug 'leafgarland/typescript-vim', {'for': 'typescript'}
+		  Plug 'mxw/vim-jsx', {'for': 'jsx'}
+		  Plug 'pangloss/vim-javascript', {'for': 'javascript'}
 	    "}
 
 	    "=> golang {
-		Plug 'fatih/vim-go', {'do': 'GoInstallBinaries'}
-		Plug 'nsf/gocode', {'do': 'go build'}
+		  Plug 'fatih/vim-go', {'do': 'GoInstallBinaries'}
+		  Plug 'nsf/gocode', {'do': 'go build'}
 	    "}
 
-	    "=> python  {
-		Plug 'klen/python-mode'
-	    "}
 
 	    "=> Markdown {
-		Plug 'plasticboy/vim-markdown', {'for': 'markdown'}
+		  Plug 'plasticboy/vim-markdown', {'for': 'markdown'}
+		  Plug 'mzlogin/vim-markdown-toc'
 	    "}
     "}
 	"
@@ -141,3 +143,15 @@ let g:ale_sign_error = 'E'
 let g:ale_sign_warning = 'W'
 highlight clear ALEErrorSign
 highlight clear ALEWarningSign
+
+" ==============================================================
+" minibufexplor
+" ==============================================================
+hi MBENormal               guifg=#808080 guibg=fg
+hi MBEChanged              guifg=#CD5907 guibg=fg
+hi MBEVisibleNormal        guifg=#5DC2D6 guibg=fg
+hi MBEVisibleChanged       guifg=#F1266F guibg=fg
+hi MBEVisibleActiveNormal  guifg=#A6DB29 guibg=fg
+hi MBEVisibleActiveChanged guifg=#F1266F guibg=fg
+let g:miniBufExplorerAutoStart = 1
+let g:miniBufExplBuffersNeeded = 1

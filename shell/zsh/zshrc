@@ -7,8 +7,8 @@ export ZSH="/Users/Cheerfyt/.oh-my-zsh"
 # Set name of the theme to load. Optionally, if you set this to "random"
 # it'll load a random theme each time that oh-my-zsh is loaded.
 # See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
-# ZSH_THEME="apple"
-ZSH_THEME="lambda"
+ZSH_THEME="apple"
+# ZSH_THEME="lambda"
 # ZSH_THEME="spaceship"
 # ZSH_THEME="dracula"
 
@@ -75,6 +75,7 @@ plugins=(
 	git-extras
 	zsh-syntax-highlighting
 	curl
+	git-flow
 )
 
 source $ZSH/oh-my-zsh.sh
@@ -317,4 +318,17 @@ alias dctn-new-it-tmp='dctn run -it --rm'
 alias enw='/Applications/Emacs.app/Contents/MacOS/Emacs -nw'
 
 # java env prepare
-export JAVA_HOME=$(/usr/libexec/java_home)
+# export JAVA_HOME=$(/usr/libexec/java_home)
+
+# docker-curl talk to docker use curl
+alias curl-docker='curl -s --unix-socket /var/run/docker.sock'
+
+# hub
+function pr() {
+	baseBranch="develop"
+	if [ ! -z "$1" -a "$1" != " " ];then
+		baseBranch=$1
+	fi
+	echo $baseBranch
+	# hub pull-request -o -p -b $baseBranch
+}
