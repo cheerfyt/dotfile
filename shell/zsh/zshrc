@@ -314,6 +314,10 @@ alias dctn-new-daemon='dctn run -d'
 alias dctn-new-it='dctn run -it'
 alias dctn-new-it-tmp='dctn run -it --rm'
 
+###
+alias hug='hub'
+alias hbu='hub'
+
 # emacs
 alias enw='/Applications/Emacs.app/Contents/MacOS/Emacs -nw'
 
@@ -329,6 +333,7 @@ function pr() {
 	if [ ! -z "$1" -a "$1" != " " ];then
 		baseBranch=$1
 	fi
-	echo $baseBranch
-	# hub pull-request -o -p -b $baseBranch
+	echo "pr to $baseBranch..."
+	hub pull-request -o -p -b $baseBranch
+	[[ $?==0 ]] && echo "pr to $baseBranch... successful"
 }
