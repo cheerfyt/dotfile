@@ -314,15 +314,6 @@ alias dctn-new-daemon='dctn run -d'
 alias dctn-new-it='dctn run -it'
 alias dctn-new-it-tmp='dctn run -it --rm'
 
-###
-alias hug='hub'
-alias hbu='hub'
-
-# emacs
-alias enw='/Applications/Emacs.app/Contents/MacOS/Emacs -nw'
-
-# java env prepare
-# export JAVA_HOME=$(/usr/libexec/java_home)
 
 # docker-curl talk to docker use curl
 alias curl-docker='curl -s --unix-socket /var/run/docker.sock'
@@ -330,10 +321,14 @@ alias curl-docker='curl -s --unix-socket /var/run/docker.sock'
 # hub
 function pr() {
 	baseBranch="develop"
+
 	if [ ! -z "$1" -a "$1" != " " ];then
 		baseBranch=$1
 	fi
-	echo "pr to $baseBranch..."
-	hub pull-request -o -p -b $baseBranch
-	[[ $?==0 ]] && echo "pr to $baseBranch... successful"
+
+	echo "push code and create pr to $baseBranch..."
+
+	hub pull-request -o -p -b $baseBranch -r "sunjingyun" -r "247521776"
+
+	[[ $?==0 ]] && echo "create pr to $baseBranch... successful"
 }
