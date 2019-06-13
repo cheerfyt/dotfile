@@ -332,3 +332,10 @@ function pr() {
 
 	[[ $?==0 ]] && echo "create pr to $baseBranch... successful"
 }
+
+[ -f /usr/local/etc/profile.d/autojump.sh  ] && . /usr/local/etc/profile.d/autojump.sh
+
+function rl() {
+	ip=$(cat $HOME/.ssh/config | grep Host | cut -d' ' -f2)
+	echo $ip
+}
