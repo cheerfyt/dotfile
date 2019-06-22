@@ -7,8 +7,12 @@ RESET="%{$reset_color%}"
 
 PROMPT='$GREEN⬢ $BLUE%c$(git_prompt_info)$(git_prompt_status)$RESET λ '
 
-ZSH_THEME_GIT_PROMPT_PREFIX="$RED ⚙  "
-ZSH_THEME_GIT_PROMPT_SUFFIX=""
+#
+#  
+# ⚙
+#
+ZSH_THEME_GIT_PROMPT_PREFIX="$CYAN  "
+ZSH_THEME_GIT_PROMPT_SUFFIX=" ⚙  "
 ZSH_THEME_GIT_PROMPT_DIRTY="$RED ✗ "
 ZSH_THEME_GIT_PROMPT_CLEAN="$GREEN ✔ "
 
