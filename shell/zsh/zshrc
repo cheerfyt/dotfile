@@ -7,10 +7,12 @@ export ZSH="/Users/Cheerfyt/.oh-my-zsh"
 # Set name of the theme to load. Optionally, if you set this to "random"
 # it'll load a random theme each time that oh-my-zsh is loaded.
 # See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
-ZSH_THEME="apple"
+# ZSH_THEME="apple"
 # ZSH_THEME="lambda"
 # ZSH_THEME="spaceship"
 # ZSH_THEME="dracula"
+
+ZSH_THEME="node"
 
 # Set list of themes to load
 # Setting this variable when ZSH_THEME=random
@@ -334,8 +336,3 @@ function pr() {
 }
 
 [ -f /usr/local/etc/profile.d/autojump.sh  ] && . /usr/local/etc/profile.d/autojump.sh
-
-function rl() {
-	ip=$(cat $HOME/.ssh/config | grep Host | cut -d' ' -f2)
-	echo $ip
-}
