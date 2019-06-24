@@ -5,7 +5,7 @@ RED="%{$fg_bold[red]%}"
 BLUE="%{$fg_bold[blue]%}"
 RESET="%{$reset_color%}"
 
-PROMPT="$GREEN⬢ $BLUE%c $(git_prompt_info) $(git_prompt_status)$RESETλ "
+PROMPT="$GREEN⬢ $BLUE%c $(git_prompt_info) $(git_prompt_status) $RESETλ"
 
 #
 #  
