@@ -1,8 +1,0 @@
-# PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\W\[\033[01;32m\]$(__git_ps1)\e[m$(__docker_machine_ps1) 💗  '
-
-# brew install bash-completion
-if [ -f $(brew --prefix)/etc/bash_completion ]; then
-    source $(brew --prefix)/etc/bash_completion
-fi
-
-PS1='\[\033[01;32m\]\W\[\033[01;32m\]$(__git_ps1)\e[m$(__docker_machine_ps1) 💗  '
