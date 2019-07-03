@@ -30,11 +30,6 @@ install_tmux() {
   echo "installed tmux config done"
 }
 
-install_git() {
-  echo "Install git config"
-  ln -sf ${BASE}/git/gitconfig ${HOME}/.gitconfig
-  echo "installed git config done"
-}
 
 install_zsh() {
   echo 'Install zsh config'
