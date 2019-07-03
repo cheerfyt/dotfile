@@ -7,11 +7,7 @@ export ZSH="/Users/Cheerfyt/.oh-my-zsh"
 # Set name of the theme to load. Optionally, if you set this to "random"
 # it'll load a random theme each time that oh-my-zsh is loaded.
 # See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
-# ZSH_THEME="apple"
-ZSH_THEME="lambda"
-# ZSH_THEME="spaceship"
-# ZSH_THEME="dracula"
-# ZSH_THEME="node"
+ZSH_THEME="half-life"
 
 # Set list of themes to load
 # Setting this variable when ZSH_THEME=random
@@ -69,19 +65,15 @@ plugins=(
 	gas
 	wd
 	github
-	hub
 	docker
 	docker-compose
 	zsh-autosuggestions
 	git-extras
-	zsh-syntax-highlighting
-	curl
 	git-flow
 	kubectl
 )
 
 source $ZSH/oh-my-zsh.sh
-source $HOME/.antigen.zsh
 
 # User configuration
 
@@ -91,26 +83,17 @@ source $HOME/.antigen.zsh
 # export LANG=en_US.UTF-8
 
 # Preferred editor for local and remote sessions
-# if [[ -n $SSH_CONNECTION ]]; then
-#   export EDITOR='vim'
-# else
-#   export EDITOR='mvim'
-# fi
+if [[ -n $SSH_CONNECTION ]]; then
+  export EDITOR='vim'
+else
+  export EDITOR='mvim'
+fi
 
 # Compilation flags
-# export ARCHFLAGS="-arch x86_64"
 
 # ssh
-# export SSH_KEY_PATH="~/.ssh/rsa_id"
+export SSH_KEY_PATH="~/.ssh/rsa_id"
 
-# Set personal aliases, overriding those provided by oh-my-zsh libs,
-# plugins, and themes. Aliases can be placed here, though oh-my-zsh
-# users are encouraged to define aliases within the ZSH_CUSTOM folder.
-# For a full list of active aliases, run `alias`.
-#
-# Example aliases
-# alias zshconfig="mate ~/.zshrc"
-# alias ohmyzsh="mate ~/.oh-my-zsh"
 
 eval "$(direnv hook zsh)"
 export PATH=$HOME/go/bin:$PATH
@@ -257,8 +240,6 @@ alias nip='npm i --production'
 alias h='tldr'
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-[ -f ~/.profile ] && source ~/.profile
-
 
 # virtualenv
 export WORKON_HOME=$HOME/.virtualenvs
