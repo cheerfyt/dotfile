@@ -13,15 +13,6 @@ export PATH=$HOME/go/bin:$PATH
 
 export PATH="$HOME/.cargo/bin:$PATH"
 
-# virtualenv
-export WORKON_HOME=$HOME/.virtualenvs
-
-export PROJECT_HOME=$HOME/Python
-
-export VIRTUALENVWRAPPER_SCRIPT=/usr/local/bin/virtualenvwrapper.sh
-
-source /usr/local/bin/virtualenvwrapper.sh
-
 export PATH=/usr/local/openresty/bin:/usr/local/openresty/nginx/sbin:$PATH
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
@@ -47,5 +38,6 @@ function load_virtual_env() {
 	export WORKON_HOME=$HOME/.virtualenvs
 	export PROJECT_HOME=$HOME/Python
 	export VIRTUALENVWRAPPER_SCRIPT=/usr/local/bin/virtualenvwrapper.sh
+    export VIRTUALENVWRAPPER_PYTHON=/usr/local/bin/python
 	source /usr/local/bin/virtualenvwrapper.sh
 }
