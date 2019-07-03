@@ -1,0 +1,87 @@
+#######################################
+############# Alias settings ##########
+#######################################
+alias clone='hub clone'
+alias swagger="docker run --rm -it -e GOPATH=$HOME/go:/go -v $HOME:$HOME -w $(pwd) quay.io/goswagger/swagger"
+alias gc="git clone"
+alias gp="git push"
+alias gu="git pull"
+alias gl="git lg"
+alias gs="git status"
+alias dc='docker-compose'
+alias spd='supervisord -c /usr/local/etc/supervisord.ini'
+alias spc='supervisorctl -c /usr/local/etc/supervisord.ini'
+alias ni='npm i'
+alias nip='npm i --production'
+alias h='tldr'
+
+### docker alias
+alias dctn='docker container'
+alias dimg='docker image'
+alias dnet='docker network'
+alias dplg='docker plugin'
+alias dcheck='docker checkpoint'
+alias dsev='docker service'
+alias dswarm='docker swarm'
+alias dstack='docker stack'
+alias dmachine='docker-machine'
+
+
+#### docker network
+alias dnet-new='docker network create'
+alias dnet-list='docker network ls'
+alias dnet-del='docker network rm'
+alias dnet-info='docker network inspect'
+alias dnet-clean='docker network prune'
+alias dnet-conn='docker netwrok connect'
+alias dnet-dis='docker network disconnect'
+
+### docker image
+alias dimg-list='dimg ls'
+alias dimg-history='dimg history'
+alias dimg-build='dimg build'
+alias dimg-load='dimg load'
+alias dimg-clean='dimg prune'
+alias dimg-get='dimg pull'
+alias dimg-tag='dimg tag'
+alias dimg-info='dimg inspect'
+alias dimg-upload='dimg push'
+alias dimg-from='dimg import'
+
+### docker container
+alias dctn-list='dctn ls'
+alias dctn-cp='dctn cp'
+alias dctn-diff='dctn-diff'
+alias dctn-ports='dctn port'
+alias dctn-kill='dctn kill'
+alias dctn-clean='dctn prune -f'
+alias dctn-start='dctn start'
+alias dctn-stop='dctn stop'
+alias dctn-info='dctn stats'
+alias dctn-attach='dctn attach'
+alias dctn-into='dctn exec -it'
+alias dctn-new-daemon='dctn run -d'
+alias dctn-new-it='dctn run -it'
+alias dctn-new-it-tmp='dctn run -it --rm'
+
+###
+alias hug='hub'
+alias hbu='hub'
+
+# emacs
+alias enw='/Applications/Emacs.app/Contents/MacOS/Emacs -nw'
+
+# docker-curl talk to docker use curl
+alias curl-docker='curl -s --unix-socket /var/run/docker.sock'
+
+# youtube-dl
+alias ydl='docker run --rm vimagick/youtube-dl'
+
+# common
+alias update='. $HOME/.zshrc'
+alias tm='tmux -2'
+alias cat='ccat'
+alias ax='axel -n 10'
+
+# nvm
+alias loadnvm="[ -s $NVM_DIR/nvm.sh ] && . $NVM_DIR/nvm.sh"

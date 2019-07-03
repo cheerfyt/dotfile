@@ -7,7 +7,7 @@ export ZSH="/Users/Cheerfyt/.oh-my-zsh"
 # Set name of the theme to load. Optionally, if you set this to "random"
 # it'll load a random theme each time that oh-my-zsh is loaded.
 # See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
-ZSH_THEME="half-life"
+ZSH_THEME="lambda"
 
 # Set list of themes to load
 # Setting this variable when ZSH_THEME=random
@@ -96,15 +96,10 @@ export SSH_KEY_PATH="~/.ssh/rsa_id"
 
 
 eval "$(direnv hook zsh)"
-export PATH=$HOME/go/bin:$PATH
 alias update='. $HOME/.zshrc'
 alias tm='tmux -2'
 alias cat='ccat'
 alias ax='axel -n 10'
-
-# nvm
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"
 
 ################################################################################
 #################################  prepare programing env ######################
@@ -239,15 +234,7 @@ alias ni='npm i'
 alias nip='npm i --production'
 alias h='tldr'
 
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
-# virtualenv
-export WORKON_HOME=$HOME/.virtualenvs
-export PROJECT_HOME=$HOME/Python
-export VIRTUALENVWRAPPER_SCRIPT=/usr/local/bin/virtualenvwrapper.sh
-source /usr/local/bin/virtualenvwrapper.sh
-export PATH=/usr/local/openresty/bin:/usr/local/openresty/nginx/sbin:$PATH
-[ -f ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh ] && source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
 
 ### docker alias
 alias dctn='docker container'
@@ -301,20 +288,3 @@ alias dctn-new-it-tmp='dctn run -it --rm'
 
 # docker-curl talk to docker use curl
 alias curl-docker='curl -s --unix-socket /var/run/docker.sock'
-
-# hub
-function pr() {
-	baseBranch="develop"
-
-	if [ ! -z "$1" -a "$1" != " " ];then
-		baseBranch=$1
-	fi
-
-	echo "push code and create pr to $baseBranch..."
-
-	hub pull-request -o -p -b $baseBranch -r "sunjingyun" -r "247521776"
-
-	[[ $?==0 ]] && echo "create pr to $baseBranch... successful"
-}
-
-[ -f /usr/local/etc/profile.d/autojump.sh  ] && . /usr/local/etc/profile.d/autojump.sh

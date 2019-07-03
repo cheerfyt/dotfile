@@ -1,0 +1,51 @@
+export ZSH=$HOME/.oh-my-zsh
+
+
+if [[ -n $SSH_CONNECTION ]]; then
+  export EDITOR='vim'
+else
+  export EDITOR='mvim'
+fi
+
+export SSH_KEY_PATH="~/.ssh/rsa_id"
+
+export PATH=$HOME/go/bin:$PATH
+
+export PATH="$HOME/.cargo/bin:$PATH"
+
+# virtualenv
+export WORKON_HOME=$HOME/.virtualenvs
+
+export PROJECT_HOME=$HOME/Python
+
+export VIRTUALENVWRAPPER_SCRIPT=/usr/local/bin/virtualenvwrapper.sh
+
+source /usr/local/bin/virtualenvwrapper.sh
+
+export PATH=/usr/local/openresty/bin:/usr/local/openresty/nginx/sbin:$PATH
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+[ -f ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh ] && source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
+
+[ -f /usr/local/etc/profile.d/autojump.sh  ] && . /usr/local/etc/profile.d/autojump.sh
+
+
+## github pull-request
+function pr() {
+	baseBranch="develop"
+	if [ ! -z "$1" -a "$1" != " " ];then
+		baseBranch=$1
+	fi
+	echo "push code and create pr to $baseBranch..."
+	hub pull-request -p -b $baseBranch -r "sunjingyun" -r "247521776"
+	[[ $?==0 ]] && echo "push code and create pr to $baseBranch... successful"
+}
+
+# virtualenv
+function load_virtual_env() {
+	export WORKON_HOME=$HOME/.virtualenvs
+	export PROJECT_HOME=$HOME/Python
+	export VIRTUALENVWRAPPER_SCRIPT=/usr/local/bin/virtualenvwrapper.sh
+	source /usr/local/bin/virtualenvwrapper.sh
+}
