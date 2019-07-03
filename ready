@@ -41,7 +41,6 @@ install_zsh() {
 main() {
   clean
   install_vim
-  install_git
   install_tmux
   install_zsh
 }
