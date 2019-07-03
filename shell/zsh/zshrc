@@ -77,9 +77,11 @@ plugins=(
 	zsh-syntax-highlighting
 	curl
 	git-flow
+	kubectl
 )
 
 source $ZSH/oh-my-zsh.sh
+source $HOME/.antigen.zsh
 
 # User configuration
 
