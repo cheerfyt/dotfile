@@ -5,9 +5,11 @@ echo "
 \"=============================== Happy Every Day===============================
 \"==============================================================================
 
+
 \"=============================== Start Global Setting =========================
 set nocp runtimepath+=$(pwd)
 \"=============================== End Global Setting ===========================
+
 
 \"=============================== Start load plugin ============================
 source $(pwd)/vimrcs/basic.vim
@@ -16,6 +18,7 @@ source $(pwd)/vimrcs/plugins.vim
 source $(pwd)/vimrcs/types.vim
 source $(pwd)/vimrcs/extended.vim
 \"=============================== End load plugin ==============================
+
 
 \"=============================== Start load local setting =====================
 try
