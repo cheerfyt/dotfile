@@ -15,6 +15,8 @@ export PATH="$HOME/.cargo/bin:$PATH"
 
 export PATH=/usr/local/openresty/bin:/usr/local/openresty/nginx/sbin:$PATH
 
+export NVM_DIR=$HOME/.nvm
+
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 [ -f ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh ] && source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh

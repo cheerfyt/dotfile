@@ -1,7 +1,4 @@
-" vim: foldmarker={,} foldlevel=1 foldmethod=marker
-"
-" curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
-"   https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 if empty(glob('~/.vim/autoload/plug.vim'))
   silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
@@ -16,7 +13,6 @@ call plug#begin('~/.vim/plugged')
         Plug 'ervandew/supertab'
         Plug 'Shougo/neocomplete.vim'
         Plug 'vim-scripts/AutoComplPop'
-		Plug 'valloric/youcompleteme', {'do': './install.py --clang-completer --go-completer --rust-completer --ts-completer'}
     " }
 
     " search plugins {

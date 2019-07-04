@@ -1,7 +1,8 @@
 syntax on "open syntax
 
+let mapleader="<Space>"
+
 set encoding=utf-8
-let mapleader=" "
 set backspace=eol,start,indent
 set number numberwidth=1
 set wrap ruler magic so=7
@@ -11,7 +12,7 @@ set mouse=a
 set mousehide
 set clipboard=unnamed
 set pastetoggle=<F2>
-set linespace=2
+set linespace=4
 set laststatus=2
 set showcmd showmode
 set rulerformat=%30(%=\:b%n%y%m%r%w\ %l,%c%V\ %P%)
@@ -32,4 +33,4 @@ set history=500
 set nobackup
 set noswapfile
 set pastetoggle=<leader>z
-
+set colorcolumn=80
