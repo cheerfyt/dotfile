@@ -12,7 +12,7 @@ set mouse=a
 set mousehide
 set clipboard=unnamed
 set pastetoggle=<F2>
-set linespace=4
+set linespace=0
 set laststatus=2
 set showcmd showmode
 set rulerformat=%30(%=\:b%n%y%m%r%w\ %l,%c%V\ %P%)
