@@ -1,45 +1,44 @@
+" =============================================================================
+" init plug.vim
+" download vim to ~/.vim/autoload/plug.vim
+" =============================================================================
 if empty(glob("~/.vim/autoload/plug.vim"))
   silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
     \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
   autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
 endif
 
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"""""""""""""""""""""""""""""""""""  Plugins """""""""""""""""""""""""""""""""""
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Plugins {
-call plug#begin("~/.vim/plugged")
-Plug "jiangmiao/auto-pairs"
-Plug "ervandew/supertab"
-Plug "Shougo/neocomplete.vim"
-Plug "vim-scripts/AutoComplPop"
-Plug "junegunn/fzf", {"dir": "~/.fzf", "do": "./install --all"}
-Plug "junegunn/fzf.vim"
-Plug "tpope/vim-eunuch"
-Plug "tpope/vim-surround"
-Plug "terryma/vim-multiple-cursors"
-Plug "editorconfig/editorconfig-vim"
-Plug "scrooloose/nerdtree"
-Plug "w0rp/ale"
-Plug "fholgado/minibufexpl.vim"
-Plug "tpope/vim-fugitive"
-Plug "airblade/vim-gitgutter"
-Plug "mattn/emmet-vim", {"for": "html"}
-Plug "morhetz/gruvbox"
-Plug "bling/vim-airline"
-Plug "vim-airline/vim-airline-themes"
-Plug "vim-scripts/nginx.vim", {"for": "conf"}
-Plug "rust-lang/rust.vim", {"for": "rust"}
-Plug "phildawes/racer"
-Plug "Quramy/tsuquyomi", {"for": "typescript"}
-Plug "leafgarland/typescript-vim", {"for": "typescript"}
-Plug "mxw/vim-jsx", {"for": "jsx"}
-Plug "pangloss/vim-javascript", {"for": "javascript"}
-Plug "fatih/vim-go", {"do": "GoInstallBinaries"}
-Plug "nsf/gocode", {"do": "go build"}
-Plug "plasticboy/vim-markdown", {"for": "markdown"}
-Plug "mzlogin/vim-markdown-toc"
-Plug "prettier/vim-prettier", {"do": "yarn install", "for": ["javascript", "typescript", "jsx", "tsx", "json"]}
+" plugin install
+call plug#begin('~/.vim/plugged')
+Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-surround'
+Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
+Plug 'airblade/vim-gitgutter'
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
+Plug 'scrooloose/nerdcommenter'
+Plug 'w0rp/ale'
+Plug 'mattn/emmet-vim'
+Plug 'tpope/vim-repeat'
+Plug 'fatih/vim-go'
+Plug 'ervandew/supertab'
+Plug 'junegunn/fzf'
+Plug 'easymotion/vim-easymotion'
+Plug 'nathanaelkane/vim-indent-guides'
+Plug 'plasticboy/vim-markdown'
+Plug 'godlygeek/tabular'
+Plug 'plasticboy/vim-markdown'
+Plug 'sjl/gundo.vim'
+Plug 'editorconfig/editorconfig-vim'
+Plug 'leafgarland/typescript-vim'
+Plug 'shougo/deoplete.nvim'
+Plug 'jiangmiao/auto-pairs'
+Plug 'ryanoasis/vim-devicons'
+Plug 'edkolev/tmuxline.vim'
+Plug 'neoclide/coc.nvim', {'do': 'yarn install --frozen-lockfile'}
+Plug 'myusuf3/numbers.vim'
+Plug 'junegunn/vim-github-dashboard', { 'on': ['GHDashboard', 'GHActivity'] }
+Plug 'junegunn/goyo.vim', { 'for': 'markdown' }
 call plug#end()
 
 " superTab default setting
