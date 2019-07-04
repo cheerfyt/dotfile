@@ -21,6 +21,8 @@ export PATH=/usr/local/openresty/bin:/usr/local/openresty/nginx/sbin:$PATH
 
 [ -f /usr/local/etc/profile.d/autojump.sh  ] && . /usr/local/etc/profile.d/autojump.sh
 
+## direnv
+eval "$(direnv hook zsh)"
 
 ## github pull-request
 function pr() {
@@ -40,4 +42,121 @@ function load_virtual_env() {
 	export VIRTUALENVWRAPPER_SCRIPT=/usr/local/bin/virtualenvwrapper.sh
     export VIRTUALENVWRAPPER_PYTHON=/usr/local/bin/python
 	source /usr/local/bin/virtualenvwrapper.sh
+}
+
+################################################################################
+#################################  prepare programing env ######################
+################################################################################
+function prepare() {
+	echo '@1. prepeard editorconfig and prettierr config'
+	curl -sL https://raw.githubusercontent.com/cheerfyt/dotfile/master/editor/editorconfig >.editorconfig
+	curl -sL https://raw.githubusercontent.com/cheerfyt/dotfile/master/editor/prettierrc >.prettierrc
+
+	echo '@2. prepeard folder'
+	result=${PWD##*/}
+	echo "### $result" | tee README.md
+}
+
+function _go() {
+	folder=${PWD##*/}
+	mkdir -p cmd/${folder}
+	mkdir -p {assets,documents,scripts,pkg,configs}
+	echo '0.0.1' > asserts/vesion
+
+	date=$(date "+%Y-%m-%d %H:%M:%S")
+
+	# Generate the main.go
+	cat >cmd/${folder}/main.go <<__EOF__
+
+package main
+
+import (
+	"fmt"
+)
+
+func main() {
+	fmt.Println("hello, ${folder}")
+}
+
+__EOF__
+	dep init
+	cat >Makefile <<__EOF__
+##### ${folder}
+
+all: run
+
+run:
+	@go run cmd/${folder}/main.go
+
+build:
+	@go build -o bin/${folder} cmd/${folder}/main.go
+
+setup:
+	@dep ensure
+
+install: build
+	@cp ./bin/${folder} /usr/local/bin
+
+build-image:
+  #wating you complete
+	@docker build -t yourrepo/${folder}:version .
+
+__EOF__
+
+	# Generate the Dockerfile
+	cat >Dockerfile <<__EOF__
+FROM golang:alpine AS builder
+ADD . /src
+RUN cd /src && go build -o bin/${folder} cmd/${folder}/main.go
+
+FROM alpine:latest
+
+WORKDIR /app
+COPY --from=builder /src/bin/${folder} /app/
+ENTRYPOINT [ "/app/${folder}" ]
+__EOF__
+}
+
+function _node() {
+	npm init --yes
+	echo 'module.exports = {}' >index.js
+}
+
+function _ts() {
+	npm init --yes
+	mkdir -p src
+	npm install typescript ts-node @types/node --save-dev
+	./node_modules/.bin/tsc --init
+}
+
+function ready() {
+	echo "prepare $1 env ..."
+
+	case $1 in
+	go) _go ;;
+
+	Node) ;&
+	node) _node ;;
+
+	typescript) ;&
+	ts) _ts ;;
+
+	*) echo "Not support yet" ;;
+	esac
+
+  Slang=$1
+
+  [[ $1=="ts" || $1="typescript" ]] && Slang=node
+
+	content=$(curl -sL https://www.gitignore.io/api/$Slang)
+
+	err=$(echo $content | grep ERROR)
+
+	[[ -z $err ]] && echo "Got ignore content"
+
+	echo $content | tee .gitignore
+
+	prepare
+
+	echo "ready $1 env"
 }

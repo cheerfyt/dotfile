@@ -9,25 +9,13 @@ export ZSH="/Users/Cheerfyt/.oh-my-zsh"
 # See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
 ZSH_THEME="lambda"
 
-# Set list of themes to load
-# Setting this variable when ZSH_THEME=random
-# cause zsh load theme from this variable instead of
-# looking in ~/.oh-my-zsh/themes/
-# An empty array have no effect
-# ZSH_THEME_RANDOM_CANDIDATES=( "robbyrussell" "agnoster" )
-
-# Uncomment the following line to use case-sensitive completion.
-# CASE_SENSITIVE="true"
-
-# Uncomment the following line to use hyphen-insensitive completion. Case
-# sensitive completion must be off. _ and - will be interchangeable.
 # HYPHEN_INSENSITIVE="true"
 
 # Uncomment the following line to disable bi-weekly auto-update checks.
 DISABLE_AUTO_UPDATE="true"
 
 # Uncomment the following line to change how often to auto-update (in days).
-# export UPDATE_ZSH_DAYS=13
+export UPDATE_ZSH_DAYS=13
 
 # Uncomment the following line to disable colors in ls.
 # DISABLE_LS_COLORS="true"
@@ -39,7 +27,7 @@ DISABLE_AUTO_UPDATE="true"
 # ENABLE_CORRECTION="true"
 
 # Uncomment the following line to display red dots whilst waiting for completion.
-# COMPLETION_WAITING_DOTS="true"
+COMPLETION_WAITING_DOTS="true"
 
 # Uncomment the following line if you want to disable marking untracked files
 # under VCS as dirty. This makes repository status check for large repositories
@@ -71,6 +59,7 @@ plugins=(
 	git-extras
 	git-flow
 	kubectl
+	helm
 )
 
 source $ZSH/oh-my-zsh.sh
@@ -89,202 +78,4 @@ else
   export EDITOR='mvim'
 fi
 
-# Compilation flags
-
 # ssh
-export SSH_KEY_PATH="~/.ssh/rsa_id"
-
-
-eval "$(direnv hook zsh)"
-alias update='. $HOME/.zshrc'
-alias tm='tmux -2'
-alias cat='ccat'
-alias ax='axel -n 10'
-
-################################################################################
-#################################  prepare programing env ######################
-################################################################################
-
-function prepare() {
-	echo '@1. prepeard editorconfig and prettierr config'
-	curl -sL https://raw.githubusercontent.com/cheerfyt/dotfile/master/editor/editorconfig >.editorconfig
-	curl -sL https://raw.githubusercontent.com/cheerfyt/dotfile/master/editor/prettierrc >.prettierrc
-
-	echo '@2. prepeard folder'
-	result=${PWD##*/}
-	echo "### $result" | tee README.md
-}
-
-function _go() {
-	folder=${PWD##*/}
-	mkdir -p cmd/${folder}
-	mkdir -p {assets,documents,scripts,pkg,configs}
-	echo '0.0.1' > asserts/vesion
-
-	date=$(date "+%Y-%m-%d %H:%M:%S")
-
-	# Generate the main.go
-	cat >cmd/${folder}/main.go <<__EOF__
-
-package main
-
-import (
-	"fmt"
-)
-
-func main() {
-	fmt.Println("hello, ${folder}")
-}
-
-__EOF__
-	dep init
-	cat >Makefile <<__EOF__
-##### ${folder}
-
-all: run
-
-run:
-	@go run cmd/${folder}/main.go
-
-build:
-	@go build -o bin/${folder} cmd/${folder}/main.go
-
-setup:
-	@dep ensure
-
-install: build
-	@cp ./bin/${folder} /usr/local/bin
-
-build-image:
-  #wating you complete
-	@docker build -t yourrepo/${folder}:version .
-
-__EOF__
-
-	# Generate the Dockerfile
-	cat >Dockerfile <<__EOF__
-FROM golang:alpine AS builder
-ADD . /src
-RUN cd /src && go build -o bin/${folder} cmd/${folder}/main.go
-
-FROM alpine:latest
-
-WORKDIR /app
-COPY --from=builder /src/bin/${folder} /app/
-ENTRYPOINT [ "/app/${folder}" ]
-__EOF__
-}
-
-function _node() {
-	npm init --yes
-	echo 'module.exports = {}' >index.js
-}
-
-function _ts() {
-	npm init --yes
-	mkdir -p src
-	npm install typescript ts-node @types/node --save-dev
-	./node_modules/.bin/tsc --init
-}
-
-function ready() {
-	echo "prepare $1 env ..."
-
-	case $1 in
-	go) _go ;;
-
-	Node) ;&
-	node) _node ;;
-
-	typescript) ;&
-	ts) _ts ;;
-
-	*) echo "Not support yet" ;;
-	esac
-
-  Slang=$1
-
-  [[ $1=="ts" || $1="typescript" ]] && Slang=node
-
-	content=$(curl -sL https://www.gitignore.io/api/$Slang)
-
-	err=$(echo $content | grep ERROR)
-
-	[[ -z $err ]] && echo "Got ignore content"
-
-	echo $content | tee .gitignore
-
-	prepare
-
-	echo "ready $1 env"
-}
-
-# alias setting
-alias clone='hub clone'
-alias swagger="docker run --rm -it -e GOPATH=$HOME/go:/go -v $HOME:$HOME -w $(pwd) quay.io/goswagger/swagger"
-alias gc="git clone"
-alias gp="git push"
-alias gu="git pull"
-alias gl="git lg"
-alias gs="git status"
-alias dc='docker-compose'
-alias spd='supervisord -c /usr/local/etc/supervisord.ini'
-alias spc='supervisorctl -c /usr/local/etc/supervisord.ini'
-alias ni='npm i'
-alias nip='npm i --production'
-alias h='tldr'
-
-
-
-### docker alias
-alias dctn='docker container'
-alias dimg='docker image'
-alias dnet='docker network'
-alias dplg='docker plugin'
-alias dcheck='docker checkpoint'
-alias dsev='docker service'
-alias dswarm='docker swarm'
-alias dstack='docker stack'
-alias dmachine='docker-machine'
-
-
-#### docker network
-alias dnet-new='docker network create'
-alias dnet-list='docker network ls'
-alias dnet-del='docker network rm'
-alias dnet-info='docker network inspect'
-alias dnet-clean='docker network prune'
-alias dnet-conn='docker netwrok connect'
-alias dnet-dis='docker network disconnect'
-
-### docker image
-alias dimg-list='dimg ls'
-alias dimg-history='dimg history'
-alias dimg-build='dimg build'
-alias dimg-load='dimg load'
-alias dimg-clean='dimg prune'
-alias dimg-get='dimg pull'
-alias dimg-tag='dimg tag'
-alias dimg-info='dimg inspect'
-alias dimg-upload='dimg push'
-alias dimg-from='dimg import'
-
-### docker container
-alias dctn-list='dctn ls'
-alias dctn-cp='dctn cp'
-alias dctn-diff='dctn-diff'
-alias dctn-ports='dctn port'
-alias dctn-kill='dctn kill'
-alias dctn-clean='dctn prune -f'
-alias dctn-start='dctn start'
-alias dctn-stop='dctn stop'
-alias dctn-info='dctn stats'
-alias dctn-attach='dctn attach'
-alias dctn-into='dctn exec -it'
-alias dctn-new-daemon='dctn run -d'
-alias dctn-new-it='dctn run -it'
-alias dctn-new-it-tmp='dctn run -it --rm'
-
-
-# docker-curl talk to docker use curl
-alias curl-docker='curl -s --unix-socket /var/run/docker.sock'
