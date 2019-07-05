@@ -34,7 +34,7 @@ install_tmux() {
 install_zsh() {
   echo 'Install zsh config'
   ln -sf $BASE/shell/zsh/zshrc $HOME/.zshrc
-  ln -sf $BASE/shell/zsh/themes $HOME/.oh-my-zsh/custom/
+  ln -sf $BASE/shell/zsh/themes/* $HOME/.oh-my-zsh/custom/themes/
 }
 
 
