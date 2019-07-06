@@ -14,8 +14,12 @@ COMPLETION_WAITING_DOTS="true"
 
 plugins=(
 	ansible
+	autojump
+	dash
 	git
 	go
+	golang
+	minikube
 	gas
 	wd
 	github
@@ -26,6 +30,7 @@ plugins=(
 	git-flow
 	kubectl
 	helm
+	z
 )
 
 source $ZSH/oh-my-zsh.sh
