@@ -15,14 +15,10 @@ COMPLETION_WAITING_DOTS="true"
 plugins=(
 	ansible
 	autojump
-	dash
 	git
-	go
 	golang
 	minikube
-	gas
 	wd
-	github
 	docker
 	docker-compose
 	zsh-autosuggestions
@@ -42,3 +38,7 @@ if [[ -n $SSH_CONNECTION ]]; then
 else
   export EDITOR='mvim'
 fi
+
+
+## direnv
+eval "$(direnv hook zsh)"

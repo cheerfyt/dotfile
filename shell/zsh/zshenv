@@ -21,10 +21,6 @@ export NVM_DIR=$HOME/.nvm
 
 [ -f ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh ] && source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
 
-[ -f /usr/local/etc/profile.d/autojump.sh  ] && . /usr/local/etc/profile.d/autojump.sh
-
-## direnv
-eval "$(direnv hook zsh)"
 
 ## github pull-request
 function pr() {
