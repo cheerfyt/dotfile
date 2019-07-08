@@ -26,6 +26,10 @@ export NVM_DIR=$HOME/.nvm
 ## direnv
 eval "$(direnv hook zsh)"
 
+## Golang setting
+export GO111MODULE=on
+export GOPROXY=https://goproxy.io
+
 ## github pull-request
 function pr() {
 	baseBranch="develop"
