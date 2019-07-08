@@ -17,7 +17,7 @@ plugins=(
 	autojump
 	git
 	golang
-	minikube
+	# minikube
 	wd
 	docker
 	docker-compose
