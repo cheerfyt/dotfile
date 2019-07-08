@@ -2,13 +2,14 @@ syntax on "open syntax
 
 let mapleader="<Space>"
 
-set encoding=utf-8
+set encoding=UTF-8
+set termencoding=UTF-8
 set backspace=eol,start,indent
-set number 
+set number
 set numberwidth=2
-set wrap 
-set ruler 
-set magic 
+set wrap
+set ruler
+set magic
 set so=7
 set background=dark
 set ffs=unix,dos,mac
