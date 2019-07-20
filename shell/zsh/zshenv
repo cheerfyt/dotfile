@@ -51,8 +51,7 @@ function load_virtual_env() {
 ################################################################################
 function prepare() {
 	echo '@1. prepeard editorconfig and prettierr config'
-	curl -sL https://raw.githubusercontent.com/cheerfyt/dotfile/master/editor/editorconfig >.editorconfig
-	curl -sL https://raw.githubusercontent.com/cheerfyt/dotfile/master/editor/prettierrc >.prettierrc
+	curl -sL https://raw.githubusercontent.com/cheerfyt/dotfile/master/editor/editorconfig/editorconfig > .editorconfig
 
 	echo '@2. prepeard folder'
 	result=${PWD##*/}
