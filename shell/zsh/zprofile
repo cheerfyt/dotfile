@@ -14,6 +14,7 @@ alias spc='supervisorctl -c /usr/local/etc/supervisord.ini'
 alias ni='npm i'
 alias nip='npm i --production'
 alias h='tldr'
+alias pull="hub pull"
 
 ### docker alias
 alias dctn='docker container'
@@ -69,7 +70,8 @@ alias hug='hub'
 alias hbu='hub'
 
 # emacs
-alias enw='/Applications/Emacs.app/Contents/MacOS/Emacs -nw'
+# alias enw='/Applications/Emacs.app/Contents/MacOS/Emacs -nw'
+# alias emacs="/Applications/Emacs.app/Contents/MacOS/Emacs -nw"
 
 # docker-curl talk to docker use curl
 alias curl-docker='curl -s --unix-socket /var/run/docker.sock'
@@ -85,9 +87,6 @@ alias ax='axel -n 10'
 
 # nvm
 alias loadnvm="[ -s $NVM_DIR/nvm.sh ] && . $NVM_DIR/nvm.sh"
-
-# editor
-alias emacs="/Applications/Emacs.app/Contents/MacOS/Emacs -nw"
 
 # lazydocker
 alias lzd='lazydocker'
