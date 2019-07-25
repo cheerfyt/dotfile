@@ -88,6 +88,7 @@ alias loadnvm="[ -s $NVM_DIR/nvm.sh ] && . $NVM_DIR/nvm.sh"
 
 # editor
 # alias emacs="/Applications/Emacs.app/Contents/MacOS/Emacs -nw"
+alias emacs="emacs -nw"
 
 # lazydocker
 alias lzd='lazydocker'
