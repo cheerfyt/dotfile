@@ -6,7 +6,7 @@ set encoding=UTF-8
 set termencoding=UTF-8
 set backspace=eol,start,indent
 set number
-set numberwidth=2
+set numberwidth=3
 set wrap
 set ruler
 set magic
