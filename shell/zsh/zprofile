@@ -80,7 +80,7 @@ alias curl-docker='curl -s --unix-socket /var/run/docker.sock'
 alias ydl='docker run --rm vimagick/youtube-dl'
 
 # common
-alias update='. $HOME/.zshrc'
+alias update='. $HOME/.zshrc && . $HOME/.zshenv && . $HOME/.zprofile'
 alias tm='tmux -2'
 alias cat='ccat'
 alias ax='axel -n 10'
