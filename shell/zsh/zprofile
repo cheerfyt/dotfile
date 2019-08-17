@@ -65,10 +65,6 @@ alias dctn-new-daemon='dctn run -d'
 alias dctn-new-it='dctn run -it'
 alias dctn-new-it-tmp='dctn run -it --rm'
 
-###
-alias hug='hub'
-alias hbu='hub'
-
 # emacs
 # alias enw='/Applications/Emacs.app/Contents/MacOS/Emacs -nw'
 # alias emacs="/Applications/Emacs.app/Contents/MacOS/Emacs -nw"
@@ -90,7 +86,7 @@ alias loadnvm="[ -s $NVM_DIR/nvm.sh ] && . $NVM_DIR/nvm.sh"
 
 # editor
 # alias emacs="/Applications/Emacs.app/Contents/MacOS/Emacs -nw"
-alias emacs="emacs -nw"
+# alias emacs="emacs -nw"
 
 # lazydocker
 alias lzd='lazydocker'
@@ -99,3 +95,18 @@ alias lzd='lazydocker'
 alias nt='npm test'
 alias ni='npm install'
 alias nip='npm install --production'
+
+# ft editor
+alias -s {yml,yaml,json,md,markdown,toml}=vim
+
+# change dir
+alias d='dirs -v | head -10'
+alias 1='cd -'
+alias 2='cd -2'
+alias 3='cd -3'
+alias 4='cd -4'
+alias 5='cd -5'
+alias 6='cd -6'
+alias 7='cd -7'
+alias 8='cd -8'
+alias 9='cd -9'
