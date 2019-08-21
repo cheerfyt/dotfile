@@ -81,7 +81,6 @@ func main() {
 }
 
 __EOF__
-	dep init
 	cat >Makefile <<__EOF__
 ##### ${folder}
 
@@ -100,7 +99,7 @@ install: build
 	@cp ./bin/${folder} /usr/local/bin
 
 build-image:
-  #wating you complete
+	#waitting you complete
 	@docker build -t yourrepo/${folder}:version .
 
 __EOF__
