@@ -22,7 +22,6 @@ plugins=(
 	history-substring-search
 	git-extras
 	git-flow
-	git-open
 	kubectl
 	helm
 	z
