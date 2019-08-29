@@ -8,37 +8,12 @@ if empty(glob('~/.config/nvim/autoload/plug.vim'))
   autocmd VimEnter * PlugInstall | source $MYVIMRC
 endif
 
-call plug#begin('~/.nvm/plugged')
-Plug 'vim-airline/vim-airline'
-Plug 'vim-airline/vim-airline-themes'
-Plug 'rking/ag.vim'
-Plug 'Valloric/YouCompleteMe', {'for': ['python', 'javascript', 'c', 'cpp'], 'do': 'python3 ./install.py --clang-completer --go-completer --ts-completer --rust-completer'}
-Plug 'mattn/emmet-vim', {'for': ['html', 'hml', 'jsx']}
-Plug 'fatih/vim-go', {'for': 'go'}
-Plug 'godlygeek/tabular'
-Plug 'scrooloose/nerdcommenter'
-Plug 'editorconfig/editorconfig-vim'
-Plug 'scrooloose/nerdtree', {'on': 'NERDTreeToggle'}
-Plug 'ekalinin/Dockerfile.vim'
-Plug 'tpope/vim-fugitive'
-Plug 'airblade/vim-gitgutter'
-Plug 'jiangmiao/auto-pairs'
-Plug 'tpope/vim-surround'
-Plug 'ctrlpvim/ctrlp.vim'
-Plug 'cespare/vim-toml', {'for': 'toml'}
-Plug 'rbgrouleff/bclose.vim'
-Plug 'plasticboy/vim-markdown', {'for': 'markdown'}
-Plug 'SirVer/ultisnips' | Plug 'honza/vim-snippets'
-Plug 'easymotion/vim-easymotion'
-Plug 'vim-syntastic/syntastic'
-Plug 'rust-lang/rust.vim', {'for': 'rust'}
-Plug 'moll/vim-node', {'for': 'javascript'}
-Plug 'othree/yajs.vim', {'for': 'javascript'}
-Plug 'othree/es.next.syntax.vim', {'for': 'javascript'}
-Plug 'othree/javascript-libraries-syntax.vim', {'for': ['javascript', 'typescript']}
-Plug 'derekwyatt/vim-fswitch'
-Plug 'fholgado/minibufexpl.vim'
+call plug#begin('~/.nvim/plugged')
+source ~/.config/nvim/plugins.vim
 call plug#end()
+
+"=============================================================================
+filetype plugin indent on
 "==============================================================================
 augroup file_types
     autocmd!
@@ -72,6 +47,7 @@ set cursorcolumn
 set nowrap
 set autoread
 set colorcolumn=80
+set completeopt-=preview
 highlight ColorColumn ctermbg=230 guifg=cyan guibg=cyan
 "==============================================================================
 
@@ -141,26 +117,27 @@ let g:go_highlight_operators                            = 1
 let g:go_highlight_build_constraints                    = 1
 " ====================== golang setting end ===================================
 
+" ===================== unicode symbols ==============
 " setting for airline
-let g:airline#extensions#tabline#enabled = 1
-let g:airline#extensions#tabline#left_sep = '∥'
-let g:airline#extensions#tabline#left_alt_sep = ''
 " ===================== unicode symbols ==============
 let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#tabline#left_sep = '▶'
+let g:airline#extensions#tabline#left_alt_sep = '▶'
+let g:airline#extensions#tabline#enabled = 1
 let g:airline_theme              = "onedark"
-let g:airline_left_sep           = ''
-let g:airline_left_alt_sep       = ''
+let g:airline_left_sep           = '▶'
+let g:airline_left_alt_sep       = '▶'
 let g:airline_right_sep          = ''
 let g:airline_right_alt_sep      = ''
-let g:airline_symbols.crypt      = ''
-let g:airline_symbols.linenr     = ''
-let g:airline_symbols.maxlinenr  = '☰'
-let g:airline_symbols.branch     = ''
-let g:airline_symbols.paste      = '∥'
-let g:airline_symbols.spell      = 'Ꞩ'
-let g:airline_symbols.notexists  = '∄'
-let g:airline_symbols.whitespace = 'Ξ'
 let g:ctrlp_custom_ignore = 'node_modules\|.DS_Store\|.git\|vendor'
+" let g:airline_symbols.crypt      = ''
+" let g:airline_symbols.linenr     = ''
+" let g:airline_symbols.maxlinenr  = '☰'
+" let g:airline_symbols.branch     = ''
+" let g:airline_symbols.paste      = '∥'
+" let g:airline_symbols.spell      = 'Ꞩ'
+" let g:airline_symbols.notexists  = '∄'
+" let g:airline_symbols.whitespace = 'Ξ'
 " =============================================================================
 
 "==============================================================================
@@ -184,3 +161,10 @@ if 'VIRTUAL_ENV' in os.environ:
   activate_this = os.path.join(project_base_dir, 'bin/activate_this.py')
   execfile(activate_this, dict(__file__=activate_this))
 EOF
+
+"===========================================
+" ycm config
+"===========================================
+let g:ycm_server_python_interpreter = "/usr/local/bin/python3"
+let g:ycm_complete_in_comments=1
+let g:ycm_collect_identifiers_from_tags_files=1

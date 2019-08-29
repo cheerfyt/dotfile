@@ -27,7 +27,6 @@ alias dswarm='docker swarm'
 alias dstack='docker stack'
 alias dmachine='docker-machine'
 
-
 #### docker network
 alias dnet-new='docker network create'
 alias dnet-list='docker network ls'
