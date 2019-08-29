@@ -1,0 +1,5 @@
+let g:netrw_dirhistmax  =10
+let g:netrw_dirhist_cnt =3
+let g:netrw_dirhist_1='/Users/cheerfyt/demo/redcore'
+let g:netrw_dirhist_2='/Users/cheerfyt/demo/redcore/cmd'
+let g:netrw_dirhist_3='/Users/cheerfyt/demo/redcore/cmd/redcore'
