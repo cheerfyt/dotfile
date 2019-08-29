@@ -8,12 +8,11 @@ Plug 'godlygeek/tabular'
 Plug 'scrooloose/nerdcommenter'
 Plug 'editorconfig/editorconfig-vim'
 Plug 'scrooloose/nerdtree', {'on': 'NERDTreeToggle'}
-Plug 'ekalinin/Dockerfile.vim'
+Plug 'ekalinin/Dockerfile.vim', {'for': 'Dockerfile'}
 Plug 'tpope/vim-fugitive'
 Plug 'airblade/vim-gitgutter'
 Plug 'jiangmiao/auto-pairs'
 Plug 'tpope/vim-surround'
-Plug 'ctrlpvim/ctrlp.vim'
 Plug 'cespare/vim-toml', {'for': 'toml'}
 Plug 'rbgrouleff/bclose.vim'
 Plug 'plasticboy/vim-markdown', {'for': 'markdown'}
@@ -41,5 +40,3 @@ Plug 'https://github.com/tpope/vim-sensible'
 Plug 'https://github.com/w0rp/ale'
 Plug 'https://github.com/altercation/vim-colors-solarized'
 Plug 'https://github.com/roxma/vim-tmux-clipboard'
-
-" Plug 'fholgado/minibufexpl.vim'

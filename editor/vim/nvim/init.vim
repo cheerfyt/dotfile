@@ -48,6 +48,8 @@ set nowrap
 set autoread
 set colorcolumn=80
 set completeopt-=preview
+set list!
+set listchars=tab:>→,trail:·,eol:¶
 highlight ColorColumn ctermbg=230 guifg=cyan guibg=cyan
 "==============================================================================
 
