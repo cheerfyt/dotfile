@@ -69,7 +69,7 @@ set pastetoggle=<F2>  " - toggle paste mode
 highlight ColorColumn ctermbg=250 guifg=cyan guibg=cyan
 set list!
 " set listchars=tab:>→,trail:·,eol:┑
-set listchars=tab:>→
+set listchars=tab:≫→
 highlight ColorColumn ctermbg=230 guifg=cyan guibg=cyan
 "==============================================================================
 

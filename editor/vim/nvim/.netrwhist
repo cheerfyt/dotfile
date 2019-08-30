@@ -1,9 +1,2 @@
 let g:netrw_dirhistmax  =10
-let g:netrw_dirhist_cnt =7
-let g:netrw_dirhist_1='/Users/cheerfyt/demo/redcore'
-let g:netrw_dirhist_2='/Users/cheerfyt/demo/redcore/cmd'
-let g:netrw_dirhist_3='/Users/cheerfyt/demo/redcore/cmd/redcore'
-let g:netrw_dirhist_4='/Users/cheerfyt/Cheerfyt/Future/Go/src/github.com/cheerfyt/figure'
-let g:netrw_dirhist_5='/Users/cheerfyt/Art/OpenSouce/Bash'
-let g:netrw_dirhist_6='/Users/cheerfyt/Cheerfyt/Dotfile/editor'
-let g:netrw_dirhist_7='/Users/cheerfyt/Cheerfyt/Dotfile/editor/editorconfig'
+let g:netrw_dirhist_cnt =0
