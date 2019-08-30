@@ -1,4 +1,6 @@
-" auto reload config file
+"vim: tw=6 ts=2:
+"auto reload config file
+set nocompatible
 autocmd! BufWritePost ~/.config/nvim/init.vim source %
 
 "==============================================================================
@@ -34,6 +36,7 @@ augroup END
 "==============================================================================
 
 "==============================================================================
+let mapleader=" "
 set nu
 set showmode
 set noswapfile
@@ -42,13 +45,29 @@ colorscheme flatcolor
 set gcr=a:block-blinkon0
 set laststatus=2
 set ruler
-set cursorline
-set cursorcolumn
 set nowrap
 set autoread
 set colorcolumn=80
 set completeopt-=preview
-highlight ColorColumn ctermbg=230 guifg=cyan guibg=cyan
+set ttyfast
+set lazyredraw
+set ignorecase
+set smartcase
+set hlsearch
+set incsearch
+set spell spelllang=en_us
+set dictionary=/usr/share/dict/words
+set noequalalways
+set showmatch
+
+set tabstop=4         " - tabs are at proper location
+set expandtab         " - don't use actual tab character (ctrl-v)
+set shiftwidth=4      " - indenting is 4 spaces
+set autoindent        " - turns it on
+set smartindent       " - does the right thing (mostly) in programs
+set cindent           " - stricter rules for C programs
+set pastetoggle=<F2>  " - toggle paste mode
+highlight ColorColumn ctermbg=250 guifg=cyan guibg=cyan
 "==============================================================================
 
 "==============================================================================
@@ -63,6 +82,7 @@ set wildignore+=log/**
 set wildignore+=tmp/**
 set wildignore+=*.png,*.jpg,*.gif,*.pdf
 set wildignore+=/bower_components/*,/node_modules/*
+set wildignore+=.git/**,vendor/**
 " =============================================================================
 "                                   Key mapping
 " =============================================================================
@@ -75,7 +95,7 @@ noremap <C-k> <C-w>k
 noremap <C-l> <C-w>l
 nnoremap H ^
 nnoremap L $
-" inoremap jk <esc>
+inoremap jk <esc>
 inoremap <C-e> <END>
 nnoremap <F3> :NERDTreeToggle<CR>
 nnoremap <F8> :TagbarToggle<CR>
@@ -101,21 +121,13 @@ nnoremap <silent> <leader>q :close<CR>
 map <Leader>n <plug>NERDTreeTabsToggle<CR>
 " =============================================================================
 highlight Cursor guifg=black guibg=pink
-highlight ColorColumn ctermbg=220 guifg=yellow guibg=yellow
+highlight ColorColumn ctermbg=130 guifg=yellow guibg=yellow
 highlight OverLength ctermbg=red ctermfg=white guibg=#592929
 highlight Pmenu term=reverse ctermbg=cyan ctermfg=black
 highlight PmenuSel term=reverse ctermbg=lightred ctermfg=black
 highlight ExtraWhitespace ctermbg=darkgreen ctermfg=white
 hi SpecialKey ctermfg=237 guifg=#535b68
 hi MatchParen cterm=underline ctermbg=none ctermfg=Cyan
-
-" ====================== golang setting =======================================
-let g:go_highlight_functions                            = 1
-let g:go_highlight_methods                              = 1
-let g:go_highlight_structs                              = 1
-let g:go_highlight_operators                            = 1
-let g:go_highlight_build_constraints                    = 1
-" ====================== golang setting end ===================================
 
 " ===================== unicode symbols ==============
 " setting for airline
@@ -168,3 +180,10 @@ EOF
 let g:ycm_server_python_interpreter = "/usr/local/bin/python3"
 let g:ycm_complete_in_comments=1
 let g:ycm_collect_identifiers_from_tags_files=1
+
+"==============================================================================
+" snippet settings
+"==============================================================================
+let g:UltiSnipsExpandTrigger="<SPACE>"
+let g:UltiSnipsJumpForwardTrigger="<c-b>"
+let g:UltiSnipsJumpBackwardTrigger="<c-z>"

@@ -2,24 +2,21 @@ Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'rking/ag.vim'
 Plug 'Valloric/YouCompleteMe', {'do': 'python3 ./install.py --clang-completer --go-completer --ts-completer --rust-completer'}
-Plug 'mattn/emmet-vim', {'for': ['html', 'hml', 'jsx']}
+Plug 'mattn/emmet-vim', {'for': ['html', 'hml', 'jsx', 'tsx']}
 Plug 'fatih/vim-go', {'for': 'go'}
 Plug 'godlygeek/tabular'
 Plug 'scrooloose/nerdcommenter'
 Plug 'editorconfig/editorconfig-vim'
 Plug 'scrooloose/nerdtree', {'on': 'NERDTreeToggle'}
-Plug 'ekalinin/Dockerfile.vim'
-Plug 'tpope/vim-fugitive'
+Plug 'ekalinin/Dockerfile.vim', {'for': 'Dockerfile'}
 Plug 'airblade/vim-gitgutter'
 Plug 'jiangmiao/auto-pairs'
 Plug 'tpope/vim-surround'
-Plug 'ctrlpvim/ctrlp.vim'
 Plug 'cespare/vim-toml', {'for': 'toml'}
 Plug 'rbgrouleff/bclose.vim'
 Plug 'plasticboy/vim-markdown', {'for': 'markdown'}
 Plug 'SirVer/ultisnips' | Plug 'honza/vim-snippets'
 Plug 'easymotion/vim-easymotion'
-Plug 'vim-syntastic/syntastic'
 Plug 'derekwyatt/vim-fswitch'
 Plug 'rdnetto/YCM-Generator', { 'branch': 'stable'}
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
@@ -41,5 +38,5 @@ Plug 'https://github.com/tpope/vim-sensible'
 Plug 'https://github.com/w0rp/ale'
 Plug 'https://github.com/altercation/vim-colors-solarized'
 Plug 'https://github.com/roxma/vim-tmux-clipboard'
-
-" Plug 'fholgado/minibufexpl.vim'
+Plug 'https://github.com/tpope/vim-fugitive.git'
+Plug 'https://github.com/mhinz/vim-startify'
