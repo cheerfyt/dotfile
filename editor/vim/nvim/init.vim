@@ -1,4 +1,3 @@
-"vim: tw=6 ts=2:
 "auto reload config file
 set nocompatible
 autocmd! BufWritePost ~/.config/nvim/init.vim source %
@@ -68,6 +67,9 @@ set smartindent       " - does the right thing (mostly) in programs
 set cindent           " - stricter rules for C programs
 set pastetoggle=<F2>  " - toggle paste mode
 highlight ColorColumn ctermbg=250 guifg=cyan guibg=cyan
+set list!
+set listchars=tab:>→,trail:·,eol:¶
+highlight ColorColumn ctermbg=230 guifg=cyan guibg=cyan
 "==============================================================================
 
 "==============================================================================

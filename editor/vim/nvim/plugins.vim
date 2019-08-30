@@ -9,6 +9,7 @@ Plug 'scrooloose/nerdcommenter'
 Plug 'editorconfig/editorconfig-vim'
 Plug 'scrooloose/nerdtree', {'on': 'NERDTreeToggle'}
 Plug 'ekalinin/Dockerfile.vim', {'for': 'Dockerfile'}
+Plug 'tpope/vim-fugitive'
 Plug 'airblade/vim-gitgutter'
 Plug 'jiangmiao/auto-pairs'
 Plug 'tpope/vim-surround'
