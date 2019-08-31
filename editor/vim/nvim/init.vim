@@ -58,6 +58,8 @@ set spell spelllang=en_us
 set dictionary=/usr/share/dict/words
 set noequalalways
 set showmatch
+set backspace=indent,eol,start
+set splitbelow
 
 set tabstop=4         " - tabs are at proper location
 set expandtab         " - don't use actual tab character (ctrl-v)
@@ -66,10 +68,10 @@ set autoindent        " - turns it on
 set smartindent       " - does the right thing (mostly) in programs
 set cindent           " - stricter rules for C programs
 set pastetoggle=<F2>  " - toggle paste mode
-highlight ColorColumn ctermbg=250 guifg=cyan guibg=cyan
-set list!
+
+" set list!
 " set listchars=tab:>→,trail:·,eol:┑
-set listchars=tab:≫→
+" set listchars=tab:≫→
 highlight ColorColumn ctermbg=230 guifg=cyan guibg=cyan
 "==============================================================================
 
@@ -121,6 +123,7 @@ nnoremap gj j
 nnoremap <silent> <leader>s :split<CR>
 nnoremap <silent> <leader>v :vsplit<CR>
 nnoremap <silent> <leader>q :close<CR>
+
 map <Leader>n <plug>NERDTreeTabsToggle<CR>
 " =============================================================================
 highlight Cursor guifg=black guibg=pink
@@ -187,6 +190,9 @@ let g:ycm_collect_identifiers_from_tags_files=1
 "==============================================================================
 " snippet settings
 "==============================================================================
-let g:UltiSnipsExpandTrigger="<SPACE>"
+let g:UltiSnipsExpandTrigger=","
 let g:UltiSnipsJumpForwardTrigger="<c-b>"
 let g:UltiSnipsJumpBackwardTrigger="<c-z>"
+
+" terminal setting
+let g:split_term_default_shell = "bash"

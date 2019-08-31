@@ -24,6 +24,7 @@ Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 Plug 'lervag/vimtex'
 Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() } }
+Plug 'vimlab/split-term.vim'
 
 Plug 'https://github.com/ddrscott/vim-window'
 Plug 'https://github.com/gcavallanti/vim-noscrollbar'

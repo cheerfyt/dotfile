@@ -64,10 +64,6 @@ alias dctn-new-daemon='dctn run -d'
 alias dctn-new-it='dctn run -it'
 alias dctn-new-it-tmp='dctn run -it --rm'
 
-# emacs
-# alias enw='/Applications/Emacs.app/Contents/MacOS/Emacs -nw'
-# alias emacs="/Applications/Emacs.app/Contents/MacOS/Emacs -nw"
-
 # docker-curl talk to docker use curl
 alias curl-docker='curl -s --unix-socket /var/run/docker.sock'
 
@@ -83,12 +79,18 @@ alias ax='axel -n 10'
 # nvm
 alias loadnvm="[ -s $NVM_DIR/nvm.sh ] && . $NVM_DIR/nvm.sh"
 
-# editor
-# alias emacs="/Applications/Emacs.app/Contents/MacOS/Emacs -nw"
-# alias emacs="emacs -nw"
-if type vim &>/dev/null ;then
-	alias vim="nvim"
-fi
+# run vim in bash not zsh; because zsh is slow
+function vim() {
+    if type nvim &>/dev/null; then
+        bash -c "nvim $@"
+    else
+        bash -c "vim $@"
+    fi
+}
+
+# if type vim &>/dev/null ;then
+# 	alias vim="nvim"
+# fi
 
 # lazydocker
 alias lzd='lazydocker'

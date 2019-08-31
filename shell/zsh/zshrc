@@ -5,42 +5,24 @@ ZSH_THEME="powerlevel10k/powerlevel10k"
 
 DISABLE_AUTO_UPDATE="true"
 
-export UPDATE_ZSH_DAYS=13
-
 COMPLETION_WAITING_DOTS="true"
 
 plugins=(
-	autojump
+	z
 	git
-	golang
 	wd
 	docker
-	docker-compose
 	zsh-autosuggestions
-	zsh-syntax-highlighting
-	history-substring-search
 	git-extras
-	git-flow
-	kubectl
-	helm
-	z
 )
 
 source $ZSH/oh-my-zsh.sh
 export LANG=en_US.UTF-8
-export EDITOR="emacs"
 
 ## direnv
-eval "$(direnv hook zsh)"
+## eval "$(direnv hook zsh)"
+## export UPDATE_ZSH_DAYS=13
+
 test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
-
-# autoload -U up-line-or-beginning-search
-# autoload -U down-line-or-beginning-search
-# zle -N up-line-or-beginning-search
-# zle -N down-line-or-beginning-search
-# bindkey "^[[A" up-line-or-beginning-search # Up
-# bindkey "^[[B" down-line-or-beginning-search # Down"]]]]"
-
-
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ -f ~/.p10k.zsh ]] && source ~/.p10k.zsh
