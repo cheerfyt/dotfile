@@ -1,5 +1,6 @@
 "auto reload config file
 set nocompatible
+
 autocmd! BufWritePost ~/.config/nvim/init.vim source %
 
 "==============================================================================
@@ -190,7 +191,7 @@ let g:ycm_collect_identifiers_from_tags_files=1
 "==============================================================================
 " snippet settings
 "==============================================================================
-let g:UltiSnipsExpandTrigger=","
+let g:UltiSnipsExpandTrigger="<C-x>"
 let g:UltiSnipsJumpForwardTrigger="<c-b>"
 let g:UltiSnipsJumpBackwardTrigger="<c-z>"
 
