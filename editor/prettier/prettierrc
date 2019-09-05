@@ -1,7 +1,7 @@
 {
     "eslintIntegration": true,
     "semi": true,
-    "printWidth": 100,
+    "printWidth": 80,
     "singleQuote": false,
     "bracketSpacing": true,
     "tabWidth": 4,
