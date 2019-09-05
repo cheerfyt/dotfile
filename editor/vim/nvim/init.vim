@@ -71,7 +71,7 @@ set cindent           " - stricter rules for C programs
 set pastetoggle=<F2>  " - toggle paste mode
 
 " set list!
-" set listchars=tab:>→,trail:·,eol:┑
+set listchars=tab:→→,trail:·,eol:⑀
 " set listchars=tab:≫→
 highlight ColorColumn ctermbg=230 guifg=cyan guibg=cyan
 "==============================================================================
@@ -196,4 +196,4 @@ let g:UltiSnipsJumpForwardTrigger="<c-b>"
 let g:UltiSnipsJumpBackwardTrigger="<c-z>"
 
 " terminal setting
-let g:split_term_default_shell = "bash"
+let g:split_term_default_shell = "/bin/zsh"
