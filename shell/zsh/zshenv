@@ -64,7 +64,7 @@ function _go() {
 
 	mkdir -p cmd/${folder}
 
-	mkdir -p {assets,documents,scripts,pkg,configs}
+	mkdir -p {assets,doc,scripts,pkg,conf}
 
 	echo '0.0.1' > assets/vesion
 
