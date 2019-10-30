@@ -51,19 +51,22 @@ function load_virtual_env() {
 #################################  prepare programing env ######################
 ################################################################################
 function prepare() {
-	echo '@1. prepeard editorconfig and prettierr config'
+	echo '=> 1. prepeard editorconfig and prettierr config'
 	curl -sL https://raw.githubusercontent.com/cheerfyt/dotfile/master/editor/editorconfig/editorconfig > .editorconfig
 
-	echo '@2. prepeard folder'
+	echo '=> 2. prepeard folder'
 	result=${PWD##*/}
 	echo "### $result" | tee README.md
 }
 
 function _go() {
 	folder=${PWD##*/}
+
 	mkdir -p cmd/${folder}
+
 	mkdir -p {assets,documents,scripts,pkg,configs}
-	echo '0.0.1' > asserts/vesion
+
+	echo '0.0.1' > assets/vesion
 
 	date=$(date "+%Y-%m-%d %H:%M:%S")
 
@@ -134,20 +137,14 @@ function ready() {
 	echo "prepare $1 env ..."
 
 	case $1 in
-	go) _go ;;
+	    go) _go ;;
 
-	Node) ;&
-	node) _node ;;
+	    node) _node ;;
 
-	typescript) ;&
-	ts) _ts ;;
-
-	*) echo "Not support yet" ;;
+	    *) echo "Not support yet" ;;
 	esac
 
-  Slang=$1
-
-  [[ $1=="ts" || $1="typescript" ]] && Slang=node
+    Slang=$1
 
 	content=$(curl -sL https://www.gitignore.io/api/$Slang)
 
