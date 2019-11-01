@@ -54,7 +54,7 @@ fi
       nvm                     # node.js version from nvm (https://github.com/nvm-sh/nvm)
       nodeenv                 # node.js environment (https://github.com/ekalinin/nodeenv)
       # node_version          # node.js version
-      # go_version            # go version (https://golang.org)
+      go_version            # go version (https://golang.org)
       # rust_version          # rustc version (https://www.rust-lang.org)
       rbenv                   # ruby version from rbenv (https://github.com/rbenv/rbenv)
       rvm                     # ruby version from rvm (https://rvm.io)
@@ -500,11 +500,11 @@ fi
   # Python virtual environment color.
   typeset -g POWERLEVEL9K_VIRTUALENV_FOREGROUND=37
   # Don't show Python version next to the virtual environment name.
-  typeset -g POWERLEVEL9K_VIRTUALENV_SHOW_PYTHON_VERSION=false
+  typeset -g POWERLEVEL9K_VIRTUALENV_SHOW_PYTHON_VERSION=true
   # Separate environment name from Python version only with a space.
-  typeset -g POWERLEVEL9K_VIRTUALENV_{LEFT,RIGHT}_DELIMITER=
+  typeset -g POWERLEVEL9K_VIRTUALENV_{LEFT,RIGHT}_DELIMITER=">"
   # Custom icon.
-  # typeset -g POWERLEVEL9K_VIRTUALENV_VISUAL_IDENTIFIER_EXPANSION='⭐'
+  typeset -g POWERLEVEL9K_VIRTUALENV_VISUAL_IDENTIFIER_EXPANSION='⭐'
 
   #####################[ anaconda: conda environment (https://conda.io/) ]######################
   # Anaconda environment color.
