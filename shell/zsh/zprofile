@@ -115,4 +115,4 @@ alias 8='cd -8'
 alias 9='cd -9'
 
 # minio client - mc
-alias mc="docker run --rm -it minio/mc"
+# alias mc="docker run --rm -it --link minio:minio minio/mc"
