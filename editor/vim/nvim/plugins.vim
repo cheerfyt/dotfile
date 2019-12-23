@@ -44,3 +44,5 @@ Plug 'altercation/vim-colors-solarized'
 Plug 'roxma/vim-tmux-clipboard'
 Plug 'tpope/vim-fugitive.git'
 Plug 'mhinz/vim-startify'
+Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+Plug 'tpope/vim-surround'
