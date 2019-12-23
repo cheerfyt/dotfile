@@ -40,4 +40,5 @@ set nobackup
 set noswapfile
 set pastetoggle=<leader>z
 set colorcolumn=80
+set pastetoggle=<F2>
 colorscheme atom-dark-256

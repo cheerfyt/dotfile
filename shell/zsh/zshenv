@@ -64,14 +64,14 @@ function _go() {
 
 	mkdir -p cmd/${folder}
 
-	mkdir -p {assets,doc,scripts,pkg,conf}
+	mkdir -p {assets,docs,hack,pkg,config}
 
-	echo '0.0.1' > assets/vesion
+	echo '0.0.1' > assets/version
 
 	date=$(date "+%Y-%m-%d %H:%M:%S")
 
 	# Generate the main.go
-	cat >cmd/${folder}/main.go <<__EOF__
+	cat >${folder}.go <<__EOF__
 
 package main
 
@@ -87,23 +87,22 @@ __EOF__
 	cat >Makefile <<__EOF__
 ##### ${folder}
 
+VERSION := \$(shell cat assets/version)
+USER := \$(shell whoami)
+
 all: run
 
 run:
-	@go run cmd/${folder}/main.go
+	@go run ${folder}.go
 
 build:
-	@go build -o bin/${folder} cmd/${folder}/main.go
-
-setup:
-	@dep ensure
+	@go build -o bin/${folder} ${folder}.go
 
 install: build
 	@cp ./bin/${folder} /usr/local/bin
 
 build-image:
-	#waitting you complete
-	@docker build -t yourrepo/${folder}:version .
+	@docker build -t \${USER}/${folder}:\${VERSION} .
 
 __EOF__
 
@@ -111,7 +110,7 @@ __EOF__
 	cat >Dockerfile <<__EOF__
 FROM golang:alpine AS builder
 ADD . /src
-RUN cd /src && go build -o bin/${folder} cmd/${folder}/main.go
+RUN cd /src && go build -o bin/${folder} ${folder}.go
 
 FROM alpine:latest
 
@@ -158,3 +157,6 @@ function ready() {
 
 	echo "ready $1 env"
 }
+
+# kind
+export KUBECONFIG="$(kind get kubeconfig-path --name="kind")"
