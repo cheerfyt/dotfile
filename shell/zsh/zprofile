@@ -105,7 +105,7 @@ alias 8='cd -8'
 alias 9='cd -9'
 
 # vscode
-if type code-insiders &>/dev/null; then
+if type code-insiders &>2 2>/dev/null; then
     alias code="code-insiders"
 fi
 
