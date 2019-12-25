@@ -1,6 +1,6 @@
-#######################################
-############# Alias settings ##########
-#######################################
+###############################################################################
+########################### Alias settings ####################################
+###############################################################################
 alias clone='hub clone'
 alias swagger="docker run --rm -it -e GOPATH=$HOME/go:/go -v $HOME:$HOME -w $(pwd) quay.io/goswagger/swagger"
 alias gc="git clone"
@@ -11,8 +11,6 @@ alias gs="git status"
 alias dc='docker-compose'
 alias spd='supervisord -c /usr/local/etc/supervisord.ini'
 alias spc='supervisorctl -c /usr/local/etc/supervisord.ini'
-alias ni='npm i'
-alias nip='npm i --production'
 alias h='tldr'
 alias pull="hub pull"
 
@@ -73,23 +71,15 @@ alias ydl='docker run --rm vimagick/youtube-dl'
 # common
 alias update='. $HOME/.zshrc && . $HOME/.zshenv && . $HOME/.zprofile'
 alias tm='tmux -2'
-alias cat='ccat'
+alias cat='bat -n'
 alias ax='axel -n 10'
 
 # nvm
 alias loadnvm="[ -s $NVM_DIR/nvm.sh ] && . $NVM_DIR/nvm.sh"
 
-# function vim() {
-#     if type nvim &>/dev/null; then
-#         nvim "$@"
-#     else
-#         vim "$@"
-#     fi
-# }
-
-# if type vim &>/dev/null ;then
-# 	alias vim="nvim"
-# fi
+if type nvim &>/dev/null ;then
+	alias vim="nvim"
+fi
 
 # lazydocker
 alias lzd='lazydocker'
@@ -114,5 +104,8 @@ alias 7='cd -7'
 alias 8='cd -8'
 alias 9='cd -9'
 
-# minio client - mc
-# alias mc="docker run --rm -it --link minio:minio minio/mc"
+# vscode
+if type code-insiders &>/dev/null; then
+    alias code="code-insiders"
+fi
+
