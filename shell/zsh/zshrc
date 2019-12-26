@@ -134,3 +134,42 @@ brp() {
     do; brew uninstall $prog; done;
   fi
 }
+
+# k8s completion
+###############
+red=$(tput setaf 1)
+green=$(tput setaf 2)
+reset=$(tput sgr0)
+
+col() {
+    echo -n
+    echo "${red}===============================================================${reset}"
+    echo "${green} Select $1: $2 ${reset}"
+    echo "${red}===============================================================${reset}"
+    echo -n
+}
+
+kpod() {
+    pod=$(kubectl get pods | fzf)
+    if [[ ${pod} != "" ]];then
+        podname=$(echo $pod | cut -d" " -f1)
+        kubectl describe pod ${podname}
+    fi
+}
+
+ksev() {
+    sev=$(kubectl get services | fzf)
+    if [[ ${sev} != "" ]];then
+        sev_name=$(echo $sev | cut -d" " -f1)
+        kubectl describe service ${sev_name}
+    fi
+}
+
+kdev() {
+    dev=$(kubectl get deployment | fzf)
+    if [[ ${dev} != "" ]];then
+        dev_name=$(echo $dev | cut -d" " -f1)
+        col Deployment $dev_name
+        kubectl describe service ${dev_name}
+    fi
+}
