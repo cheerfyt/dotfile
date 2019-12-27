@@ -173,3 +173,5 @@ kdev() {
         kubectl describe service ${dev_name}
     fi
 }
+
+source $HOME/Personal/dotfiles/shell/kf.bash
