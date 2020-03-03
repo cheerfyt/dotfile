@@ -175,3 +175,4 @@ kdev() {
 }
 
 source $HOME/Personal/dotfiles/shell/kf.bash
+source "$(navi widget zsh)"
