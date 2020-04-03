@@ -29,7 +29,10 @@
 	tool = icdiff
 
 [merge]
-	tool = meld
+	tool = vscode
+
+[mergetool]
+    cmd = code --wait $MERGED
 
 [alias]
 	#############

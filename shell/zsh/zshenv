@@ -24,7 +24,7 @@ export NVM_DIR=$HOME/.nvm
 
 
 ## Golang setting
-export GO111MODULE=auto
+export GO111MODULE=on
 export GOPROXY=https://goproxy.cn,direct
 
 ## github pull-request
