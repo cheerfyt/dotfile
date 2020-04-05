@@ -157,6 +157,3 @@ function ready() {
 
 	echo "ready $1 env"
 }
-
-# kind
-export KUBECONFIG="$(kind get kubeconfig-path --name="kind")"
