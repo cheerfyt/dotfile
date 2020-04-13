@@ -15,8 +15,9 @@ export PATH="$HOME/.cargo/bin:$PATH"
 
 export PATH=/usr/local/openresty/bin:/usr/local/openresty/nginx/sbin:$PATH
 export PATH=$PATH:$HOME/.emacs.d/bin
-
 export NVM_DIR=$HOME/.nvm
+
+export PATH=$HOME/Snapshot/maven-3.6.3/bin:$PATH
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
