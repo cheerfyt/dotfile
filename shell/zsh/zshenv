@@ -15,8 +15,9 @@ export PATH="$HOME/.cargo/bin:$PATH"
 
 export PATH=/usr/local/openresty/bin:/usr/local/openresty/nginx/sbin:$PATH
 export PATH=$PATH:$HOME/.emacs.d/bin
-
 export NVM_DIR=$HOME/.nvm
+
+export PATH=$HOME/Snapshot/maven-3.6.3/bin:$PATH
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
@@ -24,7 +25,7 @@ export NVM_DIR=$HOME/.nvm
 
 
 ## Golang setting
-export GO111MODULE=auto
+export GO111MODULE=on
 export GOPROXY=https://goproxy.cn,direct
 
 ## github pull-request
@@ -157,6 +158,5 @@ function ready() {
 
 	echo "ready $1 env"
 }
-
 # kind
 # export KUBECONFIG="$(kind get kubeconfig-path --name="kind")"
