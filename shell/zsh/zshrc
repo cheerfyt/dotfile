@@ -55,6 +55,4 @@ fssh() {
     ssh $host
 }
 
-
-
-source "$(navi widget zsh)"
+export PATH=$HOME/Java/Maven/bin:$PATH
