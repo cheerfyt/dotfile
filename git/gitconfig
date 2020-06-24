@@ -5,6 +5,8 @@
 [core]
     editor = vim
 	excludesfile = /Users/cheerfyt/.gitignore_global
+	quotePath = false
+	commitGraph = true
 
 [color]
     ui = auto
@@ -204,3 +206,5 @@
 
 [pager]
 	difftool = true
+[gc]
+	writeCommitGraph = true
