@@ -56,3 +56,5 @@ fssh() {
 }
 
 export PATH=$HOME/Java/Maven/bin:$PATH
+
+alias history="cat ~/.bash_history | fzf"
