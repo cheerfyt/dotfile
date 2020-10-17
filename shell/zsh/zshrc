@@ -7,6 +7,7 @@ ZSH_THEME="powerlevel10k/powerlevel10k"
 plugins=(
 	wd
 	zsh-autosuggestions
+    forgit
 )
 
 source $ZSH/oh-my-zsh.sh
@@ -57,4 +58,20 @@ fssh() {
 
 export PATH=$HOME/Java/Maven/bin:$PATH
 
-alias history="cat ~/.bash_history | fzf"
+alias bh="cat ~/.bash_history | fzf"
+
+alias zh='cat ~/.zsh_history | fzf'
+
+export FZF_COMPLETION_TRIGGER='**'
+
+export FZF_DEFAULT_OPTS="
+--layout=reverse
+--height=80%
+--multi
+--preview '([[ -f {} ]] && (bat --style=numbers --color=always {} || cat {})) || ([[ -d {} ]] && (tree -C {} | less)) || echo {} 2> /dev/null | head -200'
+--bind '?:toggle-preview'
+--bind 'ctrl-a:select-all'
+--bind 'ctrl-y:execute-silent(echo {+} | pbcopy)'
+--bind 'ctrl-e:execute(echo {+} | xargs -o vim)'
+--bind 'ctrl-v:execute(code {+})'
+"

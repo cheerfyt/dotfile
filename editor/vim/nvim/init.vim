@@ -197,3 +197,5 @@ let g:UltiSnipsJumpBackwardTrigger="<c-z>"
 
 " terminal setting
 let g:split_term_default_shell = "/bin/zsh"
+
+let g:tex_flavor = "plain"
