@@ -159,3 +159,37 @@ function ready() {
 	echo "ready $1 env"
 }
 
+function gcb() {
+  result=$(git branch -a --color=always | grep -v '/HEAD\s' | sort |
+    fzf --height 50% --border --ansi --tac --preview-window right:70% \
+      --preview 'git log --oneline --graph --date=short --pretty="format:%C(auto)%cd %h%d %s" $(sed s/^..// <<< {} | cut -d" " -f1) | head -'$LINES |
+    sed 's/^..//' | cut -d' ' -f1)
+
+  if [[ $result != "" ]]; then
+    if [[ $result == remotes/* ]]; then
+      git checkout --track $(echo $result | sed 's#remotes/##')
+    else
+      git checkout "$result"
+    fi
+  fi
+}
+
+function dri() {
+  result=$(docker images -a | fzf --preview 'echo {} | xargs echo ' | awk '{print $3}')
+  if [[ $result != "" ]];then
+    echo "==> delete docker image: $(docker inspect $result --format='{{ .RepoTags }}') <=="
+    docker rmi $result
+  fi
+}
+
+function drc() {
+  result=$(docker ps -a | fzf | awk '{print $1}')
+  if [[ $result != "" ]];then
+    echo "==> delete docker container: $(docker inspect $result --format='{{ .Name }}') <=="
+    if [[ $1 == "--force" ]];then
+      docker rm -f $result
+    else
+      docker rm $result
+    fi
+  fi
+}

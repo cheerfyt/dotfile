@@ -68,6 +68,8 @@ alias zh='cat ~/.zsh_history | fzf'
 
 export FZF_COMPLETION_TRIGGER='**'
 
+export PATH="/usr/local/opt/node@12/bin:$PATH"
+
 # export FZF_DEFAULT_OPTS="
 # --layout=reverse
 # --height=80%

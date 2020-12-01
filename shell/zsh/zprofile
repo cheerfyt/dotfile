@@ -4,6 +4,7 @@
 alias clone='hub clone'
 alias swagger="docker run --rm -it -e GOPATH=$HOME/go:/go -v $HOME:$HOME -w $(pwd) quay.io/goswagger/swagger"
 alias gc="git clone"
+alias gc1="git clone --depth 1"
 alias gp="git push"
 alias gu="git pull"
 alias gl="git lg"
