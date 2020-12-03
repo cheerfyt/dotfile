@@ -1,7 +1,7 @@
 "auto reload config file
 set nocompatible
 autocmd! BufWritePost ~/.config/nvim/init.vim source %
-let mapleader=' '
+let mapleader=','
 
 " ======== Python3 programming path ===================
 let g:python3_host_prog = "/usr/local/bin/python3"
@@ -29,6 +29,12 @@ set updatetime=300      " Smaller updatetime for CursorHold & CursorHoldI
 set shortmess+=c        " don't give |ins-completion-menu| messages.
 set signcolumn=yes      " always show signcolumns
 highlight ColorColumn ctermbg=yellow
+
+highlight Pmenu      ctermbg=pink 
+highlight PmenuSel   ctermbg=gray
+highlight PmenuSbar  ctermbg=gray
+highlight Pmenu      ctermbg=gray
+
 set colorcolumn=80
 set encoding=utf-8
 set fileencoding=utf-8
@@ -73,6 +79,8 @@ Plug 'preservim/nerdcommenter'
 Plug 'editorconfig/editorconfig-vim'
 Plug 'Yggdroot/indentLine'
 Plug 'voldikss/vim-floaterm'
+Plug 'sjl/gundo.vim'
+Plug 'mileszs/ack.vim'
 call plug#end()
 filetype plugin on
 
@@ -122,8 +130,8 @@ nnoremap <silent> <leader><space> :noh<CR>
 " ===============================================================
 nnoremap <silent> <F2> :NERDTreeFind<CR>
 noremap <F3> :NERDTreeToggle<CR>
-
-map <silent> <space>t :FloatermToggle<CR>
+nnoremap <leader>t :FloatermToggle<CR>
+nnoremap <leader>F :Files<CR>
 
 "" Golang
 " disable vim-go :GoDef short cut (gd)
@@ -166,4 +174,22 @@ let g:airline_symbols.notexists = 'Ɇ'
 let g:airline_symbols.whitespace = 'Ξ'
 let g:airline#extensions#virtualenv#enabled = 1
 
+"" Gundo
+let g:gundo_width = 60
+let g:gundo_preview_height = 40
+let g:gundo_right = 1
+
 au FileType gitcommit let b:EditorConfig_disable = 1
+
+"" Ack search engine
+let g:ackprg = 'rg --vimgrep --type-not sql --smart-case'
+let g:ack_autoclose = 1
+let g:ack_use_cword_for_empty_search = 1
+
+" Don't jump to first match
+cnoreabbrev Ack Ack!
+nnoremap <Leader>/ :Ack!<Space>
+
+"" FloatermToggle g:floaterm_autoclose
+let g:floaterm_autoclose = 2
+let g:floaterm_wintype = 'floating'
