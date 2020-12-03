@@ -1,0 +1,26 @@
+{
+  "languageserver": {
+    "go": {
+      "command": "gopls",
+			"rootPatterns": ["go.mod", ".vim/", ".git/", ".hg/"]
+      "trace.server": "messages",
+      "filetypes": ["go"]
+    },
+    "bash": {
+      "command": "bash-language-server",
+      "args": ["start"],
+      "filetypes": ["sh"],
+      "ignoredRootPaths": ["~"]
+    },
+    "dockerfile": {
+      "command": "docker-langserver",
+      "filetypes": ["dockerfile"],
+      "args": ["--stdio"]
+    },
+    "rust": {
+      "command": "rust-analyzer",
+      "filetypes": ["rust"],
+      "rootPatterns": ["Cargo.toml"]
+    }
+  }
+}

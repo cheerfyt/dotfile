@@ -81,3 +81,5 @@ export PATH="/usr/local/opt/node@12/bin:$PATH"
 # --bind 'ctrl-e:execute(echo {+} | xargs -o vim)'
 # --bind 'ctrl-v:execute(code {+})'
 # "
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
