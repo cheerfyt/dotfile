@@ -30,11 +30,11 @@ set shortmess+=c        " don't give |ins-completion-menu| messages.
 set signcolumn=yes      " always show signcolumns
 highlight ColorColumn ctermbg=yellow
 
-highlight Pmenu      ctermbg=pink 
-highlight PmenuSel   ctermbg=gray
-highlight PmenuSbar  ctermbg=gray
-highlight Pmenu      ctermbg=gray
-
+" highlight Pmenu      ctermbg=pink 
+" highlight PmenuSel   ctermbg=gray
+" highlight PmenuSbar  ctermbg=gray
+" highlight Pmenu      ctermbg=gray
+ 
 set colorcolumn=80
 set encoding=utf-8
 set fileencoding=utf-8
@@ -132,7 +132,7 @@ nnoremap <silent> <F2> :NERDTreeFind<CR>
 noremap <F3> :NERDTreeToggle<CR>
 nnoremap <leader>t :FloatermToggle<CR>
 nnoremap <leader>F :Files<CR>
-
+nnoremap <C-g> :Rg<Cr>
 "" Golang
 " disable vim-go :GoDef short cut (gd)
 " this is handled by LanguageClient [LC]
@@ -193,3 +193,7 @@ nnoremap <Leader>/ :Ack!<Space>
 "" FloatermToggle g:floaterm_autoclose
 let g:floaterm_autoclose = 2
 let g:floaterm_wintype = 'floating'
+
+"" Goyo
+let g:goyo_width = 120
+let g:goyo_height = '90%'
