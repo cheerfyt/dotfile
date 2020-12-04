@@ -1,6 +1,7 @@
 "auto reload config file
 set nocompatible
-autocmd! BufWritePost ~/.config/nvim/init.vim source %
+
+" Leader key
 let mapleader=','
 
 " ======== Python3 programming path ===================
@@ -28,14 +29,14 @@ set cmdheight=1
 set updatetime=300      " Smaller updatetime for CursorHold & CursorHoldI
 set shortmess+=c        " don't give |ins-completion-menu| messages.
 set signcolumn=yes      " always show signcolumns
-highlight ColorColumn ctermbg=yellow
 
-" highlight Pmenu      ctermbg=pink 
+" highlight Pmenu      ctermbg=pink
 " highlight PmenuSel   ctermbg=gray
 " highlight PmenuSbar  ctermbg=gray
 " highlight Pmenu      ctermbg=gray
- 
-set colorcolumn=80
+
+set cursorline cursorcolumn
+
 set encoding=utf-8
 set fileencoding=utf-8
 set fileencodings=utf-8
@@ -74,19 +75,28 @@ Plug 'joshdick/onedark.vim'
 Plug 'preservim/nerdtree'
 Plug 'tpope/vim-fugitive'
 Plug 'airblade/vim-gitgutter'
-Plug 'dense-analysis/ale'
 Plug 'preservim/nerdcommenter'
 Plug 'editorconfig/editorconfig-vim'
 Plug 'Yggdroot/indentLine'
 Plug 'voldikss/vim-floaterm'
-Plug 'sjl/gundo.vim'
 Plug 'mileszs/ack.vim'
+Plug 'tpope/vim-sensible'
+Plug 'othree/html5.vim'
+Plug 'mbbill/undotree'
+Plug 'w0rp/ale'
+Plug 'ntpeters/vim-better-whitespace'
+Plug 'jiangmiao/auto-pairs'
+Plug 'ap/vim-css-color'
+Plug 'prettier/vim-prettier', {'do': 'yarn install'}
+Plug 'skywind3000/asyncrun.vim'
+Plug 'sickill/vim-monokai'
 call plug#end()
 filetype plugin on
 
 colorscheme onedark
+" colorscheme monokai
 
-"============================== coc config ======================
+""============================== coc config ======================
 inoremap <silent><expr> <TAB>
       \ pumvisible() ? "\<C-n>" :
       \ <SID>check_back_space() ? "\<TAB>" :
@@ -133,6 +143,8 @@ noremap <F3> :NERDTreeToggle<CR>
 nnoremap <leader>t :FloatermToggle<CR>
 nnoremap <leader>F :Files<CR>
 nnoremap <C-g> :Rg<Cr>
+
+map <silent> <F12> :source ~/.config/nvim/init.vim<CR>
 "" Golang
 " disable vim-go :GoDef short cut (gd)
 " this is handled by LanguageClient [LC]
@@ -158,20 +170,6 @@ let g:airline_left_sep = '»'
 let g:airline_left_sep = '▶'
 let g:airline_right_sep = '«'
 let g:airline_right_sep = '◀'
-let g:airline_symbols.crypt = '🔒'
-let g:airline_symbols.linenr = '☰'
-let g:airline_symbols.linenr = '␊'
-let g:airline_symbols.linenr = '␤'
-let g:airline_symbols.linenr = '¶'
-let g:airline_symbols.maxlinenr = ''
-let g:airline_symbols.maxlinenr = '㏑'
-let g:airline_symbols.branch = '⎇'
-let g:airline_symbols.paste = 'ρ'
-let g:airline_symbols.paste = 'Þ'
-let g:airline_symbols.paste = '∥'
-let g:airline_symbols.spell = 'Ꞩ'
-let g:airline_symbols.notexists = 'Ɇ'
-let g:airline_symbols.whitespace = 'Ξ'
 let g:airline#extensions#virtualenv#enabled = 1
 
 "" Gundo
@@ -197,3 +195,14 @@ let g:floaterm_wintype = 'floating'
 "" Goyo
 let g:goyo_width = 120
 let g:goyo_height = '90%'
+
+"" TailWhiteSpace
+let g:better_whitespace_ctermcolor='blue'
+
+"" AutoPairs
+let g:AutoPairsShortcutBackInsert = '<M-b>'
+
+let g:prettier#config#parser = 'typescript'
+
+set colorcolumn=120
+highlight ColorColumn ctermbg=red
