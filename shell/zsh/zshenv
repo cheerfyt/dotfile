@@ -141,6 +141,8 @@ function ready() {
 
 	    node) _node ;;
 
+	    ts|typescript) _node ;;
+
 	    *) echo "Not support yet" ;;
 	esac
 
