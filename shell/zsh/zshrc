@@ -89,3 +89,6 @@ export PATH="/usr/local/opt/node@12/bin:$PATH"
 # "
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+autoload -U compinit
+compinit -i
