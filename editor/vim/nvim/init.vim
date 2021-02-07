@@ -36,7 +36,6 @@ if !exists('g:vscode')
 
   set encoding=utf-8
   set fileencoding=utf-8
-  set fileencodings=utf-8
   set backspace=indent,eol,start
   set hlsearch
   set incsearch
