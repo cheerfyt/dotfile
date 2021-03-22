@@ -106,3 +106,5 @@ alias 8='cd -8'
 alias 9='cd -9'
 
 alias -g Z='| fzf'
+
+alias redis-cli='docker exec -it redis redis-cli'
