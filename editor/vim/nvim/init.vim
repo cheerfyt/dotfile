@@ -58,8 +58,8 @@ if !exists('g:vscode')
   syntax on
   call plug#begin('~/.plugin/nvim/')
   Plug 'neoclide/coc.nvim', {'branch': 'release', 'do': 'yarn install --frozen-lockfile'}
-  Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
   Plug 'junegunn/fzf.vim'
+  Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
   Plug 'mattn/emmet-vim'
   Plug 'tpope/vim-surround'
   Plug 'vim-airline/vim-airline'
@@ -90,8 +90,7 @@ if !exists('g:vscode')
   call plug#end()
   filetype plugin on
 
-  colorscheme onedark
-  " colorscheme monokai
+  colorscheme monokai
 
   ""============================== coc config ======================
   inoremap <silent><expr> <TAB>

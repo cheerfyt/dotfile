@@ -25,11 +25,6 @@ if type brew &>/dev/null; then
   FPATH=$(brew --prefix)/share/zsh/site-functions:$FPATH
 fi
 
-export VOLTA_HOME="$HOME/.volta"
-[ -s "$VOLTA_HOME/load.sh" ] && . "$VOLTA_HOME/load.sh"
-
-export PATH="$VOLTA_HOME/bin:$PATH"
-
 export FZF_DEFAULT_OPTS='
   --color=dark
   --color=fg:-1,bg:-1,hl:#5fff87,fg+:-1,bg+:-1,hl+:#ffaf5f
@@ -100,3 +95,9 @@ if type brew &>/dev/null; then
 fi
 
 export PATH="$PATH:/opt/Flutter/bin"
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh"  ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+
+# Navi
+eval "$(navi widget zsh)"

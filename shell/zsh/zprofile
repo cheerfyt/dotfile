@@ -76,6 +76,7 @@ alias ax='axel -n 10'
 
 # nvm
 alias loadnvm="[ -s $NVM_DIR/nvm.sh ] && . $NVM_DIR/nvm.sh"
+alias cra="npx create-react-app"
 
 if type nvim > /dev/null 2>&1 ;then
   alias vim="nvim"
@@ -84,7 +85,12 @@ fi
 # lazydocker
 alias lzd='lazydocker'
 
-# node
+# use pnpm as default
+if type pnpm > /dev/null 2>&1; then
+  alias npm='pnpm'
+  alias yarn='pnpm'
+fi
+
 alias nt='npm test'
 alias ni='npm install'
 alias nip='npm install --production'

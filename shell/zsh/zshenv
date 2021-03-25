@@ -28,17 +28,6 @@ export PATH=$HOME/Snapshot/maven-3.6.3/bin:$PATH
 export GO111MODULE=on
 export GOPROXY=https://goproxy.cn,direct
 
-## github pull-request
-function pr() {
-	baseBranch="develop"
-	if [ ! -z "$1" -a "$1" != " " ];then
-		baseBranch=$1
-	fi
-	echo "push code and create pr to $baseBranch..."
-	hub pull-request -p -b $baseBranch -r "sunjingyun" -r "247521776"
-	[[ $?==0 ]] && echo "push code and create pr to $baseBranch... successful"
-}
-
 # virtualenv
 function load_virtual_env() {
 	export WORKON_HOME=$HOME/.virtualenvs
