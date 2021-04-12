@@ -185,3 +185,5 @@ function drc() {
   fi
 }
 source "$HOME/.cargo/env"
+
+export EDITOR="nvim"

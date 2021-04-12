@@ -87,7 +87,9 @@ if !exists('g:vscode')
   Plug 'prettier/vim-prettier', {'do': 'yarn install'}
   Plug 'skywind3000/asyncrun.vim'
   Plug 'sickill/vim-monokai'
+  Plug 'dhruvasagar/vim-table-mode'
   call plug#end()
+
   filetype plugin on
 
   colorscheme monokai
@@ -191,7 +193,7 @@ if !exists('g:vscode')
 
   "" Goyo
   let g:goyo_width = 120
-  let g:goyo_height = '90%'
+  let g:goyo_height = '80%'
 
   "" TailWhiteSpace
   let g:better_whitespace_ctermcolor='blue'
@@ -208,4 +210,20 @@ if !exists('g:vscode')
   let g:go_fmt_command = "goimports"
   let g:imports = 1
   let g:goimports_simplify = 1
+
+  " Markdown Table model
+  function! s:isAtStartOfLine(mapping)
+    let text_before_cursor = getline('.')[0 : col('.')-1]
+    let mapping_pattern = '\V' . escape(a:mapping, '\')
+    let comment_pattern = '\V' . escape(substitute(&l:commentstring, '%s.*$', '', ''), '\')
+    return (text_before_cursor =~? '^' . ('\v(' . comment_pattern . '\v)?') . '\s*\v' . mapping_pattern . '\v$')
+  endfunction
+
+  inoreabbrev <expr> <bar><bar>
+            \ <SID>isAtStartOfLine('\|\|') ?
+            \ '<c-o>:TableModeEnable<cr><bar><space><bar><left><left>' : '<bar><bar>'
+  inoreabbrev <expr> __
+            \ <SID>isAtStartOfLine('__') ?
+            \ '<c-o>:silent! TableModeDisable<cr>' : '__'
 endif
+
