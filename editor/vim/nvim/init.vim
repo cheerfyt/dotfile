@@ -88,6 +88,7 @@ if !exists('g:vscode')
   Plug 'skywind3000/asyncrun.vim'
   Plug 'sickill/vim-monokai'
   Plug 'dhruvasagar/vim-table-mode'
+  Plug 'ferrine/md-img-paste.vim'
   call plug#end()
 
   filetype plugin on
@@ -192,7 +193,7 @@ if !exists('g:vscode')
   let g:floaterm_position = 'auto'
 
   "" Goyo
-  let g:goyo_width = 120
+  let g:goyo_width = 140
   let g:goyo_height = '80%'
 
   "" TailWhiteSpace
@@ -200,7 +201,6 @@ if !exists('g:vscode')
 
   "" AutoPairs
   let g:AutoPairsShortcutBackInsert = '<M-b>'
-
   let g:prettier#config#parser = 'typescript'
 
   set colorcolumn=120
@@ -225,5 +225,6 @@ if !exists('g:vscode')
   inoreabbrev <expr> __
             \ <SID>isAtStartOfLine('__') ?
             \ '<c-o>:silent! TableModeDisable<cr>' : '__'
+else
+  " nothing here
 endif
-

@@ -90,12 +90,13 @@ if type pnpm > /dev/null 2>&1; then
   alias pm='pnpm'
 fi
 
-alias npx='pnpx'
-
 alias nt='npm test'
 alias ni='npm install'
 alias nip='npm install --production'
 export NVM_DIR="$HOME/.nvm"
+
+alias devnpm='npm i --registry http://wallet-test-4.sinnet.huobiidc.com:60006/'
+alias prodnpm='npm i --registry http://nexus-1a-1.aws-jp1.huobiidc.com:1025/'
 
 # ft editor
 alias -s {yml,yaml,json,md,markdown,toml}=vim
@@ -115,6 +116,8 @@ alias 9='cd -9'
 alias -g Z='| fzf'
 
 alias redis-cli='docker exec -it redis redis-cli'
+
+alias hbmysql='mycli -h wallet-test-1.sinnet.huobiidc.com -P 3306 -u root -D validator -p huobitianxia'
 
 # password generate
 function genpwd() {
