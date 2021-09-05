@@ -46,4 +46,4 @@ Plug 'tpope/vim-fugitive.git'
 Plug 'mhinz/vim-startify'
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'tpope/vim-surround'
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
+# Plug 'neoclide/coc.nvim', {'branch': 'release'}
