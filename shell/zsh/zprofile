@@ -81,15 +81,13 @@ alias cra="npx create-react-app"
 if type nvim > /dev/null 2>&1 ;then
   alias vim="nvim"
 fi
+alias vimrc='nvim ~/.config/nvim/init.vim'
 
 # lazydocker
 alias lzd='lazydocker'
 
 # use pnpm as default
-if type pnpm > /dev/null 2>&1; then
-  alias pm='pnpm'
-fi
-
+alias pm='pnpm'
 alias nt='npm test'
 alias ni='npm install'
 alias nip='npm install --production'
@@ -123,3 +121,12 @@ alias hbmysql='mycli -h wallet-test-1.sinnet.huobiidc.com -P 3306 -u root -D val
 function genpwd() {
   LC_CTYPE=C < /dev/urandom tr -dc A-Za-z0-9 | head -c $1
 }
+
+## golang
+alias guv='go get -v -u'
+
+## rust
+alias cr='cargo run'
+alias crr='cargo run --release'
+alias cb='cargo build'
+alias cbr='cargo build --release'

@@ -93,7 +93,7 @@ if !exists('g:vscode')
 
   filetype plugin on
 
-  colorscheme monokai
+  " colorscheme monokai
 
   ""============================== coc config ======================
   inoremap <silent><expr> <TAB>
